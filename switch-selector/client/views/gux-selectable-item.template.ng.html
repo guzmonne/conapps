@@ -1,0 +1,9 @@
+<div class="row" ng-click="selectableItem.toggle($event)" style="cursor: pointer">
+	<div class="col-xs-9" ng-transclude>
+		<!-- Label Goes Here -->	
+	</div>
+	<div class="col-xs-3">
+		<i class="fa" ng-class="{'false': 'fa-square-o', 'true': 'fa-check-square-o'}[selectableItem.ngModel === true]"></i>
+		<input type="checkbox" checked ng-model="selectableItem.ngModel" tabindex="0" class="hidden">
+	</div>
+</div>

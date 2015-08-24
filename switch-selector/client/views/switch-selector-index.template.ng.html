@@ -1,0 +1,139 @@
+<div class="conainer-fluid">
+	<div class="row">
+		<div class="col-sm-3 col-md-3">
+			<!-- Options -->
+			<gux-accordion>
+				<!-- Options -->
+				<gux-accordion-item accordion-item-label="">
+					<!-- Select All -->
+					<div class="row" style="margin-bottom: 3px">
+						<div class="col-xs-12">
+							<button class="btn btn-primary btn-block">
+								Seleccionar Todas
+							</button>
+						</div>
+					</div>
+					<!-- Deselect All -->
+					<div class="row" style="margin-top: 3px">
+						<div class="col-xs-12">
+							<button class="btn btn-danger btn-block">
+								Deseleccionar Todas
+							</button>
+						</div>
+					</div>
+					<br>
+				</gux-accordion-item>
+				<!-- /Select All -->
+				<!-- Port Density -->
+				<gux-accordion-item accordion-item-label="Cantidad de Puertos">
+					<!-- 8 Puertos -->
+					<gux-selectable-item ng-model="index.filters.ports8">
+						<strong>8 puertos</strong>
+					</gux-selectable-item>
+					<!-- 12 Puertos -->
+					<gux-selectable-item ng-model="index.filters.ports12">
+						<strong>12 puertos</strong>
+					</gux-selectable-item>
+					<!-- 16 Puertos -->
+					<gux-selectable-item ng-model="index.filters.ports16">
+						<strong>16 puertos</strong>
+					</gux-selectable-item>
+					<!-- 24 Puertos -->
+					<gux-selectable-item ng-model="index.filters.ports24">
+						<strong>24 puertos</strong>
+					</gux-selectable-item>
+					<!-- 48 Puertos -->
+					<gux-selectable-item ng-model="index.filters.ports48">
+						<strong>48 puertos</strong>
+					</gux-selectable-item>
+				</gux-accordion-item>
+				<!-- /Port Density -->
+				<!-- RJ-45 Ports -->
+				<gux-accordion-item accordion-item-label="Puertos RJ-45">
+					<!-- 100 Mbps -->
+					<gux-selectable-item ng-model="index.filters.fePorts">
+						<strong>100 Mbps</strong>
+					</gux-selectable-item>
+					<!-- 1 Gbps -->	
+					<gux-selectable-item ng-model="index.filters.gePorts">
+						<strong>1 Gbps</strong>
+					</gux-selectable-item>
+					<!-- 10 Gbps -->
+					<gux-selectable-item ng-model="index.filters.tenGePorts">
+						<strong>10 Gbps</strong>
+					</gux-selectable-item>
+				</gux-accordion-item>
+				<!-- /RJ-45 Ports -->
+				<!-- Fibre Ports -->
+				<gux-accordion-item accordion-item-label="Puertos de Fibra">
+					<!-- SFP Ports -->
+					<gux-selectable-item ng-model="index.filters.sfpPorts">
+						<strong>SFP</strong>
+					</gux-selectable-item>
+					<!-- SFP+ Ports -->
+					<gux-selectable-item ng-model="index.filters.sfpPlusPorts">
+						<strong>SFP+</strong>
+					</gux-selectable-item>
+					<!-- QSFP Ports -->
+					<gux-selectable-item ng-model="index.filters.qSfpPlusPorts">
+						<strong>QSFP+</strong>
+					</gux-selectable-item>
+				</gux-accordion-item>
+				<!-- /Fibre Ports -->
+				<!-- Uplink Ports -->
+				<gux-accordion-item accordion-item-label="Uplinks">
+					<!-- Puertos Duales -->
+					<gux-selectable-item ng-model="index.filters.dualPortUplinks">
+						<strong>Puertos Duales</strong>
+					</gux-selectable-item>
+					<!-- SFP -->
+					<gux-selectable-item ng-model="index.filters.sfpPortsUplinks">
+						<strong>SFP</strong>
+					</gux-selectable-item>
+					<!-- SFP+ -->
+					<gux-selectable-item ng-model="index.filters.sfpPlusPortsUplink">
+						<strong>SFP+</strong>
+					</gux-selectable-item>
+					<!-- SFP+ -->
+					<gux-selectable-item ng-model="index.filters.qSfpPlusPortsUplink">
+						<strong>QSFP+</strong>
+					</gux-selectable-item>
+				</gux-accordion-item>	
+				<!-- /Uplink Ports -->
+				<!-- Brand -->
+				<gux-accordion-item accordion-item-label="Marca">
+					<!-- CISCO -->
+					<gux-selectable-item ng-model="index.filters.cisco">
+						<strong>Cisco</strong>
+					</gux-selectable-item>
+					<!-- HP -->
+					<gux-selectable-item ng-model="index.filters.hp">
+						<strong>HP</strong>
+					</gux-selectable-item>
+					<!-- JUNIPER -->
+					<gux-selectable-item ng-model="index.filters.juniper">
+						<strong>Juniper</strong>
+					</gux-selectable-item>
+				</gux-accordion-item>	
+				<!-- /Brand -->
+				<!-- Caracteristicas Adicionales -->
+				<gux-accordion-item accordion-item-label="Caracteristicas Adicionales">
+					<!-- CISCO -->
+					<gux-selectable-item ng-model="index.filters.secondaryPowerSupply">
+						<strong>Fuentes Redundantes</strong>
+					</gux-selectable-item>
+					<!-- PoE -->
+					<gux-selectable-item ng-model="index.filters.poe">
+						<strong>PoE</strong>
+					</gux-selectable-item>
+					<!-- PoE+ -->
+					<gux-selectable-item ng-model="index.filters.poePlus">
+						<strong>PoE+</strong>
+					</gux-selectable-item>
+				</gux-accordion-item>	
+				<!-- /Caracteristicas Adicionales -->
+			</gux-accordion>
+			<!-- /Options -->
+		</div>
+	</div>
+</div>
