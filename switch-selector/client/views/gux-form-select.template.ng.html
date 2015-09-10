@@ -1,0 +1,6 @@
+<div class="form-group">
+  <label ng-transclude></label>
+  <select ng-model="guxFormSelect.ngModel" name="guxFormSelect.name" class="form-control">
+    <option ng-repeat="option in guxFormSelect.options track by $index" value="{{option}}">{{option}}</option>
+  </select>
+</div>

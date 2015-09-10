@@ -1,0 +1,73 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-4 col-md-3">
+				<img src="http://placehold.it/180x120" alt="Placeholder">
+			</div>
+			<div class="col-sm-8 col-md-9">
+				<div class="row">
+					<div class="col-sm-6">
+						<h4>
+							<strong>{{panel.switch.model}}</strong>
+							<small class="fa-edit-stack" ng-click="panel.editSwitch()">
+								<a class="pull-right fa-stack">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+								</a>
+							</small>
+						</h4>
+						<hr style="margin-top: 3px; margin-bottom: 3px">
+						<dt>Puertos</dt>
+						<dd>
+							{{panel.switchCopperPorts()}}
+						</dd>
+						<dt>Uplink</dt>
+						<dd>
+							{{panel.uplinkPorts()}}
+						</dd>
+						<dd class="text-info" ng-if="panel.switch.dualPorts">
+							Puertos Duales
+						</dd>
+						<ul class="list-inline">
+							<li ng-if="panel.switch.secondaryPowerSupply">
+								<tag-label label-class="primary">
+									Fuente Redundante
+								</tag-label>
+							</li>
+							<li ng-if="panel.switch.poe">
+								<tag-label label-class="warning">
+									PoE
+								</tag-label>	
+							</li>
+							<li ng-if="panel.switch.poePlus">
+								<tag-label label-class="orange">
+									PoE+
+								</tag-label>
+							</li>
+							<li ng-if="panel.switch.uPoePlus">
+								<tag-label label-class="purple">
+									UPoE
+								</tag-label>
+							</li>
+						</ul>
+					</div>
+					<div class="col-sm-6 col-md-3 col-md-offset-3">
+						<p>
+							<button class="btn btn-block btn-danger">
+								<i class="fa fa-file-pdf-o"></i>
+								Hoja de Datos
+							</button>
+						</p>
+						<br>
+						<p class="text-center" ng-if="panel.switch.brand === 'CISCO'">
+							<img height="60" width="120" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Cisco_logo.svg/245px-Cisco_logo.svg.png" alt="Logo">
+						</p>
+						<p class="text-center" ng-if="panel.switch.brand !== 'CISCO'">
+							<img height="60" width="120" src="http://placehold.it/120x60" alt="Logo">
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

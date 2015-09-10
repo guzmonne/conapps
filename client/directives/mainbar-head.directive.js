@@ -3,7 +3,11 @@ angular.module('switch-selector').directive('mainbarHead', [
 		return {
 			restrict    : 'E',
 			templateUrl : 'client/views/mainbar-head.template.ng.html',
-			replace     : true
+			replace     : true,
+			controller  : ['ToggleSidebar', function(sidebar){
+				this.toggleSidebar = sidebar.toggle;
+			}],
+			controllerAs: 'header'
 		}
 	}
 ]);

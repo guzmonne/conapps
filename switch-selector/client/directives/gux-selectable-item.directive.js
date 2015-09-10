@@ -6,16 +6,17 @@ angular.module('switch-selector').directive('guxSelectableItem', [
 			transclude: true,
 			templateUrl: 'switch-selector/client/views/gux-selectable-item.template.ng.html',
 			scope: {
-				ngModel : '=',
+				ngModel   : '=',
 			},
-			require: 'ngModel',
+			require: ['ngModel'],
 			controller: ['$scope', function($scope){
 				this.toggle = function(e){
+					e.preventDefault();
 					this.ngModel = !this.ngModel;
 				}
 			}],
-			controllerAs: 'selectableItem',
-			bindToController: true
+			controllerAs     : 'selectableItem',
+			bindToController : true
 		}
 	}
 ]);

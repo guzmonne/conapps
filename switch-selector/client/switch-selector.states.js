@@ -5,7 +5,7 @@ angular.module("switch-selector").config(['$stateProvider',
         url         : '/switch_selector',
         templateUrl : 'switch-selector/client/views/switch-selector-index.template.ng.html',
         controller  : 'SwitchSelectorIndexCtrl',
-        controllerAs: 'index'
+        controllerAs: 'index',
       });
     }
   ]);

@@ -12,9 +12,6 @@ angular.module('switch-selector').directive('guxAccordion', [
 				this.id = $scope.accordionId || _.uniqueId('accordion');
 			}],
 			controllerAs: 'accordion',
-			link: function(scope, element, attrs){
-				//angular.element(element).attr('id', scope.accordion.id);
-			}
 		}
 	}
 ]);

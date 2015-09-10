@@ -1,0 +1,10 @@
+<div 	class="row" 
+			ng-class="{true: 'text-primary'}[option.selected === true]"
+			ng-click="option.setParentModel(option.value)">
+	<div class="col-xs-9" ng-transclude>
+		<!-- Label Goes Here -->	
+	</div>
+	<div class="col-xs-3">
+		<i class="fa" ng-class="{'false': 'fa-circle-o', 'true': 'fa-dot-circle-o'}[option.selected === true]"></i>
+	</div>
+</div>
