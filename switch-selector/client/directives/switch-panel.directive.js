@@ -4,11 +4,12 @@ angular.module('switch-selector').directive('switchPanel', function(){
 		replace: true,
 		scope: {
 			ngModel: '=',
+			onEdit : '&',
 		},
 		templateUrl: 'switch-selector/client/views/switch-panel.template.ng.html',
 		require: 'ngModel',
 		bindToController: true,
-		controller: [function(){
+		controller: ['$window', function($window){
 			this.switch = this.ngModel;
 			this.switchCopperPorts = function(){
 				var portSpeed = '10/100';
@@ -24,8 +25,12 @@ angular.module('switch-selector').directive('switchPanel', function(){
 								this.switch.uplink
 			};
 			this.editSwitch = function(){
-				
+				this.onEdit.call({switch: this.switch});
+				console.log(this.switch);
 			};
+			this.openDatasheet = function(){
+				$window.open(this.switch.datasheetUrl, '_blank');
+			}
 		}],
 		controllerAs: 'panel'
 	}

@@ -6,6 +6,8 @@ angular.module('switch-selector').controller('SwitchSelectorIndexCtrl', [
 		self.filters  = {};
 		self.switches = [];
 
+		self.activeSwitch = {};
+
 		$meteor.autorun($scope, function(){
 			$meteor
 				.subscribe('switches', $scope.getReactively('index.filters'))
@@ -28,7 +30,8 @@ angular.module('switch-selector').controller('SwitchSelectorIndexCtrl', [
 			delete self.filters[name] 
 		};
 
-		self.showModal = function(){
+		self.showModal = function(editableSwitch){
+			self.activeSwitch = (editableSwitch) ? _.clone(editableSwitch) : {};
 			$('#addNewSwitchModal').modal('toggle');
 		};
 

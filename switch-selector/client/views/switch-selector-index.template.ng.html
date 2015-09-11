@@ -19,10 +19,11 @@
 		<div class="col-sm-9 col-md-9">
 			<switch-panel 
 				ng-model="switch"
-				ng-repeat="switch in index.switches track by switch._id">
+				ng-repeat="switch in index.switches track by switch._id"
+				on-edit="index.showModal(switch)">
 			</switch-panel>
 		</div>
 	</div>
 </div>
 
-<add-new-switch-modal></add-new-switch-modal>
+<add-new-switch-modal switch="index.activeSwitch"></add-new-switch-modal>

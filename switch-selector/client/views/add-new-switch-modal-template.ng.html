@@ -24,23 +24,10 @@
                   Imagen
                 </gux-form-input>
 
-                <div class="checkbox">
-                  <label>
-                    <input ng-model="addSwitchCtrl.switch.poe" type="checkbox" name="poe"> PoE
-                  </label>
-                </div>
-
-                <div class="checkbox">
-                  <label>
-                    <input ng-model="addSwitchCtrl.switch.poePlus" type="checkbox" name="poePlus"> PoE+
-                  </label>
-                </div>
-
-                <div class="checkbox">
-                  <label>
-                    <input ng-model="addSwitchCtrl.switch.uPoePlus" type="checkbox" name="uPoePlus"> UPoE+
-                  </label>
-                </div>
+                <!-- DataSheet -->
+                <gux-form-input ng-model="addSwitchCtrl.switch.datasheetUrl" input-placeholder="Ej: http://www.cisco.com/datasheet.pdf" input-type="url" input-name="datasheetUrl">
+                  Hoja de Datos
+                </gux-form-input>
 
               </div>
 
@@ -59,13 +46,15 @@
                   <div class="row">
                     <div class="col-sm-9">
                       <select ng-model="addSwitchCtrl.switch.uplink" name="uplink" class="form-control">
+                        <option value="">---</option>
                         <option value="SFP">SFP</option>
                         <option value="SFP+">SFP+</option>
-                        <option value="QSFP">QSFP</option>
+                        <option value="QSFP+">QSFP+</option>
                       </select>
                     </div>
                     <div class="col-sm-3">
                       <select ng-model="addSwitchCtrl.switch.uplinkPorts" name="uplinkPorts" class="form-control">
+                        <option value="">---</option>
                         <option value="2">2</option>
                         <option value="4">4</option>
                         <option value="8">8</option>
@@ -85,6 +74,25 @@
                     <input type="checkbox" ng-model="addSwitchCtrl.switch.dualPorts" name="dualPorts"> Puertos Duales
                   </label>
                 </div>
+
+                <div class="checkbox">
+                  <label>
+                    <input ng-model="addSwitchCtrl.switch.poe" type="checkbox" name="poe"> PoE
+                  </label>
+                </div>
+
+                <div class="checkbox">
+                  <label>
+                    <input ng-model="addSwitchCtrl.switch.poePlus" type="checkbox" name="poePlus"> PoE+
+                  </label>
+                </div>
+
+                <div class="checkbox">
+                  <label>
+                    <input ng-model="addSwitchCtrl.switch.uPoePlus" type="checkbox" name="uPoePlus"> UPoE+
+                  </label>
+                </div>
+              
               </div>
 
             </form>

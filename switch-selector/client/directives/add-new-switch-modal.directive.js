@@ -15,9 +15,18 @@ angular.module('switch-selector').directive('addNewSwitchModal', function(){
 
 			self.save = function(e){
 				e.preventDefault();
-				$meteor.call('addSwitch', self.switch)
+				var method, msg;
+				if (self.switch._id){
+					method = 'updateSwitch';
+					msg    = 'Switch Actualizado.';
+				} else {
+					method = 'addSwitch';
+					msg    = 'Switch Creado';
+				}
+				$meteor.call(method, self.switch)
 				.then(function(result){
-					toastr.success('Se ha añadido el nuevo switch.', 'Exito!');
+					toastr.success(msg, 'Exito!');
+					if (self.switch._id) return;
 					self.switch = {};
 				})
 				.catch(function(err){

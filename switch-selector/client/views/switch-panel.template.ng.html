@@ -2,11 +2,11 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-sm-4 col-md-3">
-				<img src="http://placehold.it/180x120" alt="Placeholder">
+				<img class="img-responsive" src="http://placehold.it/180x120" alt="Placeholder">
 			</div>
 			<div class="col-sm-8 col-md-9">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-6 col-md-8">
 						<h4>
 							<strong>{{panel.switch.model}}</strong>
 							<small class="fa-edit-stack" ng-click="panel.editSwitch()">
@@ -51,12 +51,27 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-sm-6 col-md-3 col-md-offset-3">
+					<div class="col-sm-6 col-md-4">
 						<p>
-							<button class="btn btn-block btn-danger">
-								<i class="fa fa-file-pdf-o"></i>
-								Hoja de Datos
-							</button>
+							<div class="btn-group">	
+								<button ng-class="{true: 'disabled'}[!panel.switch.datasheetUrl]" 
+												class="btn btn-block btn-danger dropdown-toggle"
+												data-toggle="dropdown"
+												aria-haspopup="true"
+												aria-expanded="false">
+									<i class="fa fa-file-pdf-o"></i>
+									Hoja de Datos
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li>
+										<a ng-href="{{panel.switch.datasheetUrl}}" target="_blank">Abrir</a>
+									</li>
+									<li>
+										<a ng-href="{{panel.switch.datasheetUrl}}" download="{{panel.switch.model + '.pdf'}}">Descargar</a>
+									</li>
+								</ul>
+							</div>
 						</p>
 						<br>
 						<p class="text-center" ng-if="panel.switch.brand === 'CISCO'">
