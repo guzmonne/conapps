@@ -1,5 +1,8 @@
+angular.module('angular-gux', []);
+
 angular.module('switch-selector', [
   'angular-meteor',
+  'angular-gux',
   'ui.router',
   'rx',
 ]);

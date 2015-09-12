@@ -1,3 +1,17 @@
+if (Meteor.users.find().count() === 0){
+	Accounts.createUser({
+		username: 'admin',
+		email   : 'gmonne@gmail.com',
+		profile : {
+			roles     : ['admin'],
+			name      : 'Administrator',
+			createdBy : 'Meteor.fixture.js',
+			createdAt : moment().utc().format()
+		}
+	});
+	Accounts.setPassword(Meteor.users.findOne(), 'admin');
+	console.log('Default "admin" account created');
+}
 /*
 if (Switches.find({}).count() === 0){
 	Switches.insert({

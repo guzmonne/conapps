@@ -37,3 +37,7 @@
     padding-left: 0;
     padding-top: 5px;
 }
+
+.side-nav-block > ul.list-unstyled > a:hover {
+  color: #fff;
+}

@@ -9,7 +9,9 @@
 					<div class="col-sm-6 col-md-8">
 						<h4>
 							<strong>{{panel.switch.model}}</strong>
-							<small class="fa-edit-stack" ng-click="panel.editSwitch()">
+							<small 	class="fa-edit-stack" 
+											ng-click="panel.editSwitch()"
+											ng-if="$root.currentUser">
 								<a class="pull-right fa-stack">
 									<i class="fa fa-circle fa-stack-2x"></i>
 									<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
@@ -53,7 +55,7 @@
 					</div>
 					<div class="col-sm-6 col-md-4">
 						<p>
-							<div class="btn-group">	
+							<div class="btn-group btn-block">	
 								<button ng-class="{true: 'disabled'}[!panel.switch.datasheetUrl]" 
 												class="btn btn-block btn-danger dropdown-toggle"
 												data-toggle="dropdown"

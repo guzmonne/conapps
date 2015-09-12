@@ -8,6 +8,12 @@ angular.module('switch-selector').controller('SwitchSelectorIndexCtrl', [
 
 		self.activeSwitch = {};
 
+		self.links = [
+			{name: 'Home', address: '/'},
+			{name: 'Switch Selector', address: '/switch-selector'},
+			{name: 'Index'}
+		];
+
 		$meteor.autorun($scope, function(){
 			$meteor
 				.subscribe('switches', $scope.getReactively('index.filters'))
