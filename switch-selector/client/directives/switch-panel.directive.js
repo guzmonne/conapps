@@ -31,6 +31,9 @@ angular.module('switch-selector').directive('switchPanel', function(){
 			this.openDatasheet = function(){
 				$window.open(this.switch.datasheetUrl, '_blank');
 			}
+			this.switchLogo = function(){
+				return '/images/' + this.switch.brand.toLowerCase() + '_logo.png';
+			}
 		}],
 		controllerAs: 'panel'
 	}

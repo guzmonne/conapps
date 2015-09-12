@@ -76,11 +76,8 @@
 							</div>
 						</p>
 						<br>
-						<p class="text-center" ng-if="panel.switch.brand === 'CISCO'">
-							<img height="60" width="120" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Cisco_logo.svg/245px-Cisco_logo.svg.png" alt="Logo">
-						</p>
-						<p class="text-center" ng-if="panel.switch.brand !== 'CISCO'">
-							<img height="60" width="120" src="http://placehold.it/120x60" alt="Logo">
+						<p class="text-center">
+							<img height="60" ng-src="{{panel.switchLogo()}}" alt="Logo">
 						</p>
 					</div>
 				</div>
