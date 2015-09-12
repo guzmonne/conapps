@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="page-content">
+		<!-- Heading -->
+		<div class="single-head">
+			<!-- Heading -->
+			<h3 class="pull-left">
+				<i class="fa fa-desktop purple"></i>
+				{{panel.heading}}
+			</h3>
+			<!-- Bread Crumbs -->
+			<div class="breads pull-right">
+				<strong>Nav</strong>
+				:
+				<span ng-repeat="link in panel.links track by $index">
+					<a ng-if="!$last" href="{{link.address}}">
+						{{link.name}}
+					</a>
+					<span ng-if="!$last">/</span>
+					<span ng-if="$last">{{link.name}}</span>
+				</span>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!-- Heading -->
+		<!-- Content -->
+		<div ng-transclude></div>
+		<!-- Content -->
+	</div>
+</div>

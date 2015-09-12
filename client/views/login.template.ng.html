@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				Iniciar Sesión
+			</div>
+			<div class="panel-body">
+				<form name="loginForm">
+					<gux-form-input
+						ng-model="login.user.username"
+						input-type="text"
+						input-name="username"
+						input-placeholder="Email"
+						gux-enter="login.loginUser()">
+						Email
+					</gux-form-input>
+					<gux-form-input
+						ng-model="login.user.password"
+						input-type="password"
+						input-name="password"
+						input-placeholder="Contraseña"
+						gux-enter="login.loginUser()">
+						Contraseña
+					</gux-form-input>
+				</form>
+			</div>
+			<div class="panel-footer" style="height: 50px;">
+				<button ng-submit="login.loginUser()" class="btn btn-primary pull-right">
+					Aceptar
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
