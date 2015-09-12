@@ -26,7 +26,6 @@ angular.module('switch-selector').directive('switchPanel', function(){
 			};
 			this.editSwitch = function(){
 				this.onEdit.call({switch: this.switch});
-				console.log(this.switch);
 			};
 			this.openDatasheet = function(){
 				$window.open(this.switch.datasheetUrl, '_blank');

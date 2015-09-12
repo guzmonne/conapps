@@ -2,13 +2,18 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-sm-4 col-md-3">
-				<img class="img-responsive" src="http://placehold.it/180x120" alt="Placeholder">
+				<img 	class="img-responsive img-responsive-gux"
+							ng-src="{{panel.switch.imageUrl || 'http://placehold.it/180x120'}}"
+							alt="Placeholder">
 			</div>
 			<div class="col-sm-8 col-md-9">
 				<div class="row">
 					<div class="col-sm-6 col-md-8">
 						<h4>
 							<strong>{{panel.switch.model}}</strong>
+							<small ng-if="panel.switch.family">
+								{{panel.switch.family}}
+							</small>
 							<small 	class="fa-edit-stack" 
 											ng-click="panel.editSwitch()"
 											ng-if="$root.currentUser">
@@ -77,7 +82,7 @@
 						</p>
 						<br>
 						<p class="text-center">
-							<img height="60" ng-src="{{panel.switchLogo()}}" alt="Logo">
+							<img height="80" ng-src="{{panel.switchLogo()}}" alt="Logo">
 						</p>
 					</div>
 				</div>

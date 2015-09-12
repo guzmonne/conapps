@@ -11,9 +11,13 @@
             
             <form name="newSwitchForm" gux-form>
               <div class="col-sm-6">
+                <!-- Familia -->
+                <gux-form-input ng-model="addSwitchCtrl.switch.family" input-placeholder="Ej: Catalyst 2960-X" input-type="text" input-name="family">
+                  Familia
+                </gux-form-input>
                 <!-- Modelo -->
                 <gux-form-input ng-model="addSwitchCtrl.switch.model" input-placeholder="Ej: WS-C2960X-24T-L" input-type="text" input-name="model">
-                  Modelo
+                  Número de Parte
                 </gux-form-input>
                 <!-- Marca -->
                 <gux-form-select ng-model="addSwitchCtrl.switch.brand" select-name="brand" select-options="addSwitchCtrl.brandOptions">

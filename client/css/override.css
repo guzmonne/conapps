@@ -41,3 +41,9 @@
 .side-nav-block > ul.list-unstyled > a:hover {
   color: #fff;
 }
+
+.img-responsive-gux {
+  max-height: 160px;
+  margin: auto;
+  height: inherit;
+}
