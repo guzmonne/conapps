@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('tagLabel', function(){
+angular.module('conapps').directive('tagLabel', function(){
 	return {
 		restrict: 'E',
 		replace: true,

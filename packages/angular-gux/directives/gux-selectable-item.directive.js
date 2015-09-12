@@ -1,10 +1,10 @@
-angular.module('switch-selector').directive('guxSelectableItem', [
+angular.module('angular-gux').directive('guxSelectableItem', [
 	function(){
 		return {
 			restrict: 'E',
 			replace: true,
 			transclude: true,
-			templateUrl: 'switch-selector/client/views/gux-selectable-item.template.ng.html',
+			templateUrl: 'guzmonne_angular-gux_templates/gux-selectable-item.template.ng.html',
 			scope: {
 				ngModel   : '=',
 			},

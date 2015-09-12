@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('outer', [
+angular.module('conapps').directive('outer', [
 	function(){
 		return {
 			restrict    : 'E',

@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('switchSelectorFilters', [
+angular.module('conapps').directive('switchSelectorFilters', [
 	function(){
 		return {
 			restrict: 'E',

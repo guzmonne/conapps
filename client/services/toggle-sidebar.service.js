@@ -1,4 +1,4 @@
-angular.module('switch-selector').service('ToggleSidebar', [
+angular.module('conapps').service('ToggleSidebar', [
 	'$rootScope',
 	function($rootScope){
 		var ToggleSidebar = {

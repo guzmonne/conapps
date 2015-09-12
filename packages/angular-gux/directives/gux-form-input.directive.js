@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('guxFormInput', function(){
+angular.module('angular-gux').directive('guxFormInput', function(){
 	return {
 		restrict: 'E',
 		transclude: true,
@@ -9,7 +9,7 @@ angular.module('switch-selector').directive('guxFormInput', function(){
 			name        : '@inputName',
 			placeholder : '@inputPlaceholder',
 		},
-		templateUrl: 'switch-selector/client/views/gux-form-input.template.ng.html',
+		templateUrl: 'guzmonne_angular-gux_templates/gux-form-input.template.ng.html',
 		controller: [function(){}],
 		controllerAs: 'guxFormInput',
 		bindToController: true,

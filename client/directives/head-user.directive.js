@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('headUser', function(){
+angular.module('conapps').directive('headUser', function(){
 	return {
 		restrict: 'E',
 		replace: true,

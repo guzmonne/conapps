@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('sidebar', [
+angular.module('conapps').directive('sidebar', [
 	function(){
 		return {
 			templateUrl : 'client/views/sidebar.template.ng.html',

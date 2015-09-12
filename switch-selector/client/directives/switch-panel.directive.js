@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('switchPanel', function(){
+angular.module('conapps').directive('switchPanel', function(){
 	return {
 		restrict: 'E',
 		replace: true,

@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('mainbarHead', [
+angular.module('conapps').directive('mainbarHead', [
 	function(){
 		return {
 			restrict    : 'E',

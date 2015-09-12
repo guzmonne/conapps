@@ -1,6 +1,4 @@
-angular.module('angular-gux', []);
-
-angular.module('switch-selector', [
+angular.module('conapps', [
   'angular-meteor',
   'angular-gux',
   'ui.router',
@@ -9,7 +7,7 @@ angular.module('switch-selector', [
 
 
 function onReady() {
-  angular.bootstrap(document, ['switch-selector']);
+  angular.bootstrap(document, ['conapps']);
 }
 
 Meteor.startup(function(){

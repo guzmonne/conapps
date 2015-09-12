@@ -1,9 +1,9 @@
-angular.module('switch-selector').directive('guxRadioGroup', function(){
+angular.module('angular-gux').directive('guxRadioGroup', function(){
 	return {
 		restrict: 'E',
 		replace: true,
 		transclude: true,
-		templateUrl: 'switch-selector/client/views/gux-radio-group.template.ng.html',
+		templateUrl: 'guzmonne_angular-gux_templates/gux-radio-group.template.ng.html',
 		scope: {
 			ngModel: '='
 		},

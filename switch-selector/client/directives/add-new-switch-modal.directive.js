@@ -1,4 +1,4 @@
-angular.module('switch-selector').directive('addNewSwitchModal', function(){
+angular.module('conapps').directive('addNewSwitchModal', function(){
 	return {
 		restrict    : 'E',
 		replace     : true,

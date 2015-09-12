@@ -1,4 +1,4 @@
-angular.module('switch-selector').controller('SwitchSelectorIndexCtrl', [
+angular.module('conapps').controller('SwitchSelectorIndexCtrl', [
 	'$scope', '$meteor', 'observeOnScope',
 	function($scope, $meteor, observeOnScope){
 		var self     = this;
@@ -10,7 +10,7 @@ angular.module('switch-selector').controller('SwitchSelectorIndexCtrl', [
 
 		self.links = [
 			{name: 'Home', address: '/'},
-			{name: 'Switch Selector', address: '/switch-selector'},
+			{name: 'Switch Selector', address: '/switch_selector'},
 			{name: 'Index'}
 		];
 

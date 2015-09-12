@@ -1,10 +1,10 @@
-angular.module('switch-selector').directive('guxAccordion', [
+angular.module('angular-gux').directive('guxAccordion', [
 	function(){
 		return {
 			restrict    : 'E',
 			replace     : true,
 			transclude  : true,
-			templateUrl : 'switch-selector/client/views/gux-accordion.template.ng.html',
+			templateUrl : 'guzmonne_angular-gux_templates/gux-accordion.template.ng.html',
 			scope: {
 				accordionId: '@'
 			},

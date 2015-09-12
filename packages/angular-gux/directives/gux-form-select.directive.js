@@ -1,11 +1,11 @@
-angular.module('switch-selector').directive('guxFormSelect', function(){
+angular.module('angular-gux').directive('guxFormSelect', function(){
 	return {
 		restrict: 'E',
 		replace: true,
 		transclude: true,
 		bindToController: true,
 		require: 'ngModel',
-		templateUrl: 'switch-selector/client/views/gux-form-select.template.ng.html',
+		templateUrl: 'guzmonne_angular-gux_templates/gux-form-select.template.ng.html',
 		scope: {
 			ngModel          : '=',
 			name             : '@selectName',

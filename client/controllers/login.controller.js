@@ -1,4 +1,4 @@
-angular.module('switch-selector').controller('LoginCtrl', [
+angular.module('conapps').controller('LoginCtrl', [
 	'$meteor', '$state',
 	function($meteor, $state){
 		var self = this;
@@ -9,7 +9,6 @@ angular.module('switch-selector').controller('LoginCtrl', [
 			$meteor.loginWithPassword(self.user.username, self.user.password)
 				.then(function(){
 					$state.go('switch_selector');
-					console.log('Logged!!!');
 				});
 		};
 	}

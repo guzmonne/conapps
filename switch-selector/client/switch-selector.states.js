@@ -1,4 +1,4 @@
-angular.module("switch-selector").config(['$stateProvider',
+angular.module("conapps").config(['$stateProvider',
   function($stateProvider){
     $stateProvider
       .state('switch_selector', {

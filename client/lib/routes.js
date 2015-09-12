@@ -1,4 +1,4 @@
-angular.module("switch-selector").run(["$rootScope", "$state", function($rootScope, $state) {
+angular.module("conapps").run(["$rootScope", "$state", function($rootScope, $state) {
   $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
     // We can catch the error thrown when the $requireUser promise is rejected
     // and redirect the user back to the main page
@@ -8,7 +8,7 @@ angular.module("switch-selector").run(["$rootScope", "$state", function($rootSco
   });
 }]);
 
-angular.module("switch-selector").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
+angular.module("conapps").config(['$urlRouterProvider', '$stateProvider', '$locationProvider',
   function($urlRouterProvider, $stateProvider, $locationProvider){
 
     $locationProvider.html5Mode(true);
