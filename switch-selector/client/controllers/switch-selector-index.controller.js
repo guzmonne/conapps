@@ -1,6 +1,6 @@
 angular.module('conapps').controller('SwitchSelectorIndexCtrl', [
-	'$scope', '$meteor', 'observeOnScope',
-	function($scope, $meteor, observeOnScope){
+	'$scope', '$meteor', 'observeOnScope', 'guxCollapse',
+	function($scope, $meteor, observeOnScope, collapse){
 		var self     = this;
 		
 		self.filters  = {};
@@ -40,15 +40,5 @@ angular.module('conapps').controller('SwitchSelectorIndexCtrl', [
 			self.activeSwitch = (editableSwitch) ? _.clone(editableSwitch) : {};
 			$('#addNewSwitchModal').modal('toggle');
 		};
-
-		function collapse(object){
-			if (!angular.isObject(object))
-				return;
-			_.each(object, function(val, key){
-				if (val === false)
-					delete object[key];
-			});
-			return object;
-		}
 	}
 ]);

@@ -14,8 +14,11 @@ Package.onUse(function(api) {
 
   api.use(packages);
 
+  // Modules
+  api.addFiles('angular-gux.js', ['client']);
+
+  // Directives
   api.addFiles([
-    'angular-gux.js',
     'directives/gux-enter.directive.js',
     'directives/gux-accordion.directive.js',
     'templates/gux-accordion.template.ng.html',
@@ -31,5 +34,23 @@ Package.onUse(function(api) {
     'templates/gux-radio-option.template.ng.html',
     'directives/gux-selectable-item.directive.js',
     'templates/gux-selectable-item.template.ng.html',
+    'directives/gux-input-tags.directive.js',
+    'templates/gux-input-tags.template.ng.html',
+    'directives/gux-input-tag.directive.js',
+    'templates/gux-input-tag.template.ng.html',
+    'directives/gux-multiple-addresses.directive.js',
+    'templates/gux-multiple-addresses.template.ng.html',
+    'directives/gux-address.directive.js',
+    'templates/gux-address.template.ng.html',
+  ], ['client']);
+
+  // Services
+  api.addFiles([
+    'services/gux-collapse.service.js'
+  ], ['client']);
+
+  // Factories
+  api.addFiles([
+    'factories/gux-register-children.factory.js'
   ], ['client']);
 });

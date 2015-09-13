@@ -1,0 +1,15 @@
+<div class="form-group">
+	<label ng-transclude></label>
+	<ul class="list-inline list-inline-tags">
+		<gux-input-tag value="{{tag}}" index="{{$index}}" ng-repeat="tag in tags.ngModel track by $index | limitTo: parseInt(tags.maxTags)"></gux-input-tag>
+		<li ng-show="tags.canAddTag()">
+			<input
+				type="text"
+				class="form-control"
+				name="{{tags.inputName}}"
+				placeholder="{{tags.inputPlaceholder}}"
+				ng-model="tags.newTag"
+				gux-enter="tags.addTag()">
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,59 @@
+<div class="form-group">
+	<div class="row" ng-show="multiple.canAddAddress()">
+		<div class="col-sm-4">
+			<label>Calle</label>
+			<input 
+				type="text"
+				class="form-control"
+				ng-model="multiple.newAddress.street"
+				placeholder="Ej: Ejido 1690"
+				name="{{multiple.inputStreetName}}"
+				gux-enter="multiple.addAddress()">
+		</div>
+		<div class="col-sm-3">
+			<label>Ciudad</label>
+			<input 
+				type="text"
+				ng-model="multiple.newAddress.city"
+				placeholder="Ej: Montevideo"
+				class="form-control"
+				gux-enter="multiple.addAddress()">
+		</div>
+		<div class="col-sm-3">
+			<label>Departamento</label>
+			<input 
+				type="text"
+				ng-model="multiple.newAddress.dep"
+				placeholder="Ej: Canelones"
+				class="form-control"
+				gux-enter="multiple.addAddress()">
+		</div>
+		<div class="col-sm-2">
+			<label>...</label>
+			<button 
+				style="display: block"
+				class="btn btn-sm btn-success"
+				ng-click="multiple.addAddress()">
+				<i class="fa fa-plus"></i>
+			</button>
+		</div>
+	</div>
+	<ul class="list-unstyled list-multiple-addresses">
+		<li ng-repeat="address in multiple.addresses track by $index | limitTo: parseInt(multiple.maxAddresses)">
+			<gux-address address="address"></gux-address>
+			<a 
+				href="javascript:void(0);"
+				class="text-orange"
+				ng-click="multiple.editAddress(address, $index)">
+				<i>Editar</i>
+			</a>
+			|
+			<a 
+				href="javascript:void(0);"
+				class="text-darkRed"
+				ng-click="multiple.removeAddress($index)">
+				<i>Eliminar</i>
+			</a>
+		</li>
+	</ul>
+</div>

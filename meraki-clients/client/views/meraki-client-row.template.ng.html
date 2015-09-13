@@ -1,0 +1,32 @@
+<tr>
+	<td>{{row.client.name + ' ' + row.client.lastName}}</td>
+	<td>{{row.client.company}}</td>
+	<td>{{row.client.position}}</td>
+	<td>
+		<ul class="list-unstyled list-text-hover">
+			<li ng-repeat="phone in row.client.phones track by $index">
+				<i class="fa fa-phone"></i>
+				{{phone}}
+			</li>
+		</ul>
+	</td>
+	<td>
+		<ul class="list-unstyled list-text-hover">
+			<li ng-repeat="email in row.client.emails track by $index">
+				<i class="fa fa-envelope"></i>
+				{{email}}
+			</li>
+		</ul>
+	</td>
+	<td>
+		<ul class="list-unstyled list-text-hover">
+			<li ng-repeat="address in row.client.addresses track by $index">
+				<dt>
+					<i class="fa fa-home"></i>
+					{{address.street}}
+				</dt>
+				<dd>{{address.city + ', ' + address.dep}}</dd>
+			</li>
+		</ul>
+	</td>
+</tr>
