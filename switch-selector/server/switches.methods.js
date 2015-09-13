@@ -1,18 +1,9 @@
 var requiredKeys = ['family', 'model', 'brand', 'ports', 'portSpeed'];
 
-function verifyDoc(doc){
-	if (! Meteor.userId())
-    throw new Meteor.Error("not-authorized");
-  _.forEach(requiredKeys, function(key){
-  	if (!_.has(doc, key))
-  		throw new Meteor.Error("missing-arguments");
-  });
-}
-
 Meteor.methods({
 	addSwitch: function(doc){
-		verifyDoc(doc);
-		doc.createdAt = new Date();
+		appHelpers.verifyDoc(doc, requiredKeys);
+		doc.createdAt = moment().utc().format();;
 		doc.createdById = Meteor.userId();
 		doc.createdByUsername = Meteor.user().username;
 		Switches.insert(doc, function(err, result){
@@ -21,8 +12,8 @@ Meteor.methods({
 		});
 	},
 	updateSwitch: function(doc){
-		verifyDoc(doc);
-		doc.updatedAt = new Date();
+		appHelpers.verifyDoc(doc, requiredKeys);
+		doc.updatedAt = moment().utc().format();;
 		doc.updatedById = Meteor.userId();
 		doc.updatedByUsername = Meteor.user().username;
 		var id = doc._id;

@@ -27,7 +27,7 @@ angular.module('angular-gux').directive('guxInputTags', ['GuxRegisterChildrenSer
 				this.ngModel.push(this.newTag);
 				this.newTag = '';
 				if (this.ngModel.length >= maxTags)
-					$(this.focusAfterMaxTag).focus();
+					$('[name="' + this.focusAfterMaxTag + '"]').focus();
 			}.bind(this);
 		}],
 		controllerAs: 'tags',

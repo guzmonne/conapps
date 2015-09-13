@@ -1,5 +1,5 @@
 <div class="form-group">
-	<div class="row" ng-show="multiple.canAddAddress()">
+	<div class="row row-multiple-addresses" ng-show="multiple.canAddAddress()">
 		<div class="col-sm-4">
 			<label>Calle</label>
 			<input 
@@ -38,6 +38,10 @@
 			</button>
 		</div>
 	</div>
+	<label ng-show="multiple.addresses.length > 0">
+		Direcciones
+		<small class="text-muted">(máx 3)</small>
+	</label>
 	<ul class="list-unstyled list-multiple-addresses">
 		<li ng-repeat="address in multiple.addresses track by $index | limitTo: parseInt(multiple.maxAddresses)">
 			<gux-address address="address"></gux-address>
