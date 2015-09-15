@@ -3,6 +3,8 @@ angular.module('conapps').controller('MerakiClientsIndexCtrl', [
 	function($scope, $meteor, collapse, showModal){
 		var self = this;
 
+		self.filterString = '';
+
 		self.clients = [];
 
 		self.links = [
@@ -11,36 +13,38 @@ angular.module('conapps').controller('MerakiClientsIndexCtrl', [
 			{name: 'Index'},
 		];
 
-		self.filters = {};
+		self.filter = {};
 		self.options = {};
 
 		$meteor.autorun($scope, function(){
 			$meteor
-				.subscribe('clients', $scope.getReactively('index.filters'))
+				.subscribe('clients', $scope.getReactively('index.filter'))
 				.then(function(){
 					self.clients = $meteor.collection(function(){
-						var filters = collapse($scope.getReactively('index.filters'));
+						var filter  = collapse($scope.getReactively('index.filter'));
 						var options = collapse($scope.getReactively('index.options'));
-						return Clients.find(filters, options);
+						return Clients.find(filter, options);
 					});
 				});
 		});
 
-		$scope.$watch('index.filters', function(){
-			self.switches = $meteor.collection(function(){
-				var filters = collapse($scope.getReactively('index.filters'));
-				var options = collapse($scope.getReactively('index.options'));
-				return Clients.find(filters);
-			});
-		}, true);
-
 		$scope.$watch('index.options', function(){
-			self.switches = $meteor.collection(function(){
-				var filters = collapse($scope.getReactively('index.filters'));
-				var options = collapse($scope.getReactively('index.options'));
-				return Clients.find(filters);
-			});
-		}, true);
+			if (self.options)
+				self.clients = $meteor.collection(function(){
+					return Clients.find(self.filter, self.options);
+				});
+			if (self.clients[0])
+				console.log(self.clients[0].fullName)
+		}, true);	
+
+		self.updateFilters =  function(){
+			if (!angular.isString(self.filterString)) return;
+			if (self.filterString === '') {
+				self.filter = {};
+				return;
+			}
+			self.filter = { stringSearch: { $regex: self.filterString.toLowerCase() } };
+		};
 		
 		self.showModal = showModal;
 	}

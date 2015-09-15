@@ -1,5 +1,14 @@
 var requiredKeys = ['name', 'lastName', 'company'];
 
+var indexedFields = [
+	'fullName',
+	'company',
+	'position',
+	'phones',
+	'emails',
+	'addresses' 
+];
+
 function verifyDoc(doc){
 	if (!doc) throw new Meteor.Error('empty-doc');
 	appHelpers.verifyDoc(doc, requiredKeys);
@@ -59,12 +68,27 @@ function addUpdatedValues(doc){
 	doc.updatedByUsername = Meteor.user().username;
 }
 
+function addFullName(doc){
+	doc.fullName = doc.name + ' ' + doc.lastName;
+}
+
+function stringSearch(doc, indexedFields){
+	var indexedDoc = _.clone(doc);
+	if (_.isArray(indexedFields)){
+		var thisArguments = indexedFields.unshift(indexedDoc);
+		indexedDoc = _.pick.apply(this, indexedFields);
+	}
+	console.log(indexedDoc);
+	doc.stringSearch = JSON.stringify(indexedDoc).toLowerCase();
+}
+
 Meteor.methods({
 	addClient: function(doc){
 		verifyDoc(doc);
 		fixUpDoc(doc);
 		addCreatedValues(doc);
-		console.log('saved');
+		addFullName(doc);
+		stringSearch(doc, indexedFields);
 		if (Meteor.isServer)
 			return Clients.insert(doc);
 	},
@@ -72,8 +96,9 @@ Meteor.methods({
 		verifyDoc(doc);
 		fixUpDoc(doc);
 		addUpdatedValues(doc);
+		addFullName(doc);
+		stringSearch(doc, indexedFields);
 		var id = doc._id;
-		console.log('updated');
 		delete doc._id;
 		if (Meteor.isServer)
 			return Clients.update(id, {$set: doc});

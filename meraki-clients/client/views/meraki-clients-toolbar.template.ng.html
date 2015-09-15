@@ -6,6 +6,11 @@
 		</button>
 	</div>
 	<div class="col-sm-4">
-		<input type="text" placeholder="Filtro" class="form-control">	
+		<input 	type="text"
+						ng-model="index.filterString"
+						ng-model-options="{debounce: 200}"
+						ng-change="index.updateFilters()"
+						placeholder="Filtro"
+						class="form-control">	
 	</div>
 </div>
