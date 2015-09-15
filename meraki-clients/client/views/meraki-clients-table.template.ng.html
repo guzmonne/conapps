@@ -9,10 +9,14 @@
 					<th>Telefonos</th>
 					<th>Correos</th>
 					<th>Direcciones</th>
+					<th class="text-center">
+						<i class="fa fa-ellipsis-h"></i>
+					</th>
 				</thead>
 				<tbody>
-					<tr meraki-client-row 	ng-repeat="client in index.clients track by client._id"
-															client="client">
+					<tr meraki-client-row
+							ng-repeat="client in table.clients track by client._id"
+							client="client">
 					</tr>
 				</tbody>
 			</table>

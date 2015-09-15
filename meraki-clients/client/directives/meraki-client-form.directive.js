@@ -3,9 +3,15 @@ angular.module('conapps').directive('merakiClientForm', function(){
 		restrict: 'E',
 		replace: true,
 		templateUrl: 'meraki-clients/client/views/meraki-client-form.template.ng.html',
-		controller: ['ClientService', function(clientService){
+		scope: {
+			client: '=',
+		},
+		controller: [function(){}],
+		/*
+		controller: ['$scope', 'ClientService', function($scope, clientService){
 			this.client = clientService.client;
 		}],
+		*/
 		controllerAs: 'form',
 		bindToController: true,
 	}

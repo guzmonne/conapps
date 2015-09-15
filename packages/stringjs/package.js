@@ -15,5 +15,7 @@ Package.onUse(function(api) {
 
   api.addFiles('string.js', ['server']);
 
-  api.export('S', ['server']);
+  api.addFiles('stringOntheClient.js', ['client', 'server']);
+
+  api.export('S', ['client', 'server']);
 });

@@ -6,7 +6,9 @@ angular.module('conapps').directive('merakiClientRow', function(){
 		scope: {
 			'client': '='
 		},
-		controller: [function(){}],
+		controller: ['showMerakiClientFormModal', function(showModal){
+			this.showModal = showModal;
+		}],
 		controllerAs: 'row',
 		bindToController: true,
 	};

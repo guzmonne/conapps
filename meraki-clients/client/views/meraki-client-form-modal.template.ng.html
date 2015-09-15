@@ -3,13 +3,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4>Nuevo Cliente</h4>
+        <h4 ng-if="modal.clientIsNew()">
+          <i class="fa fa-plus text-success"></i>
+          Nuevo Cliente
+        </h4>
+        <h4 ng-if="!modal.clientIsNew()">
+          <i class="fa fa-pencil text-orange"></i>
+          Cliente
+          <small class="text-muted">#{{modal.client._id}}</small>
+        </h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
             <div class="col-xs-12">
-              <meraki-client-form></meraki-client-form>
+              <meraki-client-form client="modal.client">
+              </meraki-client-form>
             </div>
           </div>
         </div>

@@ -20,7 +20,6 @@ fastclick@1.0.3
 fortawesome:fontawesome@4.4.0
 geojson-utils@1.0.3
 guzmonne:angular-gux@0.0.1
-guzmonne:stringjs@0.0.1
 html-tools@1.0.4
 htmljs@1.0.4
 http@1.1.0
@@ -62,6 +61,7 @@ tracker@1.0.7
 twbs:bootstrap@3.3.5
 ui@1.0.6
 underscore@1.0.3
+underscorestring:underscore.string@3.2.2
 urigo:angular@0.9.3
 url@1.0.4
 webapp@1.2.0

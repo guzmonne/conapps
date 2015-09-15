@@ -4,7 +4,7 @@ angular.module('angular-gux').directive('guxMultipleAddresses', ['GuxRegisterChi
 		replace: true,
 		transclude: true,
 		scope: {
-			ngModel: '=',
+			addresses: '=ngModel',
 			inputStreetName: '@',
 			maxAddresses: '@',
 			registerUpdateTo: '@',
@@ -15,10 +15,8 @@ angular.module('angular-gux').directive('guxMultipleAddresses', ['GuxRegisterChi
 			this.maxAddresses || (this.maxAddresses = 3);
 			this.inputStreetName || (this.inputStreetName = 'newStreet');
 			this.newAddress = {};
-			this.addresses  = this.ngModel;
 			this.addAddress = function(){
 				if (!this.newAddress.street || this.newAddress.street === '') return;
-				console.log(this.newAddress.street);
 				this.addresses.push(this.newAddress);
 				this.newAddress = {};
 				$('[name="' + this.inputStreetName + '"]').focus();

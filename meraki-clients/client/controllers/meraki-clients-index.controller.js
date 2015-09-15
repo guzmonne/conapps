@@ -1,6 +1,6 @@
 angular.module('conapps').controller('MerakiClientsIndexCtrl', [
-	'$scope', '$meteor', 'guxCollapse', 'ClientService',
-	function($scope, $meteor, collapse, clientService){
+	'$scope', '$meteor', 'guxCollapse', 'showMerakiClientFormModal',
+	function($scope, $meteor, collapse, showModal){
 		var self = this;
 
 		self.clients = [];
@@ -41,11 +41,7 @@ angular.module('conapps').controller('MerakiClientsIndexCtrl', [
 				return Clients.find(filters);
 			});
 		}, true);
-
-		self.showModal = function(client){
-			if (client)
-				clientService.setClient(client);
-			$('#addNewClientModal').modal('toggle');
-		}
+		
+		self.showModal = showModal;
 	}
 ]);

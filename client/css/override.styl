@@ -4,14 +4,17 @@
 // Color Variables
 // ---------------
 
-$orange     = #F74803
+//$orange     = #F74803
+$orange     = rgb(238, 162, 54)
 $darkOrange = #DA7000
 $purple     = #7100FF
 $lightBlue  = #08c
 $darkBlue   = #00679A
+$blueHover  = #243E77
 $lightRed   = #F14040
 $darkRed    = #D00404
 $darkerRed  = #920303
+$grey       = #E8E8E8
 
 // ------------
 // Label Clases
@@ -43,6 +46,10 @@ $darkerRed  = #920303
   top: 4px;
   left: 0px;
   font-size: 1.4em;
+  
+.fa-super
+  font-size: 0.7em;
+  vertical-align: super;
 
 // -------------
 // Helper Clases
@@ -101,7 +108,7 @@ h4
   padding-top: 5px !important
   
 // ----------
-// Tex Clases
+// Texr Clases
 // ----------
 
 .text-orange
@@ -144,15 +151,32 @@ h4
     padding-top: 5px
     
 ul.list-text-hover > li:hover
-  color: $lightBlue
-  cursor: pointer  
+  cursor: pointer
+  color: $lightBlue  
 
 .list-inline-tags
   margin-top: -10px;
   margin-left: 0px;
+
+// -------------
+// Button Clases
+// -------------
+
+.btn-same-width-25 > button.btn
+  width: 25px
+  
+// ------------
+// Table Clases
+// ------------
+
+.table > tbody > tr > td
+  vertical-align: middle
+
+.table-hover > tbody > tr:hover
+  background-color: $grey
+ 
 /*  
-ul.list-multiple-addresses
-  margin-top: 10px;
-  li 
-    margin-top: 5px
+.table-hover > tbody > tr:hover > td > ul.list-text-hover > li > i
+.table-hover > tbody > tr:hover > td > ul.list-text-hover > li > dt > i
+  color: $orange
 */
