@@ -21,11 +21,7 @@
 	<td>
 		<ul class="list-unstyled list-text-hover">
 			<li ng-repeat="address in row.client.addresses track by $index">
-				<dt>
-					<i class="fa fa-home"></i>
-					{{address.street}}
-				</dt>
-				<dd>{{address.city + ', ' + address.dep}}</dd>
+				<gux-address address="address"></gux-address>
 			</li>
 		</ul>
 	</td>
@@ -34,7 +30,7 @@
 			<button class="btn btn-warning" ng-click="row.showModal(row.client)">
 				<i class="fa fa-pencil fa-sm"></i>
 			</button>
-			<button class="btn btn-info">
+			<button class="btn btn-info" ng-click="row.showVcardModal(row.client)">
 				<i class="fa fa-eye fa-sm"></i>
 			</button>
 		</div>

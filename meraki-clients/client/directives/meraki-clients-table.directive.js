@@ -25,7 +25,6 @@ angular.module('conapps').directive('merakiClientsTable', function(){
 				}
 				if (_.keys(this.options.sort).length === 0)
 					this.options = {};
-				console.log(this.options);
 			}.bind(this);
 			this.showChevronFor = function(key){
 				if (!this.options || !this.options.sort || !this.options.sort[key]) 

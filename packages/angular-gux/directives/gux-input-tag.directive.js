@@ -17,6 +17,7 @@ angular.module('angular-gux').directive('guxInputTag', ['$timeout', function($ti
 			};
 			scope.tag.edit = function(value){
 				scope.tag.remove();
+				tags.addTag();
 				tags.newTag = value;
 				$timeout().then(function(){
 					$('[name="' + tags.inputName + '"]').focus();	

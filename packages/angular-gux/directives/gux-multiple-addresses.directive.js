@@ -32,6 +32,7 @@ angular.module('angular-gux').directive('guxMultipleAddresses', ['GuxRegisterChi
 			}.bind(this);
 			this.editAddress = function(address, index){
 				this.removeAddress(index);
+				this.addAddress();
 				this.newAddress = address;
 				$('[name="' + this.inputStreetName + '"]').focus();
 			}.bind(this);

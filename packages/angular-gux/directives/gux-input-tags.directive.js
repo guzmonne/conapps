@@ -18,7 +18,7 @@ angular.module('angular-gux').directive('guxInputTags', ['GuxRegisterChildrenSer
 			this.canAddTag = function(){
 				return this.ngModel.length < parseInt(this.maxTags);
 			};
-			this.addTag = function(){
+			this.addTag = function(options){
 				var maxTags = parseInt(this.maxTags);
 				if (!angular.isArray(this.ngModel) ||
 						this.ngModel.length >= maxTags ||

@@ -1,12 +1,19 @@
 angular.module('conapps').service('showMerakiClientFormModal', [
-	'ClientService',
-	function(clientService){
-		return function(client){
+	'$q', 'ClientService',
+	function($q, clientService){
+		return function(client, modalId){
+			var deferred = $q.defer();
+			modalId || (modalId = '#addNewClientModal');
 			if (client)
 				clientService.setClient(client);
 			else
 				clientService.resetClient();
-			$('#addNewClientModal').modal('toggle');
+			$(modalId)
+			.modal('toggle')
+			.on('shown.bs.modal', function(){
+				deferred.resolve();
+			});
+			return deferred.promise;
 		}
 	}
 ]);

@@ -4,6 +4,7 @@ angular.module("conapps").run(["$rootScope", "$state", function($rootScope, $sta
     // and redirect the user back to the main page
     if (error === "AUTH_REQUIRED") {
       $state.go('login');
+      toastr.warning('Acceso restringido para usuarios', 'Atención!');
     }
   });
 }]);
@@ -13,5 +14,5 @@ angular.module("conapps").config(['$urlRouterProvider', '$stateProvider', '$loca
 
     $locationProvider.html5Mode(true);
 
-    $urlRouterProvider.otherwise("/switch_selector");
+    $urlRouterProvider.otherwise("/login");
   }]);

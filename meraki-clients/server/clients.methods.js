@@ -78,7 +78,6 @@ function stringSearch(doc, indexedFields){
 		var thisArguments = indexedFields.unshift(indexedDoc);
 		indexedDoc = _.pick.apply(this, indexedFields);
 	}
-	console.log(indexedDoc);
 	doc.stringSearch = JSON.stringify(indexedDoc).toLowerCase();
 }
 

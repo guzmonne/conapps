@@ -8,6 +8,9 @@ angular.module('conapps').directive('merakiClientRow', function(){
 		},
 		controller: ['showMerakiClientFormModal', function(showModal){
 			this.showModal = showModal;
+			this.showVcardModal = function(client){
+				showModal(client, '#vCardClientModal');
+			};
 		}],
 		controllerAs: 'row',
 		bindToController: true,

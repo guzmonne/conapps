@@ -33,8 +33,6 @@ angular.module('conapps').controller('MerakiClientsIndexCtrl', [
 				self.clients = $meteor.collection(function(){
 					return Clients.find(self.filter, self.options);
 				});
-			if (self.clients[0])
-				console.log(self.clients[0].fullName)
 		}, true);	
 
 		self.updateFilters =  function(){

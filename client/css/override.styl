@@ -108,7 +108,7 @@ h4
   padding-top: 5px !important
   
 // ----------
-// Texr Clases
+// Text Clases
 // ----------
 
 .text-orange
@@ -172,14 +172,30 @@ ul.list-text-hover > li:hover
 .table > tbody > tr > td
   vertical-align: middle
 
+.table > tbody > tr > td.padding-right-0
+  padding-right: 0
+
 .table-hover > tbody > tr:hover
   background-color: $grey
  
 .table > thead > tr > th.th-pointer
   cursor: pointer
+  
+.table-first-border-top-none > tbody > tr:first-child > td
+  border-top: none;
+  
+.table.table-margin-bottom-0
+  margin-bottom: 0
 
 /*  
 .table-hover > tbody > tr:hover > td > ul.list-text-hover > li > i
 .table-hover > tbody > tr:hover > td > ul.list-text-hover > li > dt > i
   color: $orange
 */
+
+// -------------
+// QRcode Styles
+// -------------
+div#qrcode > img
+  width: 100%
+  padding: 30px
