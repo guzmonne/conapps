@@ -11,5 +11,9 @@ angular.module('conapps').directive('mainbarContentPanel', function(){
 		controller: [function(){}],
 		controllerAs: 'panel',
 		bindToController: true,
+		link: function(scope, element, attrs){
+			if (attrs.icon)
+				element.find('.page-content > .single-head > h3 > i').removeClass().addClass(attrs.icon);
+		}
 	};
 });
