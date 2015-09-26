@@ -11,13 +11,13 @@ var indexedFields = [
 
 function verifyDoc(doc){
 	if (!doc) throw new Meteor.Error('empty-doc');
-	appHelpers.verifyDoc(doc, requiredKeys);
+	AppHelpers.verifyDoc(doc, requiredKeys);
 	if (doc.phones)
-		appHelpers.verifyType(doc.phones, 'Array');
+		AppHelpers.verifyType(doc.phones, 'Array');
 	if (doc.emails)
-		appHelpers.verifyType(doc.emails, 'Array');
+		AppHelpers.verifyType(doc.emails, 'Array');
 	if (doc.addresses)
-		appHelpers.verifyType(doc.addresses, 'Array');
+		AppHelpers.verifyType(doc.addresses, 'Array');
 }
 
 function fixMainValues(doc){
@@ -29,7 +29,7 @@ function fixMainValues(doc){
 
 function fixEmailValues(doc){
 	if (doc.emails && _.isArray(doc.emails)) {
-		appHelpers.validateEmailArray(doc.emails);
+		AppHelpers.validateEmailArray(doc.emails);
 		_.forEach(doc.emails, function(email){
 			email = email.toLowerCase();
 		});
@@ -40,11 +40,11 @@ function fixAddressesValues(doc){
 	if (doc.addresses && _.isArray(doc.addresses)){
 		_.forEach(doc.addresses, function(address){
 			if (address.street)
-				address.street = appHelpers.titelize(address.street);
+				address.street = AppHelpers.titelize(address.street);
 			if (address.city)
-				address.city = appHelpers.titelize(address.city);
+				address.city = AppHelpers.titelize(address.city);
 			if (address.dep)
-				address.dep = appHelpers.titelize(address.dep);
+				address.dep = AppHelpers.titelize(address.dep);
 		});
 	}
 }
@@ -56,50 +56,31 @@ function fixUpDoc(doc){
 	fixAddressesValues(doc);
 }
 
-function addCreatedValues(doc){
-	doc.createdAt         = moment().utc().format();
-	doc.createdById       = Meteor.userId();
-	doc.createdByUsername = Meteor.user().username;
-}
-
-function addUpdatedValues(doc){
-	doc.updatedAt         = moment().utc().format();
-	doc.updatedById       = Meteor.userId();
-	doc.updatedByUsername = Meteor.user().username;
-}
-
 function addFullName(doc){
 	doc.fullName = doc.name + ' ' + doc.lastName;
-}
-
-function stringSearch(doc, indexedFields){
-	var indexedDoc = _.clone(doc);
-	if (_.isArray(indexedFields)){
-		var thisArguments = indexedFields.unshift(indexedDoc);
-		indexedDoc = _.pick.apply(this, indexedFields);
-	}
-	doc.stringSearch = JSON.stringify(indexedDoc).toLowerCase();
 }
 
 Meteor.methods({
 	addClient: function(doc){
 		verifyDoc(doc);
 		fixUpDoc(doc);
-		addCreatedValues(doc);
 		addFullName(doc);
-		stringSearch(doc, indexedFields);
-		if (Meteor.isServer)
+		AppHelpers.stringSearch(doc, indexedFields);
+		if (Meteor.isServer) {
+			AppHelpers.addCreatedValues(doc);
 			return Clients.insert(doc);
+		}
 	},
 	updateClient: function(doc){
 		verifyDoc(doc);
 		fixUpDoc(doc);
-		addUpdatedValues(doc);
 		addFullName(doc);
-		stringSearch(doc, indexedFields);
+		AppHelpers.stringSearch(doc, indexedFields);
 		var id = doc._id;
 		delete doc._id;
-		if (Meteor.isServer)
+		if (Meteor.isServer) {
+			AppHelpers.addUpdatedValues(doc);
 			return Clients.update(id, {$set: doc});
+		}
 	}
 });
