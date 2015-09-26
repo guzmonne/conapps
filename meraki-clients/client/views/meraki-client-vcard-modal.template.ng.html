@@ -42,7 +42,7 @@
                   <tr>
                     <td><strong>Emails</strong></td>
                     <td class="padding-right-0">
-                      <table class="table table-first-border-top-none table-margin-bottom-0">
+                      <table class="table table-first-border-top-none table-margin-bottom-0 table-padding-left-0">
                         <tr ng-repeat="email in vCardModal.client.emails track by $index">
                           <td>{{email}}</td>
                           <td>
@@ -57,7 +57,7 @@
                   <tr>
                     <td><strong>Direcciones</strong></td>
                     <td class="padding-right-0">
-                      <table class="table table-first-border-top-none table-margin-bottom-0">
+                      <table class="table table-first-border-top-none table-margin-bottom-0 table-padding-left-0">
                         <tr ng-repeat="address in vCardModal.client.addresses track by $index">
                           <td>
                             <gux-address address="address"></gux-address>
