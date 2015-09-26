@@ -60,9 +60,9 @@ rm -f ./dist/"$folderName".tar.gz
 
 printf "Creating image...\n\n"
 
-printf "Building new version image:\n"
+#printf "Building new version image:\n"
 
-docker build --tag="guzmonne/$folderName:$version" --rm=true .
+#docker build --tag="guzmonne/$folderName:$version" --rm=true .
 
 printf "\nUpdating 'latest' image:\n"
 
