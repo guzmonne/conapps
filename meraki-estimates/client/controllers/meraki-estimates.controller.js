@@ -1,9 +1,10 @@
 angular.module('conapps').controller('MerakiEstimatesCtrl', [
-	function(){
-		this.links = [
+	'BreadcrumbsService',
+	function(breadcrumbsService){
+		breadcrumbsService.setLinks([
 			{name: 'Home', address: '/'},
 			{name: 'Meraki Estimates', address: '/meraki_estimates'},
-			{name: 'Index'},
-		];
+			{name: 'WorkSpace'},
+		]);
 	}
 ]);

@@ -40,7 +40,6 @@ angular.module('conapps').service('ClientService', [
 					toastr.success('Cliente creado.', 'Exito');
 				return result;
 			}, function(err){
-				console.log(err);
 				toastr.error(err.reason, 'Error!');
 			});
 		};

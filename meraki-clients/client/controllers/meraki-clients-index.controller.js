@@ -1,13 +1,13 @@
 angular.module('conapps').controller('MerakiClientsIndexCtrl', [
-	'$scope', '$meteor', 'guxCollapse', 'showMerakiClientFormModal',
-	function($scope, $meteor, collapse, showModal){
+	'$scope', '$meteor', 'guxCollapse', 'showMerakiClientFormModal', 'BreadcrumbsService',
+	function($scope, $meteor, collapse, showModal, breadcrumbsService){
 		var self = this;
 
 		self.filterString = '';
 
 		self.clients = [];
 
-		self.links = [
+		breadcrumbsService.links = [
 			{name: 'Home', address: '/'},
 			{name: 'Meraki Clients', address: '/meraki_clients'},
 			{name: 'Index'},

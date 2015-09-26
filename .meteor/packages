@@ -3,20 +3,34 @@
 #
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
+# I am not watching the same file...
 
-meteor-platform
+ecmascript
+angular@1.0.0-rc.7
 accounts-base
 accounts-password
 stylus
 rzymek:moment-locale-es
 underscorestring:underscore.string
-urigo:angular@0.9.3
 angularui:angular-ui-router
 guzmonne:angular-gux
 guzmonne:qrcode.js
 guzmonne:vcard
 twbs:bootstrap
 fortawesome:fontawesome
-matb33:collection-hooks
 chrismbeckett:toastr
 guzmonne:filesaverjs
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+check
+templating
+urigo:angular@0.10.2

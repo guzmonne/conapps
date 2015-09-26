@@ -1,0 +1,11 @@
+<div class="breads pull-right">
+	<strong>Nav</strong>
+	:
+	<span ng-repeat="link in breadcrumbs.links track by $index">
+		<a ng-if="!$last" href="{{link.address}}">
+			{{link.name}}
+		</a>
+		<span ng-if="!$last">/</span>
+		<span ng-if="$last">{{link.name}}</span>
+	</span>
+</div>

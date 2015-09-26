@@ -1,6 +1,6 @@
 angular.module('conapps').controller('SwitchSelectorIndexCtrl', [
-	'$scope', '$meteor', 'observeOnScope', 'guxCollapse',
-	function($scope, $meteor, observeOnScope, collapse){
+	'$scope', '$meteor', 'observeOnScope', 'guxCollapse', 'BreadcrumbsService',
+	function($scope, $meteor, observeOnScope, collapse, breadcrumbs){
 		var self     = this;
 		
 		self.filters  = {};
@@ -8,7 +8,7 @@ angular.module('conapps').controller('SwitchSelectorIndexCtrl', [
 
 		self.activeSwitch = {};
 
-		self.links = [
+		breadcrumbs.links = [
 			{name: 'Home', address: '/'},
 			{name: 'Switch Selector', address: '/switch_selector'},
 			{name: 'Index'}
