@@ -11,9 +11,6 @@ angular.module("conapps").config(['$stateProvider',
       .state('meraki_estimates.index', {
         url: '',
         views: {
-          'estimates-toolbar': {
-            template: '<estimates-toolbar></estimates-toolbar>'
-          },
           'estimates-workview': {
             template: '<h1>Here goes the Index WorkView</h1>'
           }
@@ -27,9 +24,6 @@ angular.module("conapps").config(['$stateProvider',
       .state('meraki_estimates.edit', {
         url: '/edit',
         views: {
-          'estimates-toolbar': {
-            template: '<h1>Here goes the New Sidebar Toolbar</h1>'
-          },
           'estimates-workview': {
             template: '<h1>Here goes the New WorkView</h1>'
           }
@@ -43,9 +37,6 @@ angular.module("conapps").config(['$stateProvider',
       .state('meraki_estimates.shared', {
         url: '/shared',
         views: {
-          'estimates-toolbar': {
-            template: '<estimates-toolbar></estimates-toolbar>'
-          },
           'estimates-workview': {
             template: '<h1>Here goes the Shared WorkView</h1>'
           }
@@ -59,9 +50,6 @@ angular.module("conapps").config(['$stateProvider',
       .state('meraki_estimates.price_list', {
         url: '/price_list',
         views: {
-          'estimates-toolbar': {
-            template: '<estimates-toolbar></estimates-toolbar>'
-          },
           'estimates-workview': {
             template: '<h1>Here goes the PriceList WorkView</h1>'
           }
