@@ -1,6 +1,8 @@
-Meteor.publish('estimates', function(filter, options){
-	filter  || (filter = {});
-	options || (options = {});
-	filter = _.extend(filter, {userId: Meteor.userId});
-	return Estimates.find(filter, options);
+Meteor.publish('estimates', function(terms){
+	var parameters = Estimates.constructQuery(terms);
+	console.log(parameters);
+	if (parameters)
+		return Estimates.find(parameters.filter, parameters.options);
+	else
+		throw new Meteor.Error('wrong-parameters');
 });

@@ -59,6 +59,16 @@ if (Clients.find({}).count() === 0){
 			}
 		]
 	});
+	Estimates.insert({
+		name: 'CONATEL - WiFi para oficina',
+		description: 'APs para cambiar el WiFi actual. La idea es extenderlo para el resto del edificio',
+		parts: []
+	});
+	Estimates.insert({
+		name: 'INEFOP - WAN sobre Internet',
+		description: 'La idea es usar los UTM de CISCO Meraki para armar una WAN sobre Internet a través de conexiones VPN con el sitio central',
+		parts: [] 
+	});
 }
 /*
 if (Switches.find({}).count() === 0){

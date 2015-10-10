@@ -6,7 +6,7 @@
 # I am not watching the same file...
 
 ecmascript
-angular@1.0.0-rc.7
+angular
 accounts-base
 accounts-password
 stylus
@@ -33,4 +33,3 @@ random
 ejson
 check
 templating
-urigo:angular@0.10.2

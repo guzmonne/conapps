@@ -12,7 +12,7 @@ angular.module("conapps").config(['$stateProvider',
         url: '',
         views: {
           'estimates-workview': {
-            template: '<h1>Here goes the Index WorkView</h1>'
+            template: '<estimates-index></estimates-index>'
           }
         },
         resolve : {
@@ -22,7 +22,7 @@ angular.module("conapps").config(['$stateProvider',
         },
       })
       .state('meraki_estimates.edit', {
-        url: '/edit',
+        url: '/edit/:id',
         views: {
           'estimates-workview': {
             template: '<h1>Here goes the New WorkView</h1>'
