@@ -4,9 +4,18 @@
 			<thead>
 				<tr>
 					<th><i class="fa fa-square-o"></i></th>
-					<th>ID</th>
-					<th>Nombre</th>
-					<th>Descripción</th>
+					<th class="pointer unselectable" ng-click="indexTable.sortBy('_id')">
+						ID
+						<span class="pull-right" ng-class="indexTable.chevronIfSorting('_id')"></span>
+					</th>
+					<th class="pointer unselectable" ng-click="indexTable.sortBy('name')">
+						Nombre
+						<span class="pull-right"  ng-class="indexTable.chevronIfSorting('name')"></span>
+					</th>
+					<th class="pointer unselectable" ng-click="indexTable.sortBy('description')">
+						Descripción
+						<span class="pull-right" ng-class="indexTable.chevronIfSorting('description')"></span>
+					</th>
 				</tr>
 			</thead>
 			<thead>

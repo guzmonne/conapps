@@ -59,16 +59,43 @@ if (Clients.find({}).count() === 0){
 			}
 		]
 	});
-	Estimates.insert({
-		name: 'CONATEL - WiFi para oficina',
-		description: 'APs para cambiar el WiFi actual. La idea es extenderlo para el resto del edificio',
-		parts: []
-	});
-	Estimates.insert({
-		name: 'INEFOP - WAN sobre Internet',
-		description: 'La idea es usar los UTM de CISCO Meraki para armar una WAN sobre Internet a través de conexiones VPN con el sitio central',
-		parts: [] 
-	});
+	var user = Meteor.users.findOne({});
+	var estimate1 = {
+		name        : 'CONATEL - WiFi para oficina',
+		description : 'APs para cambiar el WiFi actual. La idea es extenderlo para el resto del edificio',
+	};
+	var estimate2 = {
+		name        : 'INEFOP - WAN sobre Internet',
+		description : 'La idea es usar los UTM de CISCO Meraki para armar una WAN sobre Internet a través de conexiones VPN con el sitio central',
+	};
+	var estimate3 = {
+		name        : 'CONATEL - AP para laboratorio',
+		description : 'Se necesita agregar un AP para el laboratorio',
+	};
+	Estimates.insert(_.extend(
+		{
+			stringSearch      : JSON.stringify(estimate1).toLowerCase(),
+			parts             : [],
+			createdBy         : user._id,
+			createdByUsername : user.username
+		}, estimate1)
+	);
+	Estimates.insert(_.extend(
+		{
+			stringSearch      : JSON.stringify(estimate2).toLowerCase(),
+			parts             : [],
+			createdBy         : user._id,
+			createdByUsername : user.username,
+		}, estimate2)
+	);
+	Estimates.insert(_.extend(
+		{
+			stringSearch      : JSON.stringify(estimate3).toLowerCase(),
+			parts             : [],
+			createdBy         : user._id,
+			createdByUsername : user.username,
+		}, estimate3)
+	);
 }
 /*
 if (Switches.find({}).count() === 0){

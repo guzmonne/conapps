@@ -7,12 +7,16 @@ Estimates.constructQuery = function(terms){
 
 var queries = {
 	index: function(){
-		var parameters = {filter: {}, options: {}};
+		var parameters = {filters: {}, options: {}};
 		//parameters.filter.owner = Meteor.user()._id;
 		if (this.sort) {
 			parameters.options.sort = {};
 			parameters.options.sort[this.sort] = (this.reverse) ? -1 : 1;	
 		}
+		if (this.stringSearch && _.isString(this.stringSearch))
+			parameters.filters.stringSearch = {
+				$regex: this.stringSearch.toLowerCase()
+			};
 		return parameters;
 	}
 };
