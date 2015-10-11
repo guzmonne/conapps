@@ -16,6 +16,7 @@ angularui:angular-ui-router
 guzmonne:angular-gux
 guzmonne:qrcode.js
 guzmonne:vcard
+guzmonne:spin
 twbs:bootstrap
 mizzao:bootboxjs
 fortawesome:fontawesome

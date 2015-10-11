@@ -98,6 +98,12 @@ _AppHelpers.prototype.addUpdatedValues = function (doc){
 	doc.updatedByUsername = Meteor.user().username;
 }
 
+_AppHelpers.prototype.filterUnacceptedKeys = function(doc, keys){
+	if (!_.isArray(keys)) throw new Meteor.Error('keys-is-not-array');
+	keys.unshift(doc);
+	return _.pick.apply(this, keys);
+}
+
 _AppHelpers.prototype.stringSearch = function(doc, indexedFields){
 	var indexedDoc = _.clone(doc);
 	if (_.isArray(indexedFields)){

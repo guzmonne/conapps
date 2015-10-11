@@ -25,13 +25,13 @@ angular.module("conapps").config(['$stateProvider',
         url: '/edit/:id',
         views: {
           'estimates-workview': {
-            template: '<h1>Here goes the New WorkView</h1>'
+            template: '<estimates-edit></estimates-edit>'
           }
         },
         resolve : {
           "currentUser": ['$meteor', function($meteor){
             return $meteor.requireUser();
-          }]
+          }],
         },
       })
       .state('meraki_estimates.shared', {
