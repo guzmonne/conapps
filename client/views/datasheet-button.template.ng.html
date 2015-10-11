@@ -1,0 +1,19 @@
+<div class="btn-group btn-block">	
+	<button ng-class="{true: 'disabled'}[!datasheetButton.datasheetUrl]" 
+					class="btn btn-block btn-danger dropdown-toggle"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+		<i class="fa fa-file-pdf-o"></i>
+		Hoja de Datos
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		<li>
+			<a ng-href="{{datasheetButton.datasheetUrl}}" target="_blank">Abrir</a>
+		</li>
+		<li>
+			<a ng-href="{{datasheetButton.datasheetUrl}}" download="{{datasheetButton.fileName + '.pdf'}}">Descargar</a>
+		</li>
+	</ul>
+</div>

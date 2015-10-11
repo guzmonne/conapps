@@ -60,25 +60,10 @@
 					</div>
 					<div class="col-sm-6 col-md-4">
 						<p>
-							<div class="btn-group btn-block">	
-								<button ng-class="{true: 'disabled'}[!panel.switch.datasheetUrl]" 
-												class="btn btn-block btn-danger dropdown-toggle"
-												data-toggle="dropdown"
-												aria-haspopup="true"
-												aria-expanded="false">
-									<i class="fa fa-file-pdf-o"></i>
-									Hoja de Datos
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li>
-										<a ng-href="{{panel.switch.datasheetUrl}}" target="_blank">Abrir</a>
-									</li>
-									<li>
-										<a ng-href="{{panel.switch.datasheetUrl}}" download="{{panel.switch.model + '.pdf'}}">Descargar</a>
-									</li>
-								</ul>
-							</div>
+							<datasheet-button 
+								datasheet-url="{{panel.switch.datasheetUrl}}"
+								fileName="{{panel.switch.model}}"
+							></datasheet-button>
 						</p>
 						<br>
 						<p class="text-center">

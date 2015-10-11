@@ -144,6 +144,7 @@ if (MerakiProducts.find().count() === 0){
 	}
 	var user = Meteor.users.findOne({});
 	MerakiProducts.insert(_.extend({
+		datasheet    : 'https://meraki.cisco.com/lib/pdf/meraki_datasheet_MR32.pdf',
 		image        : 'https://meraki.cisco.com/img/products/icons/mr32.jpg',
 		stringSearch : JSON.stringify(product1).toLowerCase(),
 		listPrice    : 199.99,
@@ -153,6 +154,7 @@ if (MerakiProducts.find().count() === 0){
 	}, product1));
 	MerakiProducts.insert(_.extend({
 		stringSearch : JSON.stringify(product2).toLowerCase(),
+		datasheet    : 'https://meraki.cisco.com/lib/pdf/meraki_datasheet_mx.pdf',
 		image        : 'https://meraki.cisco.com/img/products/appliances/overview/models/overview-model-mx64w.jpg',
 		listPrice    : 349.99,
 		partnerPrice : 319.99,
@@ -161,6 +163,7 @@ if (MerakiProducts.find().count() === 0){
 	}, product2));
 	MerakiProducts.insert(_.extend({
 		stringSearch : JSON.stringify(product3).toLowerCase(),
+		datasheet    : 'https://meraki.cisco.com/lib/pdf/meraki_datasheet_ms.pdf',
 		image        : 'https://meraki.cisco.com/img/products/icons/ms220-24.jpg',
 		listPrice    : 249.99,
 		partnerPrice : 229.99,
