@@ -1,28 +1,45 @@
 <div class="panel panel-default">
-	<div class="panel-heading" style="height: 42px">
+	<div class="panel-heading" style="height: 65px">
 		<h4 class="pull-left">
-			<strong>{{merakiProductCard.product.model}}</strong>
+			<strong>{{vm.product.model}}</strong>
 			<small>
-				Familia {{merakiProductCard.product.family}}
-				<a href="javascript:void(0);" class="text-warning" ng-click="merakiProductCard.editProduct()">
-					<i>editar</i>
-					<i class="fa fa-pencil"></i>
-				</a>
+				Familia {{vm.product.family}}
+				<span ng-if="vm.isAdmin()">
+					<a
+						href="javascript:void(0);"
+						class="text-orange"
+						ng-click="vm.editProduct()">
+						<i>editar</i>
+						<i class="fa fa-pencil"></i>
+					</a>
+					|
+					<a
+						href="javascript:void(0);"
+						class="text-danger"
+						ng-click="vm.deleteProduct()">
+						<i>eliminar</i>
+						<i class="fa fa-times"></i>
+					</a>
+				</span>
 			</small>
 		</h4>
 		<h4 class="label label-primary pull-right">
-			{{merakiProductCard.product.line}}
+			{{vm.product.line}}
 		</h4>
+		<br>
+		<h6 class="padding text-muted">
+			{{vm.product.description || 'Sin Descripción...'}}
+		</h6>	
 	</div>
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-sm-4">
-				<img class="center-block" width="250" ng-src="{{merakiProductCard.product.image}}" alt="Product Image">
+				<img class="center-block" width="250" ng-src="{{vm.product.image}}" alt="Product Image">
 			</div>
 			<div class="col-sm-4">
 				<meraki-product-attributes 
-					attributes="merakiProductCard.product.attributes"
-					line="{{merakiProductCard.product.line}}"
+					attributes="vm.product.attributes"
+					line="{{vm.product.line}}"
 				></meraki-product-attributes>
 			</div>
 			<div class="col-sm-4">
@@ -37,16 +54,16 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>{{merakiProductCard.product.listPrice | setDecimal:2}}</td>
-							<td>{{merakiProductCard.product.partnerPrice | setDecimal:2}}</td>
-							<td>{{merakiProductCard.product.dealPrice | setDecimal:2}}</td>
-							<td>{{merakiProductCard.product.nfrPrice | setDecimal:2}}</td>
+							<td>{{vm.product.listPrice | setDecimal:2}}</td>
+							<td>{{vm.product.partnerPrice | setDecimal:2}}</td>
+							<td>{{vm.product.dealPrice | setDecimal:2}}</td>
+							<td>{{vm.product.nfrPrice | setDecimal:2}}</td>
 						</tr>
 					</tbody>
 				</table>
 				<datasheet-button 
-					datasheet-url="{{merakiProductCard.product.datasheet}}"
-					fileName="{{merakiProductCard.product.model}}"
+					datasheet-url="{{vm.product.datasheet}}"
+					fileName="{{vm.product.model}}"
 				></datasheet-button>
 			</div>
 		</div>

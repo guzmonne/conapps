@@ -28,8 +28,8 @@ angular.module('conapps').directive('merakiProductAttributesForm', function(){
 		link: function(scope){
 			scope.$watch('vm.line', function(line){
 				var vm = scope.vm;
-				if (!vm.product._id)
-					vm.attributes = {};
+				if (vm.product && !vm.product._id)
+					vm.product.attributes = {};
 				if (!angular.isString(line)) return;
 				if (vm.isRequired(line))
 					vm.template = [

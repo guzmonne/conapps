@@ -17,6 +17,7 @@ guzmonne:angular-gux
 guzmonne:qrcode.js
 guzmonne:vcard
 twbs:bootstrap
+mizzao:bootboxjs
 fortawesome:fontawesome
 chrismbeckett:toastr
 guzmonne:filesaverjs

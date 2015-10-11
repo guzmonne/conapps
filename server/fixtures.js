@@ -11,6 +11,18 @@ if (Meteor.users.find().count() === 0){
 	});
 	Accounts.setPassword(Meteor.users.findOne(), 'admin');
 	console.log('Default "admin" account created');
+	Accounts.createUser({
+		username: 'test',
+		email   : 'test@gmail.com',
+		profile : {
+			roles     : ['user'],
+			name      : 'Test',
+			createdBy : 'Meteor.fixture.js',
+			createdAt : moment().utc().format()
+		}
+	});
+	Accounts.setPassword(Meteor.users.findOne({username: 'test'}), 'test');
+	console.log('Default "test" account created');
 }
 
 if (Clients.find({}).count() === 0){

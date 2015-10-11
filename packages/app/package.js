@@ -6,6 +6,7 @@ Package.describe({
 Package.onUse(function(api) {
   var files = [
     'app.js',
+    'app.auth.js',
     'app.query-constructor.js',
     'app.helpers.js',
   ];

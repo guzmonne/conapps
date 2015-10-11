@@ -1,6 +1,7 @@
 Meteor.methods({
 	createMerakiProduct: createMerakiProduct,
 	updateMerakiProduct: updateMerakiProduct,
+	deleteMerakiProduct: deleteMerakiProduct,
 });
 
 function createMerakiProduct (doc){
@@ -18,7 +19,6 @@ function createMerakiProduct (doc){
 
 function updateMerakiProduct (doc){
 	if (!doc) throw new Meteor.Error('missing-doc');
-	doc = _.compactObject(doc);
 	App.helpers.verifyDoc(doc, requiredKeys);
 	App.helpers.stringSearch(doc, indexedFields);
 	parseDocValues(doc);
@@ -32,6 +32,13 @@ function updateMerakiProduct (doc){
 		App.helpers.addUpdatedValues(doc);
 		return MerakiProducts.update(id, {$set: doc});
 	}
+}
+
+function deleteMerakiProduct (productId){
+	if (!productId)
+		throw new Meteor.Error('productId-is-undefined');
+	console.log(productId);
+	return MerakiProducts.update(productId, { $set: { deleted: true } });
 }
 
 function parseDocValues(doc){
@@ -54,19 +61,16 @@ function verifyAttributes(doc){
 }
 
 function verifyWirelessAttributes(attributes){
-	console.log('wireless');
 	App.helpers.verifyDoc(attributes, ['standard', 'mimo', 'throughput']);
 	attributes.throughput = parseInt(attributes.throughput);
 }
 
 function verifySwitchesAttributes(attributes){
-	console.log('switches');
 	App.helpers.verifyDoc(attributes, ['interfaces']);
 	verifyInterfaces(attributes.interfaces);
 }
 
 function verifySecurityAppliancesAttributes(attributes){
-	console.log('security');
 	App.helpers.verifyDoc(attributes, ['interfaces', 'throughput', 'vpnThroughput', 'clients']);
 	attributes.throughput    = parseInt(attributes.throughput);
 	attributes.vpnThroughput = parseInt(attributes.vpnThroughput);
@@ -75,7 +79,6 @@ function verifySecurityAppliancesAttributes(attributes){
 }
 
 function verifyAntennasAttributes(attributes){
-	console.log('antennas');
 	App.helpers.verifyDoc(attributes, ['type']);
 	if (attributes.gain24)
 		attributes.gain24 = parseInt(attributes.gain24);

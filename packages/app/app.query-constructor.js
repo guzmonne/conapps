@@ -1,6 +1,6 @@
 var queries = {
 	index: function(){
-		var parameters = {filters: {}, options: {}};
+		var parameters = {filters: { deleted: {$exists: false} }, options: {}};
 		if (this.sort) {
 			parameters.options.sort = {};
 			parameters.options.sort[this.sort] = (this.reverse) ? -1 : 1;	
