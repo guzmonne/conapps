@@ -6,8 +6,23 @@ angular.module('conapps').directive('estimatesProductListModalForm', function ()
 		scope: {
 			product: '=',
 		},
-		controller: [function(){}],
-		controllerAs: 'productListModalForm',
+		controller: ['callSaveMethod', function(callSaveMethod){
+			this.productIsNew = function(){ return !(this.product && this.product._id) }
+			this.saveProduct  = function(){
+				callSaveMethod(this.product, {
+					createMethod  : 'createMerakiProduct',
+					updateMethod  : 'updateMerakiProduct',
+					createMessage : 'Producto creado.',
+					updateMessage : 'Producto actualizado.'
+				})
+				.then(function(result){
+					console.log(result);
+					if (!this.product._id)
+						this.product = { attributes: {} };
+				}.bind(this))
+			}
+		}],
+		controllerAs: 'vm',
 		bindToController: true,
 	};
 });

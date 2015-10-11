@@ -35,7 +35,7 @@ _AppHelpers.prototype.userIsLoggedIn = function() {
 _AppHelpers.prototype.docHasRequiredKeys = function(doc, requiredKeys) {
   _.forEach(requiredKeys, function(key){
   	if (!_.has(doc, key))
-  		throw new Meteor.Error('missing-arguments', 'Faltan argumentos.');
+  		throw new Meteor.Error('missing-arguments['+key+']', 'Faltan argumentos.');
   }.bind(this));
 };
 /**

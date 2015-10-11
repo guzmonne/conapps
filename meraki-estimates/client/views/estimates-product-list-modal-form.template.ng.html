@@ -5,14 +5,14 @@
 				<button class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 ng-if="productListModalForm.productIsNew()">
+				<h4 ng-if="vm.productIsNew()">
 					<i class="fa fa-plus text-success"></i>
 					Nuevo Producto
 				</h4>
-				<h4 ng-if="!productListModalForm.productIsNew()">
+				<h4 ng-if="!vm.productIsNew()">
 					<i class="fa fa-pencil text-orange"></i>
 					Producto
-					<small class="text-muted">#{{productListModalForm.product._id}}</small>
+					<small class="text-muted">#{{vm.product._id}}</small>
 				</h4>
 			</div>
 			<div class="modal-body">
@@ -20,14 +20,14 @@
 					<div class="row">
 						<div class="col-xs-12">
 							<meraki-product-form
-								product="productListModalForm.product"
+								product="vm.product"
 							></meraki-product-form>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" ng-click="modal.saveProduct()">Aceptar</button>
+				<button type="button" class="btn btn-primary" ng-click="vm.saveProduct()">Aceptar</button>
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,25 @@
 <product-interface-selector
-	options="merakiProductAttributesForm.interfacesOptions"
 	interfaces="merakiProductAttributesForm.attributes.interfaces"
 >
 	Interfaces
 </product-interface-selector>
+<div class="checkbox">
+  <label>
+    <input 
+    	type="checkbox" 
+    	ng-model="merakiProductAttributesForm.attributes.poe"
+    	name="poe"
+    	ng-click="merakiProductAttributesForm.attributes.poeBudget = 0"
+  	> 
+  		PoE
+  </label>
+</div>
+<gux-form-input
+	ng-model="merakiProductAttributesForm.attributes.poeBudget"
+	input-placeholder="370"
+	input-name="poe"
+	input-type="number"
+	ng-show="merakiProductAttributesForm.attributes.poe"
+>
+	Potencia PoE Util [W]
+</gux-form-input>

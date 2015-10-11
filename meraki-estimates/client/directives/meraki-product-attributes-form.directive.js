@@ -12,11 +12,11 @@ angular.module('conapps').directive('merakiProductAttributesForm', function(){
 				'Wireless',
 				'Switches',
 				'Security Appliances',
-				'Antenas'
+				'Antennas'
 			];
 
-			this.standards = ['802.11ac/n', '802.11n'];
-			this.mimoOptions = ['2x2', '3x3', '4x3', '4x4'];
+			this.standards    = ['802.11ac/n', '802.11n'];
+			this.mimoOptions  = ['2x2', '3x3', '4x3', '4x4'];
 			this.antennaTypes = ['Omni', 'Sector', 'Patch'];
 
 			this.isRequired = function(){
@@ -27,10 +27,11 @@ angular.module('conapps').directive('merakiProductAttributesForm', function(){
 		bindToController: true,
 		link: function(scope){
 			scope.$watch('merakiProductAttributesForm.line', function(line){
-				var controller = scope.merakiProductAttributesForm;
+				var vm        = scope.merakiProductAttributesForm;
+				vm.attributes = {};
 				if (!angular.isString(line)) return;
-				if (controller.isRequired(line))
-					controller.template = [
+				if (vm.isRequired(line))
+					vm.template = [
 						'meraki-estimates/client/views/meraki-product-attributes-form-for-',
 						line.replace(' ', '-').toLowerCase(),
 						'.template.ng.html'

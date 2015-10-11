@@ -1,6 +1,3 @@
-var requiredKeys  = ['name'];
-var indexedFields = ['name', 'description'];
-
 Meteor.methods({
 	addEstimate: function(doc){
 		App.helpers.verifyDoc(doc, requiredKeys);
@@ -21,3 +18,6 @@ Meteor.methods({
 		}
 	}
 });
+
+var requiredKeys  = ['name'];
+var indexedFields = ['name', 'description'];
