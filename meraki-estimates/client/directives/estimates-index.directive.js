@@ -4,12 +4,14 @@ angular.module('conapps').directive('estimatesIndex', function(){
 		restrict    : 'E',
 		replace     : true,
 		scope       : {},
-		controller  : ['$scope', '$meteor', 
-		function($scope, $meteor){
+		controller  : ['$scope', '$meteor', '$q',
+		function($scope, $meteor, $q){
 			this.collection = [];
 			this.options    = {
 				sort: '_id'
 			};
+			this.activeProduct = null;
+			this.showModal = showModal;
 
 			$scope.$meteorSubscribe('estimates', {type: 'index'})
 			.then(function(subscriptionHandle){
@@ -31,6 +33,24 @@ angular.module('conapps').directive('estimatesIndex', function(){
 					query.stringSearch = stringSearch;
 				parameters = Estimates.constructQuery(query);
 				return Estimates.find(parameters.filters, parameters.options); 
+			}
+
+			function defaultProduct(){
+				return {
+					attributes: {},
+				}
+			}
+
+			function showModal(){
+				var deferred = $q.defer();
+				if (!this.activeProduct)
+					this.activeProduct = defaultProduct();
+				$('#productListModalForm')
+				.modal('toggle')
+				.on('shown.bs.modal', function(){
+					deferred.resolve();
+				});
+				return deferred.promise();
 			}
 		}],
 		controllerAs: 'index'

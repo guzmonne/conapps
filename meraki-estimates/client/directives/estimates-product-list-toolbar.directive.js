@@ -6,9 +6,12 @@ angular.module('conapps').directive('estimatesProductListToolbar', function(){
 		scope       : {
 			options: '='
 		},
-		controller: ['updateFiltersService', function(updateFiltersService){
+		controller: ['updateFiltersService', 'showModal', function(updateFiltersService, showModal){
 			this.stringSearch = '',
 			this.updateFilters = updateFiltersService.bind(this);
+			this.openModal = function(){
+				showModal('#productListModalForm');
+			};
 		}],
 		controllerAs     : 'productListToolbar',
 		bindToController : true,

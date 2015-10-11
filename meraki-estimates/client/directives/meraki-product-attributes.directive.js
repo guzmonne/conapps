@@ -13,7 +13,6 @@ angular.module('conapps').directive('merakiProductAttributes', function(){
 				this.line.replace(' ', '-').toLowerCase(),
 				'.template.ng.html'
 			].join('');
-			console.log(this.attributes)
 		}],
 		controllerAs: 'merakiProductAttributes',
 		bindToController: true,

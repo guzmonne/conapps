@@ -1,0 +1,42 @@
+<gux-form-select
+	ng-model="merakiProductAttributesForm.attributes.standard"
+	select-name="standard"
+	select-options="merakiProductAttributesForm.standards"
+>
+	Estandar
+</gux-form-select>
+<gux-form-select
+	ng-model="merakiProductAttributesForm.attributes.mimo"
+	select-name="mimo"
+	select-options="merakiProductAttributesForm.mimoOptions"
+>
+	MIMO
+</gux-form-select>
+<gux-form-input
+	ng-model="merakiProductAttributesForm.product.throughput"
+	input-placeholder="1200"
+	input-name="throughput"
+	input-type="number"
+>
+	Throughput [Mbps]
+</gux-form-input>
+<div class="checkbox">
+  <label>
+    <input 
+    	type="checkbox" 
+    	ng-model="merakiProductAttributesForm.product.bluetooth"
+    	name="bluetooth"
+  	> 
+  		Bluetooth
+  </label>
+</div>
+<div class="checkbox">
+  <label>
+    <input 
+    	type="checkbox" 
+    	ng-model="merakiProductAttributesForm.product.cmx"
+    	name="cmx"
+  	> 
+  		CMX
+  </label>
+</div>

@@ -10,8 +10,6 @@ angular.module('conapps').directive('estimatesProductList', function(){
 			};
 			this.collection = [];
 
-			console.log(getParametersReactively());
-
 			$scope.$meteorSubscribe('merakiProducts', getParametersReactively())
 			.then(function(subscriptionHandle){
 				this.subscriptionHandle = subscriptionHandle;

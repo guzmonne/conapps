@@ -1,0 +1,23 @@
+<gux-form-select
+	ng-model="merakiProductAttributesForm.attributes.type"
+	select-name="type"
+	select-options="merakiProductAttributesForm.antennaTypes"
+>
+	Tipo de Antena
+</gux-form-select>
+<gux-form-input
+	ng-model="merakiProductAttributesForm.product.gain24"
+	input-placeholder="1200"
+	input-name="gain24"
+	input-type="number"
+>
+	Ganancia 2.4 GHz [dB]
+</gux-form-input>
+<gux-form-input
+	ng-model="merakiProductAttributesForm.product.gain50"
+	input-placeholder="1200"
+	input-name="gain24"
+	input-type="number"
+>
+	Ganancia 5.0 GHz [dB]
+</gux-form-input>
