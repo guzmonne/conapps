@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+	<div class="panel-heading" style="height: 42px">
+		<h4 class="pull-left">
+			<strong>{{merakiProductCard.product.model}}</strong>
+			<small>
+				Familia {{merakiProductCard.product.family}}
+			</small>
+		</h4>
+		<h4 class="label label-primary pull-right">
+			{{merakiProductCard.product.line}}
+		</h4>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-sm-4">
+				<img width="250" ng-src="{{merakiProductCard.product.image}}" alt="Product Image">
+			</div>
+			<div class="col-sm-4">
+				<meraki-product-attributes 
+					attributes="merakiProductCard.product.attributes"
+					line="{{merakiProductCard.product.line}}"
+				></meraki-product-attributes>
+			</div>
+			<div class="col-sm-4">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Lista [USD]</th>
+							<th>Partner [USD]</th>
+							<th>Deal [USD]</th>
+							<th>NFR [USD]</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{merakiProductCard.product.listPrice}}</td>
+							<td>{{merakiProductCard.product.partnerPrice}}</td>
+							<td>{{merakiProductCard.product.dealPrice}}</td>
+							<td>{{merakiProductCard.product.nfrPrice}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

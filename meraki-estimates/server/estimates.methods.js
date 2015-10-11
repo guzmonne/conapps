@@ -3,20 +3,20 @@ var indexedFields = ['name', 'description'];
 
 Meteor.methods({
 	addEstimate: function(doc){
-		AppHelpers.verifyDoc(doc, requiredKeys);
-		AppHelpers.stringSearch(doc, indexedFields);
+		App.helpers.verifyDoc(doc, requiredKeys);
+		App.helpers.stringSearch(doc, indexedFields);
 		if (Meteor.isServer) {
-			AppHelpers.addCreatedValues(doc);
+			App.helpers.addCreatedValues(doc);
 			return Clients.insert(doc);
 		}
 	},
 	updateEstimate: function(doc){
-		AppHelpers.verifyDoc(doc, requiredKeys);
-		AppHelpers.stringSearch(doc, indexedFields);
+		App.helpers.verifyDoc(doc, requiredKeys);
+		App.helpers.stringSearch(doc, indexedFields);
 		var id = doc._id;
 		delete doc._id;
 		if (Meteor.isServer) {
-			AppHelpers.addUpdatedValues(doc);
+			App.helpers.addUpdatedValues(doc);
 			return Clients.update(id, {$set: doc});
 		}
 	}

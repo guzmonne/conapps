@@ -1,0 +1,19 @@
+<table class="table table-first-border-top-none table-margin-bottom-0">
+	<tbody>
+		<tr>
+			<td class="text-muted">INTERFACES</td>
+			<td>
+				<ul class="list-unstyled" style="margin-bottom: 0">
+					<li ng-repeat="interface in merakiProductAttributes.attributes.interfaces track by $index">
+						{{interface.ammount}}x {{interface.type}}
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<h4 ng-if="merakiProductAttributes.attributes.poe">
+	<span class="label label-warning">
+		PoE: {{merakiProductAttributes.attributes.poeBudget}} W
+	</span>
+</h4>

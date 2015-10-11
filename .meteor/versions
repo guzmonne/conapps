@@ -32,6 +32,7 @@ fastclick@1.0.7
 fortawesome:fontawesome@4.4.0
 geojson-utils@1.0.4
 guzmonne:angular-gux@0.0.1
+guzmonne:app@0.0.1
 guzmonne:filesaverjs@0.0.1
 guzmonne:qrcode.js@0.0.1
 guzmonne:vcard@0.0.1

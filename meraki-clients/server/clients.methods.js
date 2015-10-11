@@ -11,13 +11,13 @@ var indexedFields = [
 
 function verifyDoc(doc){
 	if (!doc) throw new Meteor.Error('empty-doc');
-	AppHelpers.verifyDoc(doc, requiredKeys);
+	App.helpers.verifyDoc(doc, requiredKeys);
 	if (doc.phones)
-		AppHelpers.verifyType(doc.phones, 'Array');
+		App.helpers.verifyType(doc.phones, 'Array');
 	if (doc.emails)
-		AppHelpers.verifyType(doc.emails, 'Array');
+		App.helpers.verifyType(doc.emails, 'Array');
 	if (doc.addresses)
-		AppHelpers.verifyType(doc.addresses, 'Array');
+		App.helpers.verifyType(doc.addresses, 'Array');
 }
 
 function fixMainValues(doc){
@@ -29,7 +29,7 @@ function fixMainValues(doc){
 
 function fixEmailValues(doc){
 	if (doc.emails && _.isArray(doc.emails)) {
-		AppHelpers.validateEmailArray(doc.emails);
+		App.helpers.validateEmailArray(doc.emails);
 		_.forEach(doc.emails, function(email){
 			email = email.toLowerCase();
 		});
@@ -40,11 +40,11 @@ function fixAddressesValues(doc){
 	if (doc.addresses && _.isArray(doc.addresses)){
 		_.forEach(doc.addresses, function(address){
 			if (address.street)
-				address.street = AppHelpers.titelize(address.street);
+				address.street = App.helpers.titelize(address.street);
 			if (address.city)
-				address.city = AppHelpers.titelize(address.city);
+				address.city = App.helpers.titelize(address.city);
 			if (address.dep)
-				address.dep = AppHelpers.titelize(address.dep);
+				address.dep = App.helpers.titelize(address.dep);
 		});
 	}
 }
@@ -65,9 +65,9 @@ Meteor.methods({
 		verifyDoc(doc);
 		fixUpDoc(doc);
 		addFullName(doc);
-		AppHelpers.stringSearch(doc, indexedFields);
+		App.helpers.stringSearch(doc, indexedFields);
 		if (Meteor.isServer) {
-			AppHelpers.addCreatedValues(doc);
+			App.helpers.addCreatedValues(doc);
 			return Clients.insert(doc);
 		}
 	},
@@ -75,11 +75,11 @@ Meteor.methods({
 		verifyDoc(doc);
 		fixUpDoc(doc);
 		addFullName(doc);
-		AppHelpers.stringSearch(doc, indexedFields);
+		App.helpers.stringSearch(doc, indexedFields);
 		var id = doc._id;
 		delete doc._id;
 		if (Meteor.isServer) {
-			AppHelpers.addUpdatedValues(doc);
+			App.helpers.addUpdatedValues(doc);
 			return Clients.update(id, {$set: doc});
 		}
 	}

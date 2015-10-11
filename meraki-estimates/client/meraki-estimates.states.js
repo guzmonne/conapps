@@ -51,7 +51,7 @@ angular.module("conapps").config(['$stateProvider',
         url: '/price_list',
         views: {
           'estimates-workview': {
-            template: '<h1>Here goes the PriceList WorkView</h1>'
+            template: '<estimates-product-list></estimates-products-list>'
           }
         },
         resolve : {

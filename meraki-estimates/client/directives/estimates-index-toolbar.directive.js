@@ -6,12 +6,9 @@ angular.module('conapps').directive('estimatesIndexToolbar', function(){
 		scope: {
 			options: '=',
 		},
-		controller: [function(){
+		controller: ['updateFiltersService', function(updateFiltersService){
 			this.stringSearch = '';
-			this.updateFilters = function(){
-				this.options.stringSearch = this.stringSearch;
-				console.log(this.options);
-			}.bind(this);
+			this.updateFilters = updateFiltersService.bind(this);
 		}],
 		controllerAs: 'indexToolbar',
 		bindToController: true,

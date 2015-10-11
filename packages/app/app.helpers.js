@@ -116,6 +116,4 @@ _AppHelpers.prototype.stringSearch = function(doc, indexedFields) {
 	doc.stringSearch = JSON.stringify(indexedDoc).toLowerCase();
 };
 
-Meteor.startup(function(){
-	AppHelpers = new _AppHelpers();
-});
+App.helpers = new _AppHelpers();

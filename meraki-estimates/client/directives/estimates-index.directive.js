@@ -4,7 +4,8 @@ angular.module('conapps').directive('estimatesIndex', function(){
 		restrict    : 'E',
 		replace     : true,
 		scope       : {},
-		controller  : ['$scope', '$meteor', function($scope, $meteor){
+		controller  : ['$scope', '$meteor', 
+		function($scope, $meteor){
 			this.collection = [];
 			this.options    = {
 				sort: '_id'
@@ -13,7 +14,7 @@ angular.module('conapps').directive('estimatesIndex', function(){
 			$scope.$meteorSubscribe('estimates', {type: 'index'})
 			.then(function(subscriptionHandle){
 				this.subscriptionHandle = subscriptionHandle;
-				this.collection = $meteor.collection(setCollectionReactively, false);
+				this.collection = $scope.$meteorCollection(setCollectionReactively, false);
 			}.bind(this));
 
 			function setCollectionReactively(){

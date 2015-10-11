@@ -59,6 +59,9 @@ if (Clients.find({}).count() === 0){
 			}
 		]
 	});
+}
+
+if (Estimates.find().count() == 0){
 	var user = Meteor.users.findOne({});
 	var estimate1 = {
 		name        : 'CONATEL - WiFi para oficina',
@@ -75,7 +78,7 @@ if (Clients.find({}).count() === 0){
 	Estimates.insert(_.extend(
 		{
 			stringSearch      : JSON.stringify(estimate1).toLowerCase(),
-			parts             : [],
+			products          : [],
 			createdBy         : user._id,
 			createdByUsername : user.username
 		}, estimate1)
@@ -83,7 +86,7 @@ if (Clients.find({}).count() === 0){
 	Estimates.insert(_.extend(
 		{
 			stringSearch      : JSON.stringify(estimate2).toLowerCase(),
-			parts             : [],
+			products          : [],
 			createdBy         : user._id,
 			createdByUsername : user.username,
 		}, estimate2)
@@ -91,11 +94,79 @@ if (Clients.find({}).count() === 0){
 	Estimates.insert(_.extend(
 		{
 			stringSearch      : JSON.stringify(estimate3).toLowerCase(),
-			parts             : [],
+			products          : [],
 			createdBy         : user._id,
 			createdByUsername : user.username,
 		}, estimate3)
 	);
+};
+
+if (MerakiProducts.find().count() === 0){
+	var product1 = {
+		model        : 'MR32',
+		family       : 'MR',
+		line         : 'Wireless',
+		attributes   : {
+			standard   : '802.11ac/n',
+			throughput : 1200,
+			mimo       : '2x2',
+			bluetooth  : true,
+			cmx        : true,
+		}
+	};
+	var product2 = {
+		model        : 'MX64W',
+		family       : 'MX',
+		line         : 'Security Appliances',
+		attributes   : {
+			interfaces: [
+				{type: 'GE', ammount: 5},
+				{type: 'USB', ammount: 1},
+				{type: '802.11ac/n', ammount: 2}
+			],
+			throughput         : 200,
+			vpnThroughput      : 70,
+			recommendedClients : 50
+		}
+	};
+	var product3 = {
+		model        : 'MS220-24P',
+		family       : 'MS',
+		line         : 'Switches',
+		attributes   : {
+			interfaces: [
+				{type: 'GE', ammount: 24},
+				{type: 'SFP', ammount: 4},
+			],
+			poe       : true,
+			poeBudget : 370
+		}
+	}
+	var user = Meteor.users.findOne({});
+	MerakiProducts.insert(_.extend({
+		image        : 'https://meraki.cisco.com/img/products/icons/mr32.jpg',
+		stringSearch : JSON.stringify(product1).toLowerCase(),
+		listPrice    : 199.99,
+		partnerPrice : 149.99,
+		dealPrice    : 129.99,
+		nfrPrice     : 99.99,
+	}, product1));
+	MerakiProducts.insert(_.extend({
+		stringSearch : JSON.stringify(product2).toLowerCase(),
+		image        : 'https://meraki.cisco.com/img/products/appliances/overview/models/overview-model-mx64w.jpg',
+		listPrice    : 349.99,
+		partnerPrice : 319.99,
+		dealPrice    : 299.99,
+		nfrPrice     : 249.99,
+	}, product2));
+	MerakiProducts.insert(_.extend({
+		stringSearch : JSON.stringify(product3).toLowerCase(),
+		image        : 'https://meraki.cisco.com/img/products/icons/ms220-24.jpg',
+		listPrice    : 249.99,
+		partnerPrice : 229.99,
+		dealPrice    : 199.99,
+		nfrPrice     : 149.99,
+	}, product3));
 }
 /*
 if (Switches.find({}).count() === 0){
