@@ -8,14 +8,16 @@ function estimatesEditDirective(something){
 		scope: {
 
 		},
-		controller: ['$meteor', '$stateParams', controller],
+		controller: controller,
 		controllerAs: 'vm',
 		bindToController: true,
 		link: link
 	};
 }
 
-function controller($meteor, $stateParams){
+controller.$inject = ['$meteor', '$stateParams', '$state'];
+
+function controller($meteor, $stateParams, $state){
 	var vm        = this;
 	vm.estimate   = null;
 	vm.estimateId = $stateParams.id;
@@ -30,7 +32,8 @@ function controller($meteor, $stateParams){
 			vm.estimate = estimate;
 		})
 		.catch(function(err){
-			toastr.error(err.error);
+			toastr.error(err.reason);
+			$state.go('meraki_estimates.index');
 			console.log(err);
 		});
 	}

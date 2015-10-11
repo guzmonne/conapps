@@ -11,13 +11,13 @@ angular.module('conapps').directive('estimatesIndex', function(){
 				sort: '_id'
 			};
 			this.activeProduct = null;
-			this.showModal = showModal;
+			this.showModal     = showModal;
 
 			$scope.$meteorSubscribe('estimates', {type: 'index'})
-			.then(function(subscriptionHandle){
-				this.subscriptionHandle = subscriptionHandle;
-				this.collection = $scope.$meteorCollection(setCollectionReactively, false);
-			}.bind(this));
+				.then(function(subscriptionHandle){
+					this.subscriptionHandle = subscriptionHandle;
+					this.collection = $scope.$meteorCollection(setCollectionReactively, false);
+				}.bind(this));
 
 			function setCollectionReactively(){
 				var parameters, 

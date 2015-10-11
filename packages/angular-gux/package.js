@@ -42,6 +42,8 @@ Package.onUse(function(api) {
     'templates/gux-multiple-addresses.template.ng.html',
     'directives/gux-address.directive.js',
     'templates/gux-address.template.ng.html',
+    'directives/gux-modal.directive.js',
+    'templates/gux-modal.template.ng.html',
   ], ['client']);
 
   // Services
