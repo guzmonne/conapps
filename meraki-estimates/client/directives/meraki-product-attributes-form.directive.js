@@ -2,10 +2,10 @@ angular.module('conapps').directive('merakiProductAttributesForm', function(){
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<div ng-show="merakiProductAttributesForm.isRequired()" ng-include="merakiProductAttributesForm.template"></div>',
+		template: '<div ng-show="vm.isRequired()" ng-include="vm.template"></div>',
 		scope: {
 			line       : '=',
-			attributes : '=',
+			product    : '=',
 		},
 		controller: [function(){
 			var validLines = [
@@ -23,12 +23,13 @@ angular.module('conapps').directive('merakiProductAttributesForm', function(){
 				return validLines.indexOf(this.line) > -1;
 			}; 
 		}],
-		controllerAs: 'merakiProductAttributesForm',
+		controllerAs: 'vm',
 		bindToController: true,
 		link: function(scope){
-			scope.$watch('merakiProductAttributesForm.line', function(line){
-				var vm        = scope.merakiProductAttributesForm;
-				vm.attributes = {};
+			scope.$watch('vm.line', function(line){
+				var vm = scope.vm;
+				if (!vm.product._id)
+					vm.attributes = {};
 				if (!angular.isString(line)) return;
 				if (vm.isRequired(line))
 					vm.template = [

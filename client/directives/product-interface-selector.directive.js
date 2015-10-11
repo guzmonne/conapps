@@ -45,5 +45,6 @@ var options = [
 	'SFP+',
 	'QSFP+',
 	'802.11n',
-	'802.11ac/n'
+	'802.11ac/n',
+	'USB',
 ];

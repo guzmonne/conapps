@@ -1,10 +1,4 @@
 <div class="row">
-	<div class="col-xs-12">
-		<p style="padding: 15px" class="bg-warning text-warning padding">
-			<i class="fa fa-exclamation-triangle"></i>
-			Todos los campos son requeridos
-		</p>
-	</div>
 	<form name="merakiProduct">
 		<div class="col-sm-6">
 			<!-- Line -->
@@ -72,7 +66,7 @@
 		<div class="col-sm-6">
 			<meraki-product-attributes-form
 				line="merakiProductForm.product.line"
-				attributes="merakiProductForm.product.attributes"
+				product="merakiProductForm.product"
 			></meraki-product-attributes-form>
 			<gux-form-input
 				ng-model="merakiProductForm.product.image"

@@ -1,10 +1,10 @@
 <product-interface-selector
-	interfaces="merakiProductAttributesForm.attributes.interfaces"
+	interfaces="vm.product.attributes.interfaces"
 >
 	Interfaces
 </product-interface-selector>
 <gux-form-input
-  ng-model="merakiProductAttributesForm.attributes.throughput"
+  ng-model="vm.product.attributes.throughput"
   input-placeholder="200"
   input-name="throughput"
   input-type="number"
@@ -12,7 +12,7 @@
   Firewall Throughput [Mbps]
 </gux-form-input>
 <gux-form-input
-	ng-model="merakiProductAttributesForm.attributes.vpnThroughput"
+	ng-model="vm.product.attributes.vpnThroughput"
 	input-placeholder="70"
 	input-name="vpnThroughput"
 	input-type="number"
@@ -20,7 +20,7 @@
 	VPN Throughput [Mbps]
 </gux-form-input>
 <gux-form-input
-  ng-model="merakiProductAttributesForm.attributes.clients"
+  ng-model="vm.product.attributes.clients"
   input-placeholder="70"
   input-name="clients"
   input-type="number"

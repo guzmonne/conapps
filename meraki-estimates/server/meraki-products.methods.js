@@ -6,7 +6,6 @@ Meteor.methods({
 function createMerakiProduct (doc){
 	if (!doc) throw new Meteor.Error('missing-doc');
 	doc = _.compactObject(doc);
-	console.log(doc);
 	App.helpers.verifyDoc(doc, requiredKeys);
 	App.helpers.stringSearch(doc, indexedFields);
 	parseDocValues(doc);
@@ -20,7 +19,6 @@ function createMerakiProduct (doc){
 function updateMerakiProduct (doc){
 	if (!doc) throw new Meteor.Error('missing-doc');
 	doc = _.compactObject(doc);
-	console.log(doc);
 	App.helpers.verifyDoc(doc, requiredKeys);
 	App.helpers.stringSearch(doc, indexedFields);
 	parseDocValues(doc);

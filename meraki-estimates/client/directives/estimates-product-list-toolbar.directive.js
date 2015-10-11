@@ -6,10 +6,11 @@ angular.module('conapps').directive('estimatesProductListToolbar', function(){
 		scope       : {
 			options: '='
 		},
-		controller: ['updateFiltersService', 'showModal', function(updateFiltersService, showModal){
+		controller: ['updateFiltersService', 'showModal', 'merakiProductService', function(updateFiltersService, showModal, merakiProductService){
 			this.stringSearch = '',
 			this.updateFilters = updateFiltersService.bind(this);
 			this.openModal = function(){
+				merakiProductService.setDefault();
 				showModal('#productListModalForm');
 			};
 		}],

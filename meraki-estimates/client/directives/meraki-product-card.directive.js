@@ -6,7 +6,12 @@ angular.module('conapps').directive('merakiProductCard', function(){
 		scope: {
 			product: '=',
 		},
-		controller: [function(){}],
+		controller: ['merakiProductService', 'showModal', function(merakiProductService, showModal){
+			this.editProduct = function(){
+				merakiProductService.setProduct(this.product);
+				showModal('#productListModalForm');
+			}
+		}],
 		controllerAs: 'merakiProductCard',
 		bindToController: true,
 	}

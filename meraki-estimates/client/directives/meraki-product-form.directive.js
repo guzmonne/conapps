@@ -42,11 +42,9 @@ function updateFamily(){
 		vm.product.family = 'MR';
 	if (vm.product.line === 'Switches'){
 		vm.product.family = 'MS';
-		vm.product.datasheet = 'https://meraki.cisco.com/lib/pdf/meraki_datasheet_ms.pdf';
 	}
 	if (vm.product.line === 'Security Appliances'){
 		vm.product.family = 'MX';
-		vm.product.datasheet = 'https://meraki.cisco.com/lib/pdf/meraki_datasheet_mx.pdf';
 	}
 	if (vm.product.line === 'Accesorios')
 		vm.product.family = 'S/F';

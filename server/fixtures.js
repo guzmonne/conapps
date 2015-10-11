@@ -124,9 +124,9 @@ if (MerakiProducts.find().count() === 0){
 				{type: 'USB', ammount: 1},
 				{type: '802.11ac/n', ammount: 2}
 			],
-			throughput         : 200,
-			vpnThroughput      : 70,
-			recommendedClients : 50
+			throughput    : 200,
+			vpnThroughput : 70,
+			clients       : 50
 		}
 	};
 	var product3 = {

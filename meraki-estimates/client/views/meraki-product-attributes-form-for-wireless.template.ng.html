@@ -1,19 +1,39 @@
-<gux-form-select
-	ng-model="merakiProductAttributesForm.attributes.standard"
-	select-name="standard"
-	select-options="merakiProductAttributesForm.standards"
->
-	Estandar
-</gux-form-select>
-<gux-form-select
-	ng-model="merakiProductAttributesForm.attributes.mimo"
-	select-name="mimo"
-	select-options="merakiProductAttributesForm.mimoOptions"
->
-	MIMO
-</gux-form-select>
+<div class="form-group">
+  <label>
+    Estandar
+  </label>
+  <select
+    ng-model="vm.product.attributes.standard"
+    name="standard"
+    class="form-control">
+    <option value="" selected>---</option>
+    <option 
+      ng-repeat="option in vm.standards track by $index"
+      value="{{option}}"
+    >
+      {{option}}
+    </option>
+  </select>
+</div>
+<div class="form-group">
+  <label>
+    Estandar
+  </label>
+  <select
+    ng-model="vm.product.attributes.mimo"
+    name="mimo"
+    class="form-control">
+    <option value="" selected>---</option>
+    <option 
+      ng-repeat="option in vm.mimoOptions track by $index"
+      value="{{option}}"
+    >
+      {{option}}
+    </option>
+  </select>
+</div>
 <gux-form-input
-	ng-model="merakiProductAttributesForm.attributes.throughput"
+	ng-model="vm.product.attributes.throughput"
 	input-placeholder="1200"
 	input-name="throughput"
 	input-type="number"
@@ -24,7 +44,7 @@
   <label>
     <input 
     	type="checkbox" 
-    	ng-model="merakiProductAttributesForm.attributes.bluetooth"
+    	ng-model="vm.product.attributes.bluetooth"
     	name="bluetooth"
   	> 
   		Bluetooth
@@ -34,7 +54,7 @@
   <label>
     <input 
     	type="checkbox" 
-    	ng-model="merakiProductAttributesForm.attributes.cmx"
+    	ng-model="vm.product.attributes.cmx"
     	name="cmx"
   	> 
   		CMX

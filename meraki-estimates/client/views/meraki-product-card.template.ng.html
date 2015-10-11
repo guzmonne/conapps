@@ -4,6 +4,10 @@
 			<strong>{{merakiProductCard.product.model}}</strong>
 			<small>
 				Familia {{merakiProductCard.product.family}}
+				<a href="javascript:void(0);" class="text-warning" ng-click="merakiProductCard.editProduct()">
+					<i>editar</i>
+					<i class="fa fa-pencil"></i>
+				</a>
 			</small>
 		</h4>
 		<h4 class="label label-primary pull-right">
@@ -13,7 +17,7 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-sm-4">
-				<img width="250" ng-src="{{merakiProductCard.product.image}}" alt="Product Image">
+				<img class="center-block" width="250" ng-src="{{merakiProductCard.product.image}}" alt="Product Image">
 			</div>
 			<div class="col-sm-4">
 				<meraki-product-attributes 
@@ -33,10 +37,10 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>{{merakiProductCard.product.listPrice}}</td>
-							<td>{{merakiProductCard.product.partnerPrice}}</td>
-							<td>{{merakiProductCard.product.dealPrice}}</td>
-							<td>{{merakiProductCard.product.nfrPrice}}</td>
+							<td>{{merakiProductCard.product.listPrice | setDecimal:2}}</td>
+							<td>{{merakiProductCard.product.partnerPrice | setDecimal:2}}</td>
+							<td>{{merakiProductCard.product.dealPrice | setDecimal:2}}</td>
+							<td>{{merakiProductCard.product.nfrPrice | setDecimal:2}}</td>
 						</tr>
 					</tbody>
 				</table>

@@ -1,12 +1,11 @@
-angular.module('conapps').directive('estimatesProductListModalForm', function (){
+angular.module('conapps').directive('estimatesProductListModalForm', ['merakiProductService', function (merakiProductService){
 	return {
 		restrict: 'E',
 		replace: true,
 		templateUrl: 'meraki-estimates/client/views/estimates-product-list-modal-form.template.ng.html',
-		scope: {
-			product: '=',
-		},
+		scope: {},
 		controller: ['callSaveMethod', function(callSaveMethod){
+			this.product = merakiProductService.product;
 			this.productIsNew = function(){ return !(this.product && this.product._id) }
 			this.saveProduct  = function(){
 				callSaveMethod(this.product, {
@@ -16,13 +15,12 @@ angular.module('conapps').directive('estimatesProductListModalForm', function ()
 					updateMessage : 'Producto actualizado.'
 				})
 				.then(function(result){
-					console.log(result);
 					if (!this.product._id)
-						this.product = { attributes: {} };
+						this.product = merakiProductService.setDefault();
 				}.bind(this))
 			}
 		}],
 		controllerAs: 'vm',
 		bindToController: true,
 	};
-});
+}]);
