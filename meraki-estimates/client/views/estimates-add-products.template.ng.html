@@ -1,3 +1,10 @@
-<pre>
-	{{vm.products}}
-</pre>
+<div class="container">
+	<div class="row padding">
+		<div class="col-sm-12">
+			<meraki-product-row
+				ng-repeat="product in vm.products"
+				product="product">
+			</meraki-product-row>
+		</div>
+	</div>
+</div>

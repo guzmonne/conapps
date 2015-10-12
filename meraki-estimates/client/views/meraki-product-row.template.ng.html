@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+	<div class="panel-heading" style="height: 65px;">
+		<h4 class="pull-left">
+			<strong>{{::vm.product.model}}</strong>
+			<small>Familia {{::vm.product.family}}</small>
+		</h4>
+		<h4 class="pull-right label label-primary" style="margin-top: 10px;">
+			{{::vm.product.line}}
+		</h4>
+		<br>
+		<h6 class="padding text-muted">
+			{{::vm.product.description || 'Sin Descripción...'}}
+		</h6>
+	</div>
+</div>
