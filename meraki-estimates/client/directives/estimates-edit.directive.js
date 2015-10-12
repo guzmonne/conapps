@@ -15,13 +15,14 @@ function estimatesEditDirective(something){
 	};
 }
 
-controller.$inject = ['$meteor', '$stateParams', '$state'];
+controller.$inject = ['$meteor', '$stateParams', '$state', 'estimateModifiers'];
 
-function controller($meteor, $stateParams, $state){
+function controller($meteor, $stateParams, $state, estimateModifiers){
 	var vm        = this;
+	
 	vm.estimate   = null;
 	vm.estimateId = $stateParams.id;
-
+	
 	activate();
 
 	//////////
@@ -29,7 +30,8 @@ function controller($meteor, $stateParams, $state){
 	function activate(){
 		$meteor.call('getEstimate', vm.estimateId)
 		.then(function(estimate){
-			vm.estimate = estimate;
+			vm.estimate  = estimate;
+			vm.modifiers = vm.estimate.modifiers || estimateModifiers.defaults();
 		})
 		.catch(function(err){
 			toastr.error(err.reason);

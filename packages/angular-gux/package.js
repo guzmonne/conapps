@@ -44,6 +44,12 @@ Package.onUse(function(api) {
     'templates/gux-address.template.ng.html',
     'directives/gux-modal.directive.js',
     'templates/gux-modal.template.ng.html',
+    'directives/gux-percentage.directive.js',
+  ], ['client']);
+
+  // Filters
+  api.addFiles([
+    'filters/gux-percentage.filter.js'
   ], ['client']);
 
   // Services

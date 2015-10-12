@@ -1,3 +1,16 @@
 <div class="row spinner-container">
 	<div ng-hide="vm.estimate && vm.estimate._id" id="spinner"></div>
+	<estimates-edit-toolbar
+		products="vm.estimate.products">
+	</estimates-edit-toolbar>
+	<estimates-edit-products
+		products="vm.estimate.products">
+	</estimates-edit-products>
+	<estimates-edit-modifiers
+		modifiers="vm.modifiers">
+	</estimates-edit-modifiers>
+	<estimates-edit-totals
+		products="vm.estimate.products"
+		modifiers="vm.modifiers">
+	</estimates-edit-totals>
 </div>

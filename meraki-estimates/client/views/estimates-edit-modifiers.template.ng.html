@@ -1,0 +1,68 @@
+<div class="container padding">
+	<div class="row">
+		<div class="col-sm-3">
+			<h5 class="text-center" style="margin-bottom: 5px">Costo de Introducción</h5>
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.modifiers.introduction"
+					max="100"
+					min="0"
+					step="1"
+					gux-percentage-input>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<h5 class="text-center" style="margin-bottom: 5px">Margen de Hardware</h5>
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.modifiers.hwMargin"
+					max="100"
+					min="0"
+					step="1"
+					gux-percentage-input>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<h5 class="text-center" style="margin-bottom: 5px">Margen de Software</h5>
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.modifiers.swMargin"
+					max="100"
+					min="0"
+					step="1"
+					gux-percentage-input>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<h5 class="text-center" style="margin-bottom: 5px">Margen de Administración</h5>
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.modifiers.admMargin"
+					max="100"
+					min="0"
+					step="1"
+					gux-percentage-input>
+			</div>
+		</div>
+	</div>
+</div>
