@@ -1,0 +1,25 @@
+<div id="estimatesAddProductsModal" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+			<div class="modal-header">
+				<close-modal-button></close-modal-button>
+				<h4>Agregar Productos</h4>
+			</div>
+			<div class="modal-body">
+				<estimates-add-products-filters
+					line="vm.line">
+				</estimates-add-products-filters>
+				<estimates-add-products
+					line="vm.line"
+					available-products="vm.availableProucts"
+					products="vm.products">
+				</estimates-add-products>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary">
+					Aceptar
+				</button>
+			</div>
+		</div>
+  </div>
+</div>

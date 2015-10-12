@@ -8,17 +8,20 @@ function estimatesEditToolbar(){
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,
-		link             : link,
 		scope            : {
 			products: '='
 		},
 	}
 }
 
-controller.$inject = [];
+controller.$inject = ['showModal'];
 
-function controller(){
+function controller(showModalService){
+	this.showModal = showModal;
+
+	///////////
 	
+	function showModal(){
+		showModalService('#estimatesAddProductsModal');
+	}
 }
-
-function link (scope, element, attr){}

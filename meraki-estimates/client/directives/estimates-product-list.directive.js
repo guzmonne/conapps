@@ -11,10 +11,10 @@ angular.module('conapps').directive('estimatesProductList', function(){
 			this.collection = [];
 
 			$scope.$meteorSubscribe('merakiProducts', getParametersReactively())
-			.then(function(subscriptionHandle){
-				this.subscriptionHandle = subscriptionHandle;
-				this.collection         = $scope.$meteorCollection(setCollectionReactively, false);
-			}.bind(this));
+				.then(function(subscriptionHandle){
+					this.subscriptionHandle = subscriptionHandle;
+					this.collection         = $scope.$meteorCollection(setCollectionReactively, false);
+				}.bind(this));
 
 			function setCollectionReactively(){
 				var query      = getParametersReactively();
