@@ -22,7 +22,7 @@ function controller($scope, $stateParams, $state, estimateModifiers, es){
 	
 	vm.estimate   = null;
 	vm.estimateId = $stateParams.id;
-	
+
 	activate();
 
 	//////////
