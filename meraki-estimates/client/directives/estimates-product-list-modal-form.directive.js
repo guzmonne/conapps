@@ -1,26 +1,47 @@
-angular.module('conapps').directive('estimatesProductListModalForm', ['merakiProductService', function (merakiProductService){
+angular.module('conapps').directive('estimatesProductListModalForm', estimatesProductListModalForm);
+
+function estimatesProductListModalForm(){
 	return {
-		restrict: 'E',
-		replace: true,
-		templateUrl: 'meraki-estimates/client/views/estimates-product-list-modal-form.template.ng.html',
-		scope: {},
-		controller: ['callSaveMethod', function(callSaveMethod){
-			this.product = merakiProductService.product;
-			this.productIsNew = function(){ return !(this.product && this.product._id) }
-			this.saveProduct  = function(){
-				callSaveMethod(this.product, {
-					createMethod  : 'createMerakiProduct',
-					updateMethod  : 'updateMerakiProduct',
-					createMessage : 'Producto creado.',
-					updateMessage : 'Producto actualizado.'
-				})
-				.then(function(result){
-					if (!this.product._id)
-						this.product = merakiProductService.setDefault();
-				}.bind(this))
-			}
-		}],
-		controllerAs: 'vm',
-		bindToController: true,
-	};
-}]);
+		restrict         : 'E',
+		replace          : true,
+		templateUrl      : 'meraki-estimates/client/views/estimates-product-list-modal-form.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
+		bindToController : true,
+		scope            : {},
+	}
+}
+
+controller.$inject = ['callSaveMethod', 'merakiProductService'];
+
+function controller(callSaveMethod, merakiProduct){
+	var vm = this;
+
+	vm.product      = merakiProduct.product;
+	vm.productIsNew = productIsNew;
+	vm.saveProduct  = saveProduct;
+
+	////////////
+
+	var options = {
+		createMethod  : 'createMerakiProduct',
+		updateMethod  : 'updateMerakiProduct',
+		createMessage : 'Producto creado.',
+		updateMessage : 'Producto actualizado.'
+	}
+
+	function productIsNew(){
+		return !(vm.product && vm.product._id);
+	}
+
+	function saveProduct(){
+		callSaveMethod(vm.product, options)
+			.then(handleSuccess)
+	}
+
+	function handleSuccess(result){
+		if (vm.productIsNew())
+			vm.product = merakiProduct.setDefault();
+	}
+
+}

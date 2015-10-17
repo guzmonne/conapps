@@ -20,7 +20,6 @@ function controller($scope){
 	var vm = this;
 
 	vm.line     = ''
-	vm.products = [];
 
 	activate();
 
@@ -32,27 +31,28 @@ function controller($scope){
 			.catch(handleError);
 	}
 
-	function defaultTerms(){
-		return MerakiProducts.constructQuery({type: 'index'});
-	}
+	function getTerms(){
+		var query = {type: 'index-by-line'};
+		var line  = $scope.getReactively('vm.line');
+		
+		if (line)
+			query.line = line;
+		
+		console.log(query);
 
+		return query;
+	}
+	
 	function handleSuccess(){
-		vm.availableProducts = $scope.$meteorCollection(setMerakiProducts, false);
+		vm.availableProducts = $scope.$meteorCollection(getMerakiProducts, false);
 	}
 
 	function handleError(err){
 		toastr.error(err.reason, err.error);
 	}
 
-	function getTerms(){
-		var query = {type: 'index-by-line'};
-		var line  = $scope.getReactively('vm.line');
-		if (line)
-			query.line = line;
-		return query;
-	}
 
-	function setMerakiProducts(){
+	function getMerakiProducts(){
 		var parameters = MerakiProducts.constructQuery(getTerms());
 		return MerakiProducts.find(parameters.filters, parameters.options);
 	}

@@ -1,0 +1,82 @@
+<div class="panel panel-default">
+	
+	<!-- Panel Heading Starts -->
+	<div class="panel-heading" style="height: 30px">
+		<h4 class="pull-left minus-margin-top">
+			<strong class="pull-left">{{::vm.product.model}}</strong>
+		</h4>
+		<h4 class="pull-right minus-margin-top" label-by-line="{{::vm.product.line}}">
+			{{::vm.product.line}}
+		</h4>
+	</div>
+	<!-- Panel Heading End -->
+
+	<!-- Panel Heading Starts -->
+	<div class="panel-body">
+		<div class="container">
+			<div class="row">
+				<!-- Product Image -->
+				<div class="col-sm-3">
+					<div class="align-image-vertically-50">
+						<img src="{{::vm.product.image}}" alt="Product Image">
+					</div>
+				</div>
+				
+				<!-- Product Attributes -->
+				<div class="col-sm-6">
+					<h4>
+						Familia {{::vm.product.family}}
+						<small class="pull-right">
+							
+							<!-- Show only if datasheet is present -->
+							<a 
+								ng-href="{{::vm.product.datasheet || '#'}}"
+								target="_blank"
+								class="text-primary"
+								ng-if="vm.product.datasheet">
+								<i>datasheet</i>
+								<i class="fa fa-file-pdf-o"></i>
+							</a>
+
+							<!-- Show only if user is Admin -->
+							<span ng-if="vm.isAdmin()">
+								<span ng-if="vm.product.datasheet">|</span>
+								<a
+									href="javascript:void(0);"
+									class="text-orange"
+									ng-click="vm.editProduct()">
+									<i>editar</i>
+									<i class="fa fa-pencil"></i>
+								</a>
+								|
+								<a
+									href="javascript:void(0);"
+									class="text-danger"
+									ng-click="vm.deleteProduct()">
+									<i>eliminar</i>
+									<i class="fa fa-times"></i>
+								</a>
+							</span>
+							<!-- /Show only if user is Admin -->
+						
+						</small>
+					</h4>
+					<h6 class="padding text-muted">
+						{{::vm.product.description || 'Sin Descripción...'}}
+					</h6>	
+				</div>
+
+				<!-- Product Price -->
+				<div class="col-sm-3">
+					<span class="span-well span-well-default no-margin-top">
+						<h5 class="span-well-heading text-center">
+							Precio:
+							<strong>$ {{::vm.product.price | setDecimal}}</strong>
+						</h5>
+					</span>
+				</div>
+			</div>
+		</div>		
+	</div>
+	<!-- Panel Heading Ends -->
+</div>

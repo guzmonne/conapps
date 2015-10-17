@@ -22,7 +22,7 @@ function updateMerakiProduct (doc){
 	App.helpers.verifyDoc(doc, requiredKeys);
 	App.helpers.stringSearch(doc, indexedFields);
 	parseDocValues(doc);
-	verifyAttributes(doc);
+	//verifyAttributes(doc);
 	if (Meteor.isServer){
 		var id = doc._id;
 		if (!id) {
@@ -37,16 +37,15 @@ function updateMerakiProduct (doc){
 function deleteMerakiProduct (productId){
 	if (!productId)
 		throw new Meteor.Error('productId-is-undefined');
-	console.log(productId);
 	return MerakiProducts.update(productId, { $set: { deleted: true } });
 }
 
 function parseDocValues(doc){
 	doc.model        = doc.model.toUpperCase();
-	doc.listPrice    = parseFloat(doc.listPrice);
-	doc.partnerPrice = parseFloat(doc.partnerPrice);
-	doc.dealPrice    = parseFloat(doc.dealPrice);
-	doc.nfrPrice     = parseFloat(doc.nfrPrice);
+	//doc.listPrice    = parseFloat(doc.listPrice);
+	//doc.partnerPrice = parseFloat(doc.partnerPrice);
+	//doc.dealPrice    = parseFloat(doc.dealPrice);
+	//doc.nfrPrice     = parseFloat(doc.nfrPrice);
 }
 
 function verifyAttributes(doc){
@@ -100,13 +99,7 @@ var requiredKeys = [
 	'line',
 	'family',
 	'model',
-	'attributes',
-	'datasheet',
-	'image',
-	'listPrice',
-	'partnerPrice',
-	'dealPrice',
-	'nfrPrice',
+	'price'
 ];
 
 var indexedFields = [
@@ -114,9 +107,6 @@ var indexedFields = [
 	'family',
 	'model',
 	'attributes',
-	'listPrice',
-	'partnerPrice',
-	'dealPrice',
-	'nfrPrice',
+	'price',
 ];
 

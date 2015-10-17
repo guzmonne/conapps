@@ -15,11 +15,13 @@ function link (scope, element, attr){
 	var label = 'label label-';
 	if (scope.line === 'Wireless')
 		label += 'primary'
-	if (scope.line === 'Security Appliances')
+	else if (scope.line === 'Security Appliance')
 		label += 'danger'
-	if (scope.line === 'Switches')
+	else if (scope.line === 'Switches')
 		label += 'success'
-	if (scope.line === 'Accesories')
+	else if (scope.line === 'Accesories')
 		label += 'warning'
+	else 
+		label += 'inverse'
 	element.addClass(label);
 }

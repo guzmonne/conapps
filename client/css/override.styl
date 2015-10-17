@@ -50,6 +50,9 @@ $grey       = #E8E8E8
 
 .label.label-warning
   background: $orange
+  
+.label.label-inverse
+  background: $maroon
 // -------------------
 // Font Awesome Clases
 // -------------------
@@ -75,6 +78,9 @@ $grey       = #E8E8E8
 // -------------
 // Helper Clases
 // ------------- 
+
+.minus-margin-top
+  margin-top: -7px
 
 .spinner-container
   min-height: 100px
@@ -274,16 +280,28 @@ $success = $olive
 .span-well
   border-width: 2px
   border-style: solid
-  border-color: black
-  color: inherit
+  border-color: $grey
+  color: $grey
   width: 100%
   display: block
   padding: 15px
   border-radius: 15px
   margin-top: 15px
+  opacity: 0.8
+  
+.span-well:hover
+  opacity: 1
+  cursor: pointer
+
+.span-well.no-margin-top
+  margin-top: 0
+  margin-left: 15px
 
 .span-well > .span-well-heading
   min-height: 40px
+  
+.span-well.no-margin-top > .span-well-heading
+  min-height: 0
 
 .span-well.span-well-primary
   color: $primary
@@ -370,11 +388,21 @@ $success = $olive
   margin-right: 12px
   display: inline
   
-.img-align-middle-for-155
-  line-height: 155px;
+.align-image-vertically-160
+  line-height: 160px;
   
-.img-align-middle-for-155 > img
+.align-image-vertically-160 > img
   vertical-align: middle
+  
+.align-image-vertically-50
+  line-height: 50px;
+  
+.align-image-vertically-50 > img
+  vertical-align: middle
+  max-height: 60px
+  max-width: 180px
+  display: block;
+  margin: 0 auto;
   
 ///////////////////
 // Notifications

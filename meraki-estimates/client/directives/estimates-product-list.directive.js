@@ -1,42 +1,62 @@
-angular.module('conapps').directive('estimatesProductList', function(){
+angular.module('conapps').directive('estimatesProductList', estimatesProductList);
+
+function estimatesProductList(){
 	return {
-		restrict    : 'E',
-		replace     : true,
-		templateUrl : 'meraki-estimates/client/views/estimates-product-list.template.ng.html',
-		scope       : {},
-		controller  : ['$scope', '$meteor', function($scope, $meteor){
-			this.options    = {
-				sort: '_id',
-			};
-			this.collection = [];
-
-			$scope.$meteorSubscribe('merakiProducts', getParametersReactively())
-				.then(function(subscriptionHandle){
-					this.subscriptionHandle = subscriptionHandle;
-					this.collection         = $scope.$meteorCollection(setCollectionReactively, false);
-				}.bind(this));
-
-			function setCollectionReactively(){
-				var query      = getParametersReactively();
-				var parameters = MerakiProducts.constructQuery(query);
-				return MerakiProducts.find(parameters.filters, parameters.options);
-			}
-
-			function getParametersReactively(){
-				var query        = {type: 'index'},
-						sort         = $scope.getReactively('productList.options.sort'),
-						reverse      = $scope.getReactively('productList.options.reverse', true),
-						stringSearch = $scope.getReactively('productList.options.stringSearch');
-				if (sort)
-					query.sort = sort;
-				if (reverse)
-					query.reverse = reverse;
-				if (stringSearch)
-					query.stringSearch = stringSearch;
-				return query;
-			}
-		}],
-		controllerAs     : 'productList',
+		restrict         : 'E',
+		replace          : true,
+		templateUrl      : 'meraki-estimates/client/views/estimates-product-list.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
 		bindToController : true,
+		link             : link,
+		scope            : {},
 	}
-});
+}
+
+controller.$inject = ['$scope'];
+
+function controller($scope){
+	var vm = this;
+
+	vm.products     = [];
+	vm.stringSearch = '';
+
+	activate();
+
+	/////////////
+
+	function activate(){
+		$scope.$meteorSubscribe('merakiProducts', getTerms())
+			.then(handleSuccess)
+			.catch(handleError)
+	}
+
+	function getTerms(){
+		var query        = {type: 'index'};
+		var stringSearch = $scope.getReactively('vm.stringSearch', true);
+
+		if (stringSearch)
+			query.stringSearch = stringSearch;
+
+		return query;
+	}
+
+	function handleSuccess(){
+		vm.products = $scope.$meteorCollection(getMerakiProducts, false);
+	}
+
+	function handleError(err){
+		toastr.error(err.reason, err.error);
+	}
+
+	function getMerakiProducts(){
+		var parameters = MerakiProducts.constructQuery(getTerms());
+		parameters.filters.line = {$not: 'License'};
+		parameters.options.sort = {line: 1};
+		return MerakiProducts.find(parameters.filters, parameters.options);
+	}
+}
+
+function link(scope, element){
+	element.find('#spinner').append(App.spinner.el);
+}

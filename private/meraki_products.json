@@ -1,0 +1,1586 @@
+[
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS220-8-HW",
+    "description":"Meraki MS220-8 Cloud Managed 8 Port GigE Switch",
+    "price":985
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS220-8P-HW",
+    "description":"Meraki MS220-8P L2 Cloud Managed 8 Port GigE 124W PoE Switch",
+    "price":1255
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS220-24-HW",
+    "description":"Meraki MS220-24 L2 Cloud Managed 24 Port GigE Switch",
+    "price":2155
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS220-24P-HW",
+    "description":"Meraki MS220-24P L2 Cloud Managed 24 Port GigE 370W PoE Switch",
+    "price":2875
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS220-48-HW",
+    "description":"Meraki MS220-48 L2 Cloud Managed 48 Port GigE Switch",
+    "price":3775
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS220-48LP-HW",
+    "description":"Meraki MS220-48LP L2 Cloud Managed 48 Port GigE 370W PoE Switch",
+    "price":5035
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS220-48FP-HW",
+    "description":"Meraki MS220-48FP L2 Cloud Managed 48 Port GigE 740W PoE Switch",
+    "price":5935
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS320-24-HW",
+    "description":"Meraki MS320-24 L3 Cloud Managed 24 Port GigE Switch",
+    "price":5305
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS320-24P-HW",
+    "description":"Meraki MS320-24P L3 Cloud Managed 24 Port GigE 370W PoE Switch",
+    "price":5845
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS320-48-HW",
+    "description":"Meraki MS320-48 L3 Cloud Managed 48 Port GigE Switch",
+    "price":7825
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS320-48LP-HW",
+    "description":"Meraki MS320-48LP L3 Cloud Managed 48 Port GigE 370W PoE Switch",
+    "price":9085
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS320-48FP-HW",
+    "description":"Meraki MS320-48FP L3 Cloud Managed 48 Port GigE 740W PoE Switch",
+    "price":9985
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS420-24-HW",
+    "description":"Meraki MS420-24 L3 Cloud Managed 24 port SFP+ Aggregation Switch",
+    "price":21595
+  },
+  {
+    "family":"MS",
+    "line":"Switches",
+    "licenceFor":"",
+    "years":null,
+    "model":"MS420-48-HW",
+    "description":"Meraki MS420-48 L3 Cloud Managed 48 port SFP+ Aggregation Switch",
+    "price":39595
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8",
+    "years":1,
+    "model":"LIC-MS220-8-1YR",
+    "description":"Meraki MS220-8 Enterprise License and Support. 1 Year",
+    "price":55
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8",
+    "years":3,
+    "model":"LIC-MS220-8-3YR",
+    "description":"Meraki MS220-8 Enterprise License and Support. 3 Year",
+    "price":110
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8",
+    "years":5,
+    "model":"LIC-MS220-8-5YR",
+    "description":"Meraki MS220-8 Enterprise License and Support. 5 Year",
+    "price":165
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8",
+    "years":7,
+    "model":"LIC-MS220-8-7YR",
+    "description":"Meraki MS220-8 Enterprise License and Support. 7 Year",
+    "price":220
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8",
+    "years":10,
+    "model":"LIC-MS220-8-10YR",
+    "description":"Meraki MS220-8 Enterprise License and Support. 10 Year",
+    "price":275
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8P",
+    "years":1,
+    "model":"LIC-MS220-8P-1YR",
+    "description":"Meraki MS220-8P Enterprise License and Support. 1 Year",
+    "price":70
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8P",
+    "years":3,
+    "model":"LIC-MS220-8P-3YR",
+    "description":"Meraki MS220-8P Enterprise License and Support. 3 Year",
+    "price":140
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8P",
+    "years":5,
+    "model":"LIC-MS220-8P-5YR",
+    "description":"Meraki MS220-8P Enterprise License and Support. 5 Year",
+    "price":210
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8P",
+    "years":7,
+    "model":"LIC-MS220-8P-7YR",
+    "description":"Meraki MS220-8P Enterprise License and Support. 7 Year",
+    "price":280
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-8P",
+    "years":10,
+    "model":"LIC-MS220-8P-10YR",
+    "description":"Meraki MS220-8P Enterprise License and Support. 10 Year",
+    "price":350
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24",
+    "years":1,
+    "model":"LIC-MS220-24-1YR",
+    "description":"Meraki MS220-24 Enterprise License and Support. 1 Year",
+    "price":120
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24",
+    "years":3,
+    "model":"LIC-MS220-24-3YR",
+    "description":"Meraki MS220-24 Enterprise License and Support. 3 Year",
+    "price":240
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24",
+    "years":5,
+    "model":"LIC-MS220-24-5YR",
+    "description":"Meraki MS220-24 Enterprise License and Support. 5 Year",
+    "price":360
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24",
+    "years":7,
+    "model":"LIC-MS220-24-7YR",
+    "description":"Meraki MS220-24 Enterprise License and Support. 7 Year",
+    "price":480
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24",
+    "years":10,
+    "model":"LIC-MS220-24-10YR",
+    "description":"Meraki MS220-24 Enterprise License and Support. 10 Year",
+    "price":600
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24P",
+    "years":1,
+    "model":"LIC-MS220-24P-1YR",
+    "description":"Meraki MS220-24P Enterprise License and Support. 1 Year",
+    "price":160
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24P",
+    "years":3,
+    "model":"LIC-MS220-24P-3YR",
+    "description":"Meraki MS220-24P Enterprise License and Support. 3 Year",
+    "price":320
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24P",
+    "years":5,
+    "model":"LIC-MS220-24P-5YR",
+    "description":"Meraki MS220-24P Enterprise License and Support. 5 Year",
+    "price":480
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24P",
+    "years":7,
+    "model":"LIC-MS220-24P-7YR",
+    "description":"Meraki MS220-24P Enterprise License and Support. 7 Year",
+    "price":640
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-24P",
+    "years":10,
+    "model":"LIC-MS220-24P-10YR",
+    "description":"Meraki MS220-24P Enterprise License and Support. 10 Year",
+    "price":800
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48",
+    "years":1,
+    "model":"LIC-MS220-48-1YR",
+    "description":"Meraki MS220-48 Enterprise License and Support. 1 Year",
+    "price":210
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48",
+    "years":3,
+    "model":"LIC-MS220-48-3YR",
+    "description":"Meraki MS220-48 Enterprise License and Support. 3 Year",
+    "price":420
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48",
+    "years":5,
+    "model":"LIC-MS220-48-5YR",
+    "description":"Meraki MS220-48 Enterprise License and Support. 5 Year",
+    "price":630
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48",
+    "years":7,
+    "model":"LIC-MS220-48-7YR",
+    "description":"Meraki MS220-48 Enterprise License and Support. 7 Year",
+    "price":840
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48",
+    "years":10,
+    "model":"LIC-MS220-48-10YR",
+    "description":"Meraki MS220-48 Enterprise License and Support. 10 Year",
+    "price":1050
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48LP",
+    "years":1,
+    "model":"LIC-MS220-48LP-1YR",
+    "description":"Meraki MS220-48LP Enterprise License and Support. 1 Year",
+    "price":280
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48LP",
+    "years":3,
+    "model":"LIC-MS220-48LP-3YR",
+    "description":"Meraki MS220-48LP Enterprise License and Support. 3 Year",
+    "price":560
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48LP",
+    "years":5,
+    "model":"LIC-MS220-48LP-5YR",
+    "description":"Meraki MS220-48LP Enterprise License and Support. 5 Year",
+    "price":840
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48LP",
+    "years":7,
+    "model":"LIC-MS220-48LP-7YR",
+    "description":"Meraki MS220-48LP Enterprise License and Support. 7 Year",
+    "price":1120
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"",
+    "years":10,
+    "model":"LIC-MS220-48LP-10Y",
+    "description":"Meraki MS220-48LP Enterprise License and Support. 10 Year",
+    "price":1400
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48FP",
+    "years":1,
+    "model":"LIC-MS220-48FP-1YR",
+    "description":"Meraki MS220-48FP Enterprise License and Support. 1 Year",
+    "price":330
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48FP",
+    "years":3,
+    "model":"LIC-MS220-48FP-3YR",
+    "description":"Meraki MS220-48FP Enterprise License and Support. 3 Year",
+    "price":660
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48FP",
+    "years":5,
+    "model":"LIC-MS220-48FP-5YR",
+    "description":"Meraki MS220-48FP Enterprise License and Support. 5 Year",
+    "price":990
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS220-48FP",
+    "years":7,
+    "model":"LIC-MS220-48FP-7YR",
+    "description":"Meraki MS220-48FP Enterprise License and Support. 7 Year",
+    "price":1320
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"",
+    "years":10,
+    "model":"LIC-MS220-48FP-10Y",
+    "description":"Meraki MS220-48FP Enterprise License and Support. 10 Year",
+    "price":1650
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24",
+    "years":1,
+    "model":"LIC-MS320-24-1YR",
+    "description":"Meraki MS320-24 Enterprise License and Support. 1 Year",
+    "price":295
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24",
+    "years":3,
+    "model":"LIC-MS320-24-3YR",
+    "description":"Meraki MS320-24 Enterprise License and Support. 3 Year",
+    "price":590
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24",
+    "years":5,
+    "model":"LIC-MS320-24-5YR",
+    "description":"Meraki MS320-24 Enterprise License and Support. 5 Year",
+    "price":885
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24",
+    "years":7,
+    "model":"LIC-MS320-24-7YR",
+    "description":"Meraki MS320-24 Enterprise License and Support. 7 Year",
+    "price":1180
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24",
+    "years":10,
+    "model":"LIC-MS320-24-10YR",
+    "description":"Meraki MS320-24 Enterprise License and Support. 10 Year",
+    "price":1475
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24P",
+    "years":1,
+    "model":"LIC-MS320-24P-1YR",
+    "description":"Meraki MS320-24P Enterprise License and Support. 1 Year",
+    "price":325
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24P",
+    "years":3,
+    "model":"LIC-MS320-24P-3YR",
+    "description":"Meraki MS320-24P Enterprise License and Support. 3 Year",
+    "price":650
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24P",
+    "years":5,
+    "model":"LIC-MS320-24P-5YR",
+    "description":"Meraki MS320-24P Enterprise License and Support. 5 Year",
+    "price":975
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24P",
+    "years":7,
+    "model":"LIC-MS320-24P-7YR",
+    "description":"Meraki MS320-24P Enterprise License and Support. 7 Year",
+    "price":1300
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-24P",
+    "years":10,
+    "model":"LIC-MS320-24P-10YR",
+    "description":"Meraki MS320-24P Enterprise License and Support. 10 Year",
+    "price":1625
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48",
+    "years":1,
+    "model":"LIC-MS320-48-1YR",
+    "description":"Meraki MS320-48 Enterprise License and Support. 1 Year",
+    "price":435
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48",
+    "years":3,
+    "model":"LIC-MS320-48-3YR",
+    "description":"Meraki MS320-48 Enterprise License and Support. 3 Year",
+    "price":870
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48",
+    "years":5,
+    "model":"LIC-MS320-48-5YR",
+    "description":"Meraki MS320-48 Enterprise License and Support. 5 Year",
+    "price":1305
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48",
+    "years":7,
+    "model":"LIC-MS320-48-7YR",
+    "description":"Meraki MS320-48 Enterprise License and Support. 7 Year",
+    "price":1740
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48",
+    "years":10,
+    "model":"LIC-MS320-48-10YR",
+    "description":"Meraki MS320-48 Enterprise License and Support. 10 Year",
+    "price":2175
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48LP",
+    "years":1,
+    "model":"LIC-MS320-48LP-1YR",
+    "description":"Meraki MS320-48LP Enterprise License and Support. 1 Year",
+    "price":505
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48LP",
+    "years":3,
+    "model":"LIC-MS320-48LP-3YR",
+    "description":"Meraki MS320-48LP Enterprise License and Support. 3 Year",
+    "price":1010
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48LP",
+    "years":5,
+    "model":"LIC-MS320-48LP-5YR",
+    "description":"Meraki MS320-48LP Enterprise License and Support. 5 Year",
+    "price":1515
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48LP",
+    "years":7,
+    "model":"LIC-MS320-48LP-7YR",
+    "description":"Meraki MS320-48LP Enterprise License and Support. 7 Year",
+    "price":2020
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"",
+    "years":10,
+    "model":"LIC-MS320-48LP-10Y",
+    "description":"Meraki MS320-48LP Enterprise License and Support. 10 Year",
+    "price":2525
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48FP",
+    "years":1,
+    "model":"LIC-MS320-48FP-1YR",
+    "description":"Meraki MS320-48FP Enterprise License and Support. 1 Year",
+    "price":555
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48FP",
+    "years":3,
+    "model":"LIC-MS320-48FP-3YR",
+    "description":"Meraki MS320-48FP Enterprise License and Support. 3 Year",
+    "price":1110
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48FP",
+    "years":5,
+    "model":"LIC-MS320-48FP-5YR",
+    "description":"Meraki MS320-48FP Enterprise License and Support. 5 Year",
+    "price":1665
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS320-48FP",
+    "years":7,
+    "model":"LIC-MS320-48FP-7YR",
+    "description":"Meraki MS320-48FP Enterprise License and Support. 7 Year",
+    "price":2220
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"",
+    "years":10,
+    "model":"LIC-MS320-48FP-10Y",
+    "description":"Meraki MS320-48FP Enterprise License and Support. 10 Year",
+    "price":2775
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-24",
+    "years":1,
+    "model":"LIC-MS420-24-1YR",
+    "description":"Meraki MS420-24 Enterprise License and Support. 1 Year",
+    "price":1200
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-24",
+    "years":3,
+    "model":"LIC-MS420-24-3YR",
+    "description":"Meraki MS420-24 Enterprise License and Support. 3 Year",
+    "price":2400
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-24",
+    "years":5,
+    "model":"LIC-MS420-24-5YR",
+    "description":"Meraki MS420-24 Enterprise License and Support. 5 Year",
+    "price":3600
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-24",
+    "years":7,
+    "model":"LIC-MS420-24-7YR",
+    "description":"Meraki MS420-24 Enterprise License and Support. 7 Year",
+    "price":4800
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-24",
+    "years":10,
+    "model":"LIC-MS420-24-10YR",
+    "description":"Meraki MS420-24 Enterprise License and Support. 10 Year",
+    "price":6000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-48",
+    "years":1,
+    "model":"LIC-MS420-48-1YR",
+    "description":"Meraki MS420-48 Enterprise License and Support. 1 Year",
+    "price":2200
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-48",
+    "years":3,
+    "model":"LIC-MS420-48-3YR",
+    "description":"Meraki MS420-48 Enterprise License and Support. 3 Year",
+    "price":4400
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-48",
+    "years":5,
+    "model":"LIC-MS420-48-5YR",
+    "description":"Meraki MS420-48 Enterprise License and Support. 5 Year",
+    "price":6600
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-48",
+    "years":7,
+    "model":"LIC-MS420-48-7YR",
+    "description":"Meraki MS420-48 Enterprise License and Support. 7 Year",
+    "price":8800
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MS420-48",
+    "years":10,
+    "model":"LIC-MS420-48-10YR",
+    "description":"Meraki MS420-48 Enterprise License and Support. 10 Year",
+    "price":11000
+  },
+  {
+    "family":"Z1",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"Z1-HW-US",
+    "description":"Meraki Z1 Cloud Managed Teleworker Gateway (US Plug)",
+    "price":395
+  },
+  {
+    "family":"Z1",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"Z1-HW-EU",
+    "description":"Meraki Z1 Cloud Managed Teleworker Gateway (EU Plug)",
+    "price":395
+  },
+  {
+    "family":"Z1",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"Z1-HW-UK",
+    "description":"Meraki Z1 Cloud Managed Teleworker Gateway (UK Plug)",
+    "price":395
+  },
+  {
+    "family":"Z1",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"Z1-HW-AU",
+    "description":"Meraki Z1 Cloud Managed Teleworker Gateway (AU Plug)",
+    "price":395
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"Z1-ENT",
+    "years":1,
+    "model":"LIC-Z1-ENT-1YR",
+    "description":"Meraki Z1 Enterprise License and Support. 1 Year",
+    "price":50
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"Z1-ENT",
+    "years":3,
+    "model":"LIC-Z1-ENT-3YR",
+    "description":"Meraki Z1 Enterprise License and Support. 3 Years",
+    "price":100
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"Z1-ENT",
+    "years":5,
+    "model":"LIC-Z1-ENT-5YR",
+    "description":"Meraki Z1 Enterprise License and Support. 5 Years",
+    "price":150
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"Z1-ENT",
+    "years":7,
+    "model":"LIC-Z1-ENT-7YR",
+    "description":"Meraki Z1 Enterprise License and Support. 7 Years",
+    "price":210
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"Z1-ENT",
+    "years":10,
+    "model":"LIC-Z1-ENT-10YR",
+    "description":"Meraki Z1 Enterprise License and Support. 10 Years",
+    "price":300
+  },
+  {
+    "family":"MX",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"MX64-HW",
+    "description":"Meraki MX64 Cloud Managed Security Appliance",
+    "price":595
+  },
+  {
+    "family":"MX",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"MX64W-HW",
+    "description":"Meraki MX64W Cloud Managed Security Appliance with 802.11ac",
+    "price":945
+  },
+  {
+    "family":"MX",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"MX80-HW",
+    "description":"Meraki MX80 Cloud Managed Security Appliance",
+    "price":1995
+  },
+  {
+    "family":"MX",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"MX100-HW",
+    "description":"Meraki MX100 Cloud Managed Security Appliance",
+    "price":4995
+  },
+  {
+    "family":"MX",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"MX400-HW",
+    "description":"Meraki MX400 Cloud Managed Security Appliance",
+    "price":15995
+  },
+  {
+    "family":"MX",
+    "line":"Security Appliance",
+    "licenceFor":"",
+    "years":null,
+    "model":"MX600-HW",
+    "description":"Meraki MX600 Cloud Managed Security Appliance",
+    "price":31995
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64-SEC",
+    "years":1,
+    "model":"LIC-MX64-SEC-1YR",
+    "description":"Meraki MX64 Advanced Security License and Support. 1 Year",
+    "price":600
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64-SEC",
+    "years":3,
+    "model":"LIC-MX64-SEC-3YR",
+    "description":"Meraki MX64 Advanced Security License and Support. 3 Years",
+    "price":1200
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64-SEC",
+    "years":5,
+    "model":"LIC-MX64-SEC-5YR",
+    "description":"Meraki MX64 Advanced Security License and Support. 5 Years",
+    "price":1800
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64-SEC",
+    "years":7,
+    "model":"LIC-MX64-SEC-7YR",
+    "description":"Meraki MX64 Advanced Security License and Support. 7 Years",
+    "price":2520
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64-SEC",
+    "years":10,
+    "model":"LIC-MX64-SEC-10YR",
+    "description":"Meraki MX64 Advanced Security License and Support. 10 Years",
+    "price":3600
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64W-SEC",
+    "years":1,
+    "model":"LIC-MX64W-SEC-1YR",
+    "description":"Meraki MX64W Advanced Security License and Support. 1 Year",
+    "price":650
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64W-SEC",
+    "years":3,
+    "model":"LIC-MX64W-SEC-3YR",
+    "description":"Meraki MX64W Advanced Security License and Support. 3 Years",
+    "price":1300
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64W-SEC",
+    "years":5,
+    "model":"LIC-MX64W-SEC-5YR",
+    "description":"Meraki MX64W Advanced Security License and Support. 5 Years",
+    "price":1950
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64W-SEC",
+    "years":7,
+    "model":"LIC-MX64W-SEC-7YR",
+    "description":"Meraki MX64W Advanced Security License and Support. 7 Years",
+    "price":2730
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX64W-SEC",
+    "years":10,
+    "model":"LIC-MX64W-SEC-10YR",
+    "description":"Meraki MX64W Advanced Security License and Support. 10 Years",
+    "price":3900
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX80-SEC",
+    "years":1,
+    "model":"LIC-MX80-SEC-1YR",
+    "description":"Meraki MX80 Advanced Security License and Support. 1 Year",
+    "price":2000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX80-SEC",
+    "years":3,
+    "model":"LIC-MX80-SEC-3YR",
+    "description":"Meraki MX80 Advanced Security License and Support. 3 Years",
+    "price":4000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX80-SEC",
+    "years":5,
+    "model":"LIC-MX80-SEC-5YR",
+    "description":"Meraki MX80 Advanced Security License and Support. 5 Years",
+    "price":6000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX80-SEC",
+    "years":7,
+    "model":"LIC-MX80-SEC-7YR",
+    "description":"Meraki MX80 Advanced Security License and Support. 7 Years",
+    "price":8400
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX80-SEC",
+    "years":10,
+    "model":"LIC-MX80-SEC-10YR",
+    "description":"Meraki MX80 Advanced Security License and Support. 10 Years",
+    "price":12000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX100-SEC",
+    "years":1,
+    "model":"LIC-MX100-SEC-1YR",
+    "description":"Meraki MX100 Advanced Security License and Support. 1 Year",
+    "price":5000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX100-SEC",
+    "years":3,
+    "model":"LIC-MX100-SEC-3YR",
+    "description":"Meraki MX100 Advanced Security License and Support. 3 Years",
+    "price":10000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX100-SEC",
+    "years":5,
+    "model":"LIC-MX100-SEC-5YR",
+    "description":"Meraki MX100 Advanced Security License and Support. 5 Years",
+    "price":15000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX100-SEC",
+    "years":7,
+    "model":"LIC-MX100-SEC-7YR",
+    "description":"Meraki MX100 Advanced Security License and Support. 7 Years",
+    "price":21000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX100-SEC",
+    "years":10,
+    "model":"LIC-MX100-SEC-10YR",
+    "description":"Meraki MX100 Advanced Security License and Support. 10 Years",
+    "price":30000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX400-SEC",
+    "years":1,
+    "model":"LIC-MX400-SEC-1YR",
+    "description":"Meraki MX400 Advanced Security License and Support. 1 Year",
+    "price":16000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX400-SEC",
+    "years":3,
+    "model":"LIC-MX400-SEC-3YR",
+    "description":"Meraki MX400 Advanced Security License and Support. 3 Years",
+    "price":32000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX400-SEC",
+    "years":5,
+    "model":"LIC-MX400-SEC-5YR",
+    "description":"Meraki MX400 Advanced Security License and Support. 5 Years",
+    "price":48000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX400-SEC",
+    "years":7,
+    "model":"LIC-MX400-SEC-7YR",
+    "description":"Meraki MX400 Advanced Security License and Support. 7 Years",
+    "price":67200
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX400-SEC",
+    "years":10,
+    "model":"LIC-MX400-SEC-10YR",
+    "description":"Meraki MX400 Advanced Security License and Support. 10 Years",
+    "price":96000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX600-SEC",
+    "years":1,
+    "model":"LIC-MX600-SEC-1YR",
+    "description":"Meraki MX600 Advanced Security License and Support. 1 Year",
+    "price":32000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX600-SEC",
+    "years":3,
+    "model":"LIC-MX600-SEC-3YR",
+    "description":"Meraki MX600 Advanced Security License and Support. 3 Years",
+    "price":64000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX600-SEC",
+    "years":5,
+    "model":"LIC-MX600-SEC-5YR",
+    "description":"Meraki MX600 Advanced Security License and Support. 5 Years",
+    "price":96000
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX600-SEC",
+    "years":7,
+    "model":"LIC-MX600-SEC-7YR",
+    "description":"Meraki MX600 Advanced Security License and Support. 7 Years",
+    "price":134400
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MX600-SEC",
+    "years":10,
+    "model":"LIC-MX600-SEC-10YR",
+    "description":"Meraki MX600 Advanced Security License and Support. 10 Years",
+    "price":192000
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"IM-8-CU-1GB",
+    "description":"Meraki 8 x 1 GbE Copper Interface Module for MX400 and MX600",
+    "price":3999
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"IM-8-SFP-1GB",
+    "description":"Meraki 8 x 1 GbE SFP Interface Module for MX400 and MX600",
+    "price":4999
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"IM-2-SFP-10GB",
+    "description":"Meraki 2 x 10 GbE SFP+ Interface Module for MX400 and MX600",
+    "price":3999
+  },
+  {
+    "family":"CORD",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-PWR-CORD-EU",
+    "description":"Meraki AC Power Cord for MX and MS (EU Plug)",
+    "price":29
+  },
+  {
+    "family":"CORD",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-PWR-CORD-UK",
+    "description":"Meraki AC Power Cord for MX and MS (UK Plug)",
+    "price":29
+  },
+  {
+    "family":"CORD",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-PWR-CORD-AU",
+    "description":"Meraki AC Power Cord for MX and MS (AU Plug)",
+    "price":29
+  },
+  {
+    "family":"CORD",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-PWR-CORD-US",
+    "description":"Meraki AC Power Cord for MX and MS (US Plug)",
+    "price":29
+  },
+  {
+    "family":"PWR",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"PWR-MS320-250WAC",
+    "description":"Meraki MS320 250WAC PSU for MS320-24 and MS320-48",
+    "price":450
+  },
+  {
+    "family":"PWR",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"PWR-MS320-640WAC",
+    "description":"Meraki MS320 640WAC PSU for MS320-24P and MS320-48LP",
+    "price":950
+  },
+  {
+    "family":"PWR",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"PWR-MS320-1025WAC",
+    "description":"Meraki MS320 1025WAC PSU for MS320-48FP",
+    "price":1450
+  },
+  {
+    "family":"PWR",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"PWR-MS420-400AC-R",
+    "description":"Meraki MS420 400WAC front-to-back PSU",
+    "price":2000
+  },
+  {
+    "family":"PWR",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-PWR-30WAC",
+    "description":"Meraki MX64 Replacement Power Adapter (30 WAC)",
+    "price":65
+  },
+  {
+    "family":"FAN",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"FAN-MS420-R",
+    "description":"Meraki MS420 front-to-back fan",
+    "price":250
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-SFP-10GB-LR",
+    "description":"Meraki 10G Base LR Single-Mode",
+    "price":3995
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-SFP-10GB-LRM",
+    "description":"Meraki 10G Base LRM Multi-Mode",
+    "price":995
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-SFP-10GB-SR",
+    "description":"Meraki 10G Base SR Multi-Mode",
+    "price":995
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-SFP-1GB-LX10",
+    "description":"Meraki 1000Base LX10 Single-Mode",
+    "price":995
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-SFP-1GB-SX",
+    "description":"Meraki 1000Base SX Multi-Mode",
+    "price":500
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-SFP-1GB-TX",
+    "description":"Meraki 1 GbE SFP Copper Module",
+    "price":395
+  },
+  {
+    "family":"SFP",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-CBL-TA-1M",
+    "description":"Meraki 10 GbE Twinax Cable with SFP+ Modules. 1 Meter",
+    "price":150
+  },
+  {
+    "family":"MR",
+    "line":"Wireless",
+    "licenceFor":"",
+    "years":null,
+    "model":"MR16-HW",
+    "description":"Meraki MR16 Cloud Managed AP",
+    "price":649
+  },
+  {
+    "family":"MR",
+    "line":"Wireless",
+    "licenceFor":"",
+    "years":null,
+    "model":"MR18-HW",
+    "description":"Meraki MR18 Cloud Managed AP",
+    "price":649
+  },
+  {
+    "family":"MR",
+    "line":"Wireless",
+    "licenceFor":"",
+    "years":null,
+    "model":"MR24-HW",
+    "description":"Meraki MR24 Cloud Managed AP",
+    "price":1199
+  },
+  {
+    "family":"MR",
+    "line":"Wireless",
+    "licenceFor":"",
+    "years":null,
+    "model":"MR26-HW",
+    "description":"Meraki MR26 Cloud Managed AP",
+    "price":1099
+  },
+  {
+    "family":"MR",
+    "line":"Wireless",
+    "licenceFor":"",
+    "years":null,
+    "model":"MR32-HW",
+    "description":"Meraki MR32 Cloud Managed AP",
+    "price":799
+  },
+  {
+    "family":"MR",
+    "line":"Wireless",
+    "licenceFor":"",
+    "years":null,
+    "model":"MR34-HW",
+    "description":"Meraki MR34 Cloud Managed AP",
+    "price":1399
+  },
+  {
+    "family":"MR",
+    "line":"Wireless",
+    "licenceFor":"",
+    "years":null,
+    "model":"MR72-HW",
+    "description":"Meraki MR72 Cloud Managed AP",
+    "price":1599
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MR",
+    "years":1,
+    "model":"LIC-ENT-1YR",
+    "description":"Meraki MR Enterprise Cloud Controller License. 1 Year",
+    "price":150
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MR",
+    "years":3,
+    "model":"LIC-ENT-3YR",
+    "description":"Meraki MR Enterprise Cloud Controller License. 3 Years",
+    "price":300
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MR",
+    "years":5,
+    "model":"LIC-ENT-5YR",
+    "description":"Meraki MR Enterprise Cloud Controller License. 5 Years",
+    "price":450
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MR",
+    "years":7,
+    "model":"LIC-ENT-7YR",
+    "description":"Meraki MR Enterprise Cloud Controller License. 7 Years",
+    "price":630
+  },
+  {
+    "family":"LIC",
+    "line":"License",
+    "licenceFor":"MR",
+    "years":10,
+    "model":"LIC-ENT-10YR",
+    "description":"Meraki MR Enterprise Cloud Controller License. 10 Years",
+    "price":900
+  },
+  {
+    "family":"INJ",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-INJ-4-US",
+    "description":"Meraki MR 802.3at PoE Injector (US Plug)",
+    "price":149
+  },
+  {
+    "family":"INJ",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-INJ-4-EU",
+    "description":"Meraki MR 802.3at PoE Injector (EU Plug)",
+    "price":149
+  },
+  {
+    "family":"INJ",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-INJ-4-UK",
+    "description":"Meraki MR 802.3at PoE Injector (UK Plug)",
+    "price":149
+  },
+  {
+    "family":"INJ",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-INJ-4-AU",
+    "description":"Meraki MR 802.3at PoE Injector (AU Plug)",
+    "price":149
+  },
+  {
+    "family":"AC",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"AC-MR-1-US",
+    "description":"Meraki AC Adapter for MR Wireless Access Points (US Plug)",
+    "price":29
+  },
+  {
+    "family":"AC",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"AC-MR-1-EU",
+    "description":"Meraki AC Adapter for MR Wireless Access Points (EU Plug)",
+    "price":29
+  },
+  {
+    "family":"AC",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"AC-MR-1-UK",
+    "description":"Meraki AC Adapter for MR Wireless Access Points (UK Plug)",
+    "price":29
+  },
+  {
+    "family":"AC",
+    "line":"Accesory",
+    "licenceFor":"",
+    "years":null,
+    "model":"AC-MR-1-AU",
+    "description":"Meraki AC Adapter for MR Wireless Access Points (AU Plug)",
+    "price":29
+  },
+  {
+    "family":"ANT",
+    "line":"Antenna",
+    "licenceFor":"",
+    "years":null,
+    "model":"ANT-10",
+    "description":"Meraki 5/7 dBi. Dual Band Omni Antennas. N-type. Set of 2",
+    "price":99
+  },
+  {
+    "family":"ANT",
+    "line":"Antenna",
+    "licenceFor":"",
+    "years":null,
+    "model":"ANT-11",
+    "description":"Meraki 14dBi. 5 GHz Sector Antenna. MIMO. N-type",
+    "price":149
+  },
+  {
+    "family":"ANT",
+    "line":"Antenna",
+    "licenceFor":"",
+    "years":null,
+    "model":"ANT-13",
+    "description":"Meraki 11dBi. 2.4 GHz Sector Antenna. MIMO. N-type",
+    "price":149
+  },
+  {
+    "family":"ANT",
+    "line":"Antenna",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-ANT-20",
+    "description":"Meraki Dual-band Omni Antennas",
+    "price":199
+  },
+  {
+    "family":"ANT",
+    "line":"Antenna",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-ANT-21",
+    "description":"Meraki 5GHz Sector Antenna",
+    "price":349
+  },
+  {
+    "family":"ANT",
+    "line":"Antenna",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-ANT-23",
+    "description":"Meraki 2.4GHz Sector Antenna",
+    "price":349
+  },
+  {
+    "family":"ANT",
+    "line":"Antenna",
+    "licenceFor":"",
+    "years":null,
+    "model":"MA-ANT-25",
+    "description":"Meraki Dual Band Patch Antenna",
+    "price":349
+  }
+]
