@@ -9,7 +9,8 @@ function estimatesAddProducts(){
 		controllerAs     : 'vm',
 		bindToController : true,
 		scope            : {
-			products: '='
+			products: '=',
+			availableProducts: '=',
 		},
 	}
 }

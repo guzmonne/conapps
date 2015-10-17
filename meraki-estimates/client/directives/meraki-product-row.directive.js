@@ -8,17 +8,61 @@ function merakiProductRow(){
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,
-		link             : link,
 		scope            : {
-			product: '='
+			product: '=',
+			products: '=',
 		},
 	}
 }
 
-controller.$inject = [];
+controller.$inject = ['$scope', 'addProductsToEstimateService'];
 
-function controller(){
+function controller($scope, service){
+	var vm = this;
+
+	vm.quantity          = 1;
+	vm.moreInfo          = false;
+	vm.addProduct        = addProduct;
+	vm.removeProduct     = removeProduct;
+
+	/////////////
 	
+	function removeProduct(){
+		var deleteBootboxDialog = {
+			message: '¿Esta seguro que desea eliminar este producto?',
+			title: 'Eliminar Producto',
+			buttons: {
+				confirm: {
+					label: 'Aceptar',
+					className: 'btn-primary',
+					callback: function() {
+						vm.products = _.filter(vm.products, function(p){
+							return p._id !== vm.product._id; 
+						});
+						$scope.$apply();
+					}
+				},
+				cancel: {
+					label: 'Cancelar',
+					className: 'btn-default',
+				}
+			}
+		};
+		bootbox.dialog(deleteBootboxDialog);
+	}
+	
+	function addProduct(){
+		var _product = _.find(vm.products, function(p){ 
+			return p._id === vm.product._id
+		});
+		if (_product)
+			_product.quantity += vm.quantity;
+ 		else {
+ 			var product = angular.copy(vm.product);
+ 			product.quantity = vm.quantity;
+ 			angular.isArray(vm.products) || (vm.products = []);
+ 			vm.products.push(product);
+ 		}
+ 		toastr.success('Producto agregado.', '¡OK!');
+	} 
 }
-
-function link (scope, element, attr){}

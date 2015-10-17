@@ -8,7 +8,9 @@ function estimatesAddProductsModal(){
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,
-		scope            : {},
+		scope            : {
+			products: '='
+		},
 	}
 }
 
@@ -35,7 +37,7 @@ function controller($scope){
 	}
 
 	function handleSuccess(){
-		vm.products = $scope.$meteorCollection(setMerakiProducts, false);
+		vm.availableProducts = $scope.$meteorCollection(setMerakiProducts, false);
 	}
 
 	function handleError(err){

@@ -2,8 +2,9 @@
 	<div class="row padding">
 		<div class="col-sm-12">
 			<meraki-product-row
-				ng-repeat="product in vm.products"
-				product="product">
+				ng-repeat="product in vm.availableProducts track by product._id"
+				product="product"
+				products="vm.products">
 			</meraki-product-row>
 		</div>
 	</div>

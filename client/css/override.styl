@@ -41,7 +41,15 @@ $grey       = #E8E8E8
   
 .label.label-primary
   background: $blue
+  
+.label.label-success
+  background: $olive
 
+.label.label-danger
+  background: $red
+
+.label.label-warning
+  background: $orange
 // -------------------
 // Font Awesome Clases
 // -------------------
@@ -56,13 +64,13 @@ $grey       = #E8E8E8
   color: rgb(255, 108, 50) !important
 
 .fa-stack-in-label > .fa-stack-2x
-  top: 4px;
-  left: 0px;
-  font-size: 1.4em;
+  top: 4px
+  left: 0px
+  font-size: 1.4em
   
 .fa-super
-  font-size: 0.7em;
-  vertical-align: super;
+  font-size: 0.7em
+  vertical-align: super
 
 // -------------
 // Helper Clases
@@ -81,8 +89,8 @@ $grey       = #E8E8E8
   user-select: none
 
 .padding
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 10px
+  margin-bottom: 10px
   
 .add-padding
   padding: 15px
@@ -98,6 +106,14 @@ $grey       = #E8E8E8
   
 .row.row-padding-bottom:last-child
   padding-bottom: 0px
+  
+.center-block-vertically
+  position: relative
+  top: 50%
+  transform: translateY(30%)
+  
+.bg-blue
+  background-color: $blue
 
 // --------------
 // Sidenav Clases
@@ -190,8 +206,8 @@ ul.list-text-hover > li:hover
   color: $lightBlue  
 
 .list-inline-tags
-  margin-top: -10px;
-  margin-left: 0px;
+  margin-top: -10px
+  margin-left: 0px
 
 // -------------
 // Button Clases
@@ -202,6 +218,9 @@ ul.list-text-hover > li:hover
   
 .btn-block.btn-block-5 > button
   width: 20%
+
+.btn-block.btn-block-4 > button
+  width: 25%
   
 // ------------
 // Table Clases
@@ -223,7 +242,7 @@ ul.list-text-hover > li:hover
   cursor: pointer
   
 .table-first-border-top-none > tbody > tr:first-child > td
-  border-top: none;
+  border-top: none
   
 .table.table-margin-bottom-0
   margin-bottom: 0
@@ -253,14 +272,15 @@ $danger  = #FF4136
 $success = $olive
 
 .span-well
-  border-width: 2px;
-  border-style: solid;
-  border-color: black;
-  color: inherit;
+  border-width: 2px
+  border-style: solid
+  border-color: black
+  color: inherit
   width: 100%
   display: block
   padding: 15px
   border-radius: 15px
+  margin-top: 15px
 
 .span-well > .span-well-heading
   min-height: 40px
@@ -306,3 +326,71 @@ $success = $olive
   line-height: 12px
   margin-top: 5px
   text-align: left
+  
+// -------------------
+// Modal Classes
+// -------------------
+
+.modal-content.modal-min-300
+  min-height: 300px
+  
+.modal-content.modal-min-650
+  height: 720px
+  
+.modal-content.modal-min-650 > .modal-body
+  height: 600px
+  overflow: auto
+// -------------------
+// More Info
+// -------------------
+
+.more-info:hover
+  color: $blue
+  
+.more-info > a
+  color: inherit
+  
+.more-info > a.more-info-anchor > i.fa
+  margin-top: -7px
+  background-color: white
+  padding-left: 20px
+
+.more-info > a.more-info-anchor > hr
+  border-top: 2px solid
+  border-color: #E6E6E6
+  margin: 0
+  margin-top: -12px
+  
+.more-info:hover > a.more-info-anchor > hr
+  border-color: $blue
+
+.more-info > a.more-info-anchor > strong
+  background-color: white
+  padding-right: 20px
+  margin-right: 12px
+  display: inline
+  
+.img-align-middle-for-155
+  line-height: 155px;
+  
+.img-align-middle-for-155 > img
+  vertical-align: middle
+  
+///////////////////
+// Notifications
+///////////////////
+
+.notification
+  padding: 15px
+  background-color: $grey
+  border-radius: 5px
+  width: 100%
+  display: block
+  
+.notification-blue
+  background-color: $blue
+  color: white
+  
+.notification-orange
+  background-color: $orange
+  color: white

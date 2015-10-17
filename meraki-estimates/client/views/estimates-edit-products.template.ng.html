@@ -1,3 +1,15 @@
 <div class="container padding">
-	<h1>Estimates edit products</h1>
+	<div class="row" ng-show="!vm.products">
+		<div class="col-sm-12 text-center">
+			<span class="notification notification-orange">
+				<i class="fa fa-warning"></i>
+				Agregue productos al estimate para continuar.
+			</span>
+		</div>
+	</div>
+	<meraki-product-row
+		ng-repeat="product in vm.products track by product._id"
+		product="product"
+		products="vm.products">
+	</meraki-product-row>
 </div>

@@ -9,7 +9,8 @@ function estimatesAddProductsFilters(){
 		controllerAs     : 'vm',
 		bindToController : true,
 		scope            : {
-			line: '='
+			line: '=',
+			showSelected: '='
 		},
 		link: link
 	}
@@ -27,6 +28,10 @@ function controller(){
 	
 	function filterBy(line){
 		if (!line) return;
+		if (line === 'selected')
+			vm.showSelected = true;
+		else
+			vm.showSelected = false;
 		if (line === vm.currentLine){
 			vm.line = '';
 			vm.currentLine = '';
