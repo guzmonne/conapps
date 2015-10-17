@@ -1,37 +1,39 @@
 <div class="row">
-	<form name="merakiProduct">
+	<form>
 		<div class="col-sm-6">
 			<!-- Line -->
 			<gux-form-select 
-				ng-model="merakiProductForm.product.line"
+				ng-model="vm.product.line"
 				select-name="line"
-				select-options="merakiProductForm.lines"
+				select-options="vm.lines"
 			>
 				Linea
 			</gux-form-select>
-			<gux-form-select 
-				ng-model="merakiProductForm.product.family"
-				select-name="family"
-				select-options="merakiProductForm.families"
+			<gux-form-input
+				ng-model="vm.product.family"
+				input-placeholder="Ej.: MR"
+				input-name="family"
 			>
 				Familia
-			</gux-form-select>
+			</gux-form-input>
 			<gux-form-input
-				ng-model="merakiProductForm.product.model"
+				ng-model="vm.product.model"
 				input-placeholder="Ej.: MR32"
 				input-name="model"
 			>
 				Modelo
 			</gux-form-input>
 			<gux-form-input
-				ng-model="merakiProductForm.product.description"
+				ng-model="vm.product.description"
 				input-placeholder="Ej.: Meraki MR32 Cloud Managed AP"
 				input-name="descripción"
 			>
 				Descripcion
 			</gux-form-input>
+		</div>
+		<div class="col-sm-6">
 			<gux-form-input
-				ng-model="merakiProductForm.product.listPrice"
+				ng-model="vm.product.price"
 				input-placeholder="0.00"
 				input-name="listPrice"
 				input-type="number"
@@ -39,44 +41,14 @@
 				Precio de Lista
 			</gux-form-input>
 			<gux-form-input
-				ng-model="merakiProductForm.product.partnerPrice"
-				input-placeholder="0.00"
-				input-name="partnerPrice"
-				input-type="number"
-			>
-				Precio de Partner
-			</gux-form-input>
-			<gux-form-input
-				ng-model="merakiProductForm.product.dealPrice"
-				input-placeholder="0.00"
-				input-name="dealPrice"
-				input-type="number"
-			>
-				Precio de Deal
-			</gux-form-input>
-			<gux-form-input
-				ng-model="merakiProductForm.product.nfrPrice"
-				input-placeholder="0.00"
-				input-name="nfrPrice"
-				input-type="number"
-			>
-				Precio NFR
-			</gux-form-input>
-		</div>
-		<div class="col-sm-6">
-			<meraki-product-attributes-form
-				line="merakiProductForm.product.line"
-				product="merakiProductForm.product"
-			></meraki-product-attributes-form>
-			<gux-form-input
-				ng-model="merakiProductForm.product.image"
+				ng-model="vm.product.image"
 				input-placeholder="Ej.: https://meraki.cisco.com/img/mx64w.jpg"
 				input-name="image"
 			>
 				Imagen
 			</gux-form-input>
 			<gux-form-input
-				ng-model="merakiProductForm.product.datasheet"
+				ng-model="vm.product.datasheet"
 				input-placeholder="Ej.: https://meraki.cisco.com/lib/pdf/meraki_datasheet_mx.pdf"
 				input-name="datasheet"
 			>

@@ -1,5 +1,5 @@
 <div class="row spinner-container">
-	<div ng-hide="vm.product && vm.product.length > 0" id="spinner"></div>
+	<div ng-if="vm.products && vm.products.length > 0" id="spinner"></div>
 	<estimates-product-list-toolbar
 		string-search="vm.stringSearch"
 		something="vm.something">

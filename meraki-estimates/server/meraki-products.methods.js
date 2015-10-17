@@ -10,7 +10,7 @@ function createMerakiProduct (doc){
 	App.helpers.verifyDoc(doc, requiredKeys);
 	App.helpers.stringSearch(doc, indexedFields);
 	parseDocValues(doc);
-	verifyAttributes(doc);
+	//verifyAttributes(doc);
 	if (Meteor.isServer){
 		App.helpers.addCreatedValues(doc);
 		return MerakiProducts.insert(doc);
@@ -99,14 +99,9 @@ var requiredKeys = [
 	'line',
 	'family',
 	'model',
-	'price'
-];
-
-var indexedFields = [
-	'line',
-	'family',
-	'model',
-	'attributes',
+	'description',
 	'price',
 ];
+
+var indexedFields = requiredKeys;
 

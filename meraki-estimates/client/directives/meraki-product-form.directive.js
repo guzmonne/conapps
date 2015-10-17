@@ -1,51 +1,39 @@
-angular.module('conapps').directive('merakiProductForm', function(){
+angular.module('conapps').directive('merakiProductForm', merakiProductForm);
+
+function merakiProductForm(){
 	return {
-		restrict: 'E',
-		replace : true,
-		templateUrl: 'meraki-estimates/client/views/meraki-product-form.template.ng.html',
-		scope: {
-			product: '=',
+		restrict         : 'E',
+		replace          : true,
+		templateUrl      : 'meraki-estimates/client/views/meraki-product-form.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
+		bindToController : true,
+		scope            : {
+			product: '='
 		},
-		controller: [function(){
-			this.lines    = lines;
-			this.families = families;
-		}],
-		controllerAs: 'merakiProductForm',
-		bindToController: true,
-		link: function(scope){
-			scope.$watch('merakiProductForm.product.line', updateFamily.bind(scope));
-		}
-	};
-});
-
-var lines = [
-	'Wireless',
-	'Switches',
-	'Security Appliances',
-	'Antennas',
-	'Accesorios'
-];
-
-var families = [
-	'MR',
-	'MS',
-	'MX',
-	'Z',
-	'S/F'
-];
-
-function updateFamily(){
-	var vm = this.merakiProductForm;
-	if (!vm.product || !vm.product.line)
-		return;
-	if (vm.product.line === 'Wireless')
-		vm.product.family = 'MR';
-	if (vm.product.line === 'Switches'){
-		vm.product.family = 'MS';
 	}
-	if (vm.product.line === 'Security Appliances'){
-		vm.product.family = 'MX';
-	}
-	if (vm.product.line === 'Accesorios')
-		vm.product.family = 'S/F';
+}
+
+controller.$inject = [];
+
+function controller(){
+	var vm = this;
+
+	vm.lines = [
+		'Wireless',
+		'Switches',
+		'Security Appliance',
+		'Antennas',
+		'Accesory'
+	];
+
+	vm.families = [
+		'MR',
+		'MS',
+		'MX',
+		'Z1',
+		'S/F'
+	];
+
+	/////////////
 }
