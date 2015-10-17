@@ -1,7 +1,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="btn-group btn-block btn-block-4">
+			<div class="btn-group btn-block btn-block-5">
+				<button 
+					class="btn btn-inverse"
+					ng-click="vm.toggleSelected()"
+					name="Selected">
+					Seleccionados
+					<span class="badge">{{vm.selectedLength}}</span>
+				</button>
 				<button 
 					class="btn btn-inverse"
 					ng-click="vm.filterBy('Wireless')"
@@ -16,8 +23,8 @@
 				</button>
 				<button 
 					class="btn btn-inverse"
-					ng-click="vm.filterBy('Security Appliance')"
-					name="Security_Appliance">
+					ng-click="vm.filterBy('Security Appliances')"
+					name="Security_Appliances">
 					Security Appliances
 				</button>
 				<button 

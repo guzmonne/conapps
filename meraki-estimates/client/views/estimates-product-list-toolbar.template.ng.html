@@ -8,12 +8,17 @@
 			</button>
 		</div>
 		<div class="col-sm-offset-4 col-sm-4">
-			<input 	
-				type="text"
-				ng-model="vm.stringSearch"
-				ng-model-options="{debounce: 200}"
-				placeholder="Filtro"
-				class="form-control">	
+			<form name="searchForm">
+				<div class="form-group has-feedback">
+					<input 	
+						type="text"
+						ng-model="vm.stringSearch"
+						ng-model-options="{debounce: 800}"
+						placeholder="Filtro"
+						class="form-control">	
+						<span class="glyphicon glyphicon-repeat form-control-feedback fa-spin"></span>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

@@ -193,7 +193,6 @@ if (MerakiProducts.find().count() === 0){
 			product.attributes = {};
 		}
 		product.stringSearch = JSON.stringify(product).toLowerCase();
-		console.log(product);
 		return product;
 	}
 }

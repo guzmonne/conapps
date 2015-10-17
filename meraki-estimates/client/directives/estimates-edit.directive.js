@@ -1,6 +1,6 @@
 angular.module('conapps').directive('estimatesEdit', [estimatesEditDirective]);
 
-function estimatesEditDirective(something){
+function estimatesEditDirective(){
 	return {
 		restrict: 'E',
 		replace : true,
@@ -15,9 +15,9 @@ function estimatesEditDirective(something){
 	};
 }
 
-controller.$inject = ['$meteor', '$stateParams', '$state', 'estimateModifiers'];
+controller.$inject = ['$scope', '$stateParams', '$state', 'estimateModifiers', 'estimateEditService'];
 
-function controller($meteor, $stateParams, $state, estimateModifiers){
+function controller($scope, $stateParams, $state, estimateModifiers, es){
 	var vm        = this;
 	
 	vm.estimate   = null;
@@ -28,16 +28,11 @@ function controller($meteor, $stateParams, $state, estimateModifiers){
 	//////////
 	
 	function activate(){
-		$meteor.call('getEstimate', vm.estimateId)
-		.then(function(estimate){
-			vm.estimate  = estimate;
-			vm.modifiers = vm.estimate.modifiers || estimateModifiers.defaults();
-		})
-		.catch(function(err){
-			toastr.error(err.reason);
-			$state.go('meraki_estimates.index');
-			console.log(err);
-		});
+		es.getEstimate(vm.estimateId)
+			.then(function(estimate){
+				vm.estimate  = estimate;
+				vm.modifiers = vm.estimate.modifiers || estimateModifiers.defaults();
+			});
 	}
 }
 

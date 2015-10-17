@@ -757,7 +757,7 @@
   },
   {
     "family":"Z1",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"Z1-HW-US",
@@ -766,7 +766,7 @@
   },
   {
     "family":"Z1",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"Z1-HW-EU",
@@ -775,7 +775,7 @@
   },
   {
     "family":"Z1",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"Z1-HW-UK",
@@ -784,7 +784,7 @@
   },
   {
     "family":"Z1",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"Z1-HW-AU",
@@ -838,56 +838,56 @@
   },
   {
     "family":"MX",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"MX64-HW",
-    "description":"Meraki MX64 Cloud Managed Security Appliance",
+    "description":"Meraki MX64 Cloud Managed Security Appliances",
     "price":595
   },
   {
     "family":"MX",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"MX64W-HW",
-    "description":"Meraki MX64W Cloud Managed Security Appliance with 802.11ac",
+    "description":"Meraki MX64W Cloud Managed Security Appliances with 802.11ac",
     "price":945
   },
   {
     "family":"MX",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"MX80-HW",
-    "description":"Meraki MX80 Cloud Managed Security Appliance",
+    "description":"Meraki MX80 Cloud Managed Security Appliances",
     "price":1995
   },
   {
     "family":"MX",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"MX100-HW",
-    "description":"Meraki MX100 Cloud Managed Security Appliance",
+    "description":"Meraki MX100 Cloud Managed Security Appliances",
     "price":4995
   },
   {
     "family":"MX",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"MX400-HW",
-    "description":"Meraki MX400 Cloud Managed Security Appliance",
+    "description":"Meraki MX400 Cloud Managed Security Appliances",
     "price":15995
   },
   {
     "family":"MX",
-    "line":"Security Appliance",
+    "line":"Security Appliances",
     "licenceFor":"",
     "years":null,
     "model":"MX600-HW",
-    "description":"Meraki MX600 Cloud Managed Security Appliance",
+    "description":"Meraki MX600 Cloud Managed Security Appliances",
     "price":31995
   },
   {

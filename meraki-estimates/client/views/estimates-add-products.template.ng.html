@@ -1,11 +1,13 @@
 <div class="container">
 	<div class="row padding">
-		<div class="col-sm-12">
-			<meraki-product-row
+		<div class="col-sm-12" style="min-height: 800px">
+			<meraki-product-panel
 				ng-repeat="product in vm.availableProducts track by product._id"
 				product="product"
-				products="vm.products">
-			</meraki-product-row>
+				products="vm.products"
+				selectable="true"
+				ng-cloak>
+			</meraki-product-panel>
 		</div>
 	</div>
 </div>

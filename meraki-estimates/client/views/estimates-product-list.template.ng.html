@@ -8,7 +8,9 @@
 	<div class="col-sm-12">
 		<meraki-product-panel
 			ng-repeat="product in vm.products track by product._id"
-			product="product">
+			editable="true"
+			product="product"
+			ng-cloak>
 		</meraki-product-panel>
 	</div>
 	<estimates-product-list-modal-form>

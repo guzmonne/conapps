@@ -15,7 +15,7 @@ function link (scope, element, attr){
 	var label = 'label label-';
 	if (scope.line === 'Wireless')
 		label += 'primary'
-	else if (scope.line === 'Security Appliance')
+	else if (scope.line === 'Security Appliances')
 		label += 'danger'
 	else if (scope.line === 'Switches')
 		label += 'success'

@@ -26,8 +26,16 @@
 							{{estimate._id.toUpperCase()}}
 						</a>
 					</td>
-					<td>{{estimate.name}}</td>
-					<td>{{estimate.description}}</td>
+					<td>
+						<a class="text-primary" ui-sref="meraki_estimates.edit({id: estimate._id})">
+							{{estimate.name}}
+						</a>
+					</td>
+					<td>
+						<a class="text-primary" ui-sref="meraki_estimates.edit({id: estimate._id})">
+							{{estimate.description}}
+						</a>
+					</td>
 				</tr>
 			</thead>
 		</table>

@@ -8,7 +8,6 @@ function estimatesProductListToolbar(){
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,
-		link             : link,
 		scope            : {
 			stringSearch: '=',
 		},
@@ -34,5 +33,3 @@ function controller(showModalService, merakiProduct){
 		vm.stringSearch = vm._stringSearch;
 	}
 }
-
-function link (scope, element, attr){}

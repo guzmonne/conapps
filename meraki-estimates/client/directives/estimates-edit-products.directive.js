@@ -8,7 +8,6 @@ function estimatesEditProducts(){
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,
-		link             : link,
 		scope            : {
 			products: '='
 		},
@@ -20,5 +19,3 @@ controller.$inject = [];
 function controller(){
 	var vm = this;
 }
-
-function link (scope, element, attr){}

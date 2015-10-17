@@ -1,20 +1,40 @@
 <div id="estimatesAddProductsModal" class="modal fade">
   <div class="modal-dialog modal-lg">
     <div class="modal-content modal-min-650">
-			<div class="modal-header">
+    	<!-- Modal Header -->
+			<div class="modal-header text-primary">
 				<close-modal-button></close-modal-button>
 				<h4>Agregar Productos</h4>
 			</div>
+    	<!-- Modal Header -->
+    	<!-- Modal Body -->
 			<div class="modal-body">
 				<estimates-add-products-filters
-					line="vm.line">
+					line="vm.line"
+					showSelected="vm.showSelected"
+					selectedLength="selectedLength">
 				</estimates-add-products-filters>
+
 				<estimates-add-products
 					available-products="vm.availableProducts"
 					products="vm.products"
-					ng-hide="vm.showSelected">
+					ng-hide="vm.showSelected === true">
+				</estimates-add-products>
+
+				<estimates-add-products
+					available-products="vm.products"
+					products="vm.products"
+					ng-hide="vm.showSelected === false">
 				</estimates-add-products>
 			</div>
+    	<!-- Modal Body -->
+    	<!-- Modal Footer -->
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="vm.updateEstimate()">
+					Aceptar
+				</button>
+			</div>
+    	<!-- Modal Footer -->
 		</div>
   </div>
 </div>

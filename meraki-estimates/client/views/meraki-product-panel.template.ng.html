@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default animated fadeIn panel-hover">
 	
 	<!-- Panel Heading Starts -->
 	<div class="panel-heading" style="height: 30px">
@@ -11,21 +11,22 @@
 	</div>
 	<!-- Panel Heading End -->
 
-	<!-- Panel Heading Starts -->
+	<!-- Panel Body Starts -->
 	<div class="panel-body">
 		<div class="container">
 			<div class="row">
 				<!-- Product Image -->
 				<div class="col-sm-3">
 					<div class="align-image-vertically-50">
-						<img src="{{::vm.product.image}}" alt="Product Image">
+						<img class="img-responsive" src="{{::vm.product.image}}" alt="Product Image">
 					</div>
 				</div>
 				
 				<!-- Product Attributes -->
 				<div class="col-sm-6">
 					<h4>
-						Familia {{::vm.product.family}}
+						{{::vm.product.model}}
+						<small>Familia: {{::vm.product.family}}</small>
 						<small class="pull-right">
 							
 							<!-- Show only if datasheet is present -->
@@ -39,7 +40,7 @@
 							</a>
 
 							<!-- Show only if user is Admin -->
-							<span ng-if="vm.isAdmin()">
+							<span ng-if="vm.isAdmin() && vm.editable === 'true'">
 								<span ng-if="vm.product.datasheet">|</span>
 								<a
 									href="javascript:void(0);"
@@ -75,8 +76,59 @@
 						</h5>
 					</span>
 				</div>
+				<!-- /Product Price -->
+
 			</div>
 		</div>		
 	</div>
-	<!-- Panel Heading Ends -->
+	<!-- Panel Body Ends -->
+	
+	<!-- Panel Footer Starts -->
+	<div ng-if="vm.selectable === 'true'" class="panel-footer">
+		<div class="container">
+			<div class="row">
+				<!-- Quantity Modifier -->
+				<div class="col-sm-4 col-sm-offset-4">
+					<div class="input-group">
+	          <span class="input-group-btn">
+              <button class="btn btn-default btn-number btn-sm" ng-click="vm.modQty(-1)">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+	          </span>
+	          <input
+	          	type="text"
+	          	ng-model="vm.quantity"
+	          	ng-if="!vm.product.quantity"
+	          	class="form-control input-number text-center input-sm"
+	          	value="1"
+	          	min="1">
+	          <input
+	          	type="text"
+	          	ng-model="vm.product.quantity"
+	          	ng-if="vm.product.quantity"
+	          	class="form-control input-number text-center input-sm"
+	          	min="1">
+	          <span class="input-group-btn">
+              <button class="btn btn-default btn-number btn-sm" ng-click="vm.modQty(1)">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+	          </span>
+	      	</div>
+				</div>
+				<!-- /Quantity Modifier -->
+				<!-- Buttons -->
+				<div class="col-sm-2 col-sm-offset-2" style="padding-right: 0px">
+					<button class="btn btn-success pull-right btn-sm" ng-if="!vm.prodHasQty()" ng-click="vm.addProduct()">
+						<i class="fa fa-plus"></i>
+						Agregar
+					</button>
+					<button class="btn btn-danger pull-right btn-sm" ng-if="vm.prodHasQty()" ng-click="vm.removeProduct()">
+						<i class="fa fa-trash"></i>
+						Eliminar
+					</button>
+				</div>
+				<!-- /Buttons -->
+			</div>
+		</div>
+	</div>
 </div>

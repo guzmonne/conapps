@@ -7,9 +7,11 @@
 			</span>
 		</div>
 	</div>
-	<meraki-product-row
+	<meraki-product-panel
 		ng-repeat="product in vm.products track by product._id"
 		product="product"
-		products="vm.products">
-	</meraki-product-row>
+		selectable="true"
+		products="vm.products"
+		ng-cloak>
+	</meraki-product-panel>
 </div>
