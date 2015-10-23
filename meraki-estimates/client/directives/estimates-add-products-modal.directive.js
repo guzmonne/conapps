@@ -9,20 +9,22 @@ function estimatesAddProductsModal(){
 		controllerAs     : 'vm',
 		bindToController : true,
 		scope            : {
-			estimate: '='
+
 		},
 	}
 }
 
-controller.$inject = ['$scope'];
+controller.$inject = ['$scope', 'estimateEditService'];
 
-function controller($scope){
+function controller($scope, es){
 	var vm = this;
 
-	vm.line           = '';
-	vm.showSelected   = false;
-	vm.updateEstimate = updateEstimate;
-	vm.products       = [];
+	vm.line             = '';
+	vm.showSelected     = false;
+	vm.updateEstimate   = updateEstimate;
+	vm.products         = [];
+	vm.selectedProducts = es.getSelectedProducts();
+	vm.addProduct       = es.addProduct;
 
 	activate();
 
@@ -33,6 +35,8 @@ function controller($scope){
 			.then(handleSuccess)
 			.catch(handleError);
 	}
+
+	//////////
 
 	function getTerms(){
 		var query = {type: 'index-by-line'};
@@ -45,7 +49,7 @@ function controller($scope){
 	}
 	
 	function handleSuccess(){
-		vm.availableProducts = $scope.$meteorCollection(getMerakiProducts, false);
+		vm.products = $scope.$meteorCollection(getMerakiProducts, false);
 	}
 
 	function handleError(err){

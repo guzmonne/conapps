@@ -13,6 +13,8 @@ function _AppHelpers(){}
  * @return {Void}              
  */
 _AppHelpers.prototype.verifyDoc = function(doc, requiredKeys) {
+	console.log(doc);
+	console.log(requiredKeys)
 	this.userIsLoggedIn();
 	this.docHasRequiredKeys(doc, requiredKeys);
 };
@@ -34,8 +36,9 @@ _AppHelpers.prototype.userIsLoggedIn = function() {
  */
 _AppHelpers.prototype.docHasRequiredKeys = function(doc, requiredKeys) {
   _.forEach(requiredKeys, function(key){
-  	if (!_.has(doc, key))
+  	if (!_.has(doc, key)){
   		throw new Meteor.Error('missing-arguments['+key+']', 'Faltan argumentos.');
+  	}
   }.bind(this));
 };
 /**

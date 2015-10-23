@@ -11,25 +11,28 @@ function estimatesAddProductsFilters(){
 		scope            : {
 			line           : '=',
 			showSelected   : '=',
-			selectedLength : '='
 		},
 		link: link
 	}
 }
 
-controller.$inject = [];
+controller.$inject = ['estimateEditService'];
 
-function controller(){
+function controller(es){
 	var vm = this;
 	
 	vm.currentLine    = '';
 	vm.filterBy       = filterBy;
 	vm.toggleSelected = toggleSelected;
+	vm.selProdLen     = es.selectedProductsLength;
 
 	///////////
 	
 	function filterBy(line){
 		if (!line) return;
+
+		if (vm.currentLine === 'Selected')
+			toggleSelected();
 
 		if (line === vm.currentLine){
 			vm.line        = '';
@@ -41,14 +44,16 @@ function controller(){
 	}
 
 	function toggleSelected(){
-		if (vm.currentLine === 'Selected'){
-			vm.showSelected = false;
-			vm.currentLine  = '';
-			console.log(vm.showSelected);
-			return;
-		}
-		vm.currentLine  = 'Selected';
-		vm.showSelected = true;
+		toggleCurrentLine();
+		toggleShowSelected();
+	}
+
+	function toggleCurrentLine(){
+		vm.currentLine = (vm.currentLine === 'Selected') ? '' : 'Selected';
+	}
+
+	function toggleShowSelected(){
+		vm.showSelected = (vm.currentLine === 'Selected');
 		console.log(vm.showSelected);
 	}
 }

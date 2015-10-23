@@ -118,7 +118,10 @@
 				<!-- /Quantity Modifier -->
 				<!-- Buttons -->
 				<div class="col-sm-2 col-sm-offset-2" style="padding-right: 0px">
-					<button class="btn btn-success pull-right btn-sm" ng-if="!vm.prodHasQty()" ng-click="vm.addProduct()">
+					<button
+						class="btn btn-success pull-right btn-sm"
+						ng-if="!vm.prodHasQty()"
+						ng-click="vm.onSelect({product: vm.product, quantity: vm.quantity})">
 						<i class="fa fa-plus"></i>
 						Agregar
 					</button>
