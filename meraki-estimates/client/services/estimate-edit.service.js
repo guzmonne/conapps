@@ -73,7 +73,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 
 	};
 
-	return service;
+	return Object.create(service);
 	
 	//////////////
 
