@@ -106,7 +106,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		cleanSelected: function(){
-			service.selectedProducts = [];
+			angular.copy([], service.selectedProducts);
 			$rootScope.$emit('selectedProducts:updated');
 		},
 

@@ -20,6 +20,7 @@ controller.$inject = ['$scope', 'estimateEditService'];
 function controller($scope, es){
 	var vm = this;
 
+	vm.showSelected          = false;
 	vm.selectedProducts      = es.selectedProducts;
 	vm.addProduct            = es.addProduct;
 	vm.addProductsToEstimate = addProductsToEstimate;
@@ -73,8 +74,6 @@ function controller($scope, es){
 	}
 
 	function cleanModal(){
-		vm.line         = '';
-		vm.showSelected = false;
 		es.cleanSelected();
 	}
 

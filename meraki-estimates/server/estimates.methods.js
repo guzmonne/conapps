@@ -64,7 +64,7 @@ Meteor.methods({
 				products.push(product);
 			});
 
-			return Estimates.update(estimateId, { $set: { products: products } });
+			return Estimates.update(estimateId, { $addToSet: { products: { $each: products } } });
 		
 		}
 	},

@@ -49,7 +49,12 @@ function controller(es){
 	}
 
 	function toggleCurrentLine(){
-		vm.currentLine = (vm.currentLine === 'Selected') ? '' : 'Selected';
+		if (vm.currentLine === 'Selected'){
+			vm.currentLine = '';
+			vm.line        = '';
+		} else {
+			vm.currentLine = 'Selected';
+		}
 	}
 
 	function toggleShowSelected(){
