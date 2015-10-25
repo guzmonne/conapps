@@ -5,6 +5,8 @@ Meteor.methods({
 		App.helpers.filterUnacceptedKeys(doc, acceptedKeys);
 		App.helpers.stringSearch(doc, indexedFields);
 		if (Meteor.isServer) {
+			doc.discount = 0.35;
+			doc.years    = 3;
 			App.helpers.addCreatedValues(doc);
 			return Estimates.insert(doc);
 		}
@@ -32,6 +34,21 @@ Meteor.methods({
 			if (estimate.createdById !== Meteor.userId())
 				throw new Meteor.Error('not-estimate-owner', 'No tiene permiso para acceder a este estimate');
 			return estimate;
+		}
+	},
+
+	getEstimateAttrs: function(estimateId){
+		if (Meteor.isServer){
+			check(estimateId, String);
+
+			return Estimates.findOne(estimateId, {fields: 
+				{
+					'_id'            : -1,
+					'deal'           : 1,
+					'discount'       : 1,
+					'customDiscount' : 1
+				}
+			});
 		}
 	},
 
@@ -68,6 +85,40 @@ Meteor.methods({
 		
 		}
 	},
+
+	toggleDeal: function(id){
+		check(id, String);
+
+		if (Meteor.isServer){
+			var estimate, deal, discount;
+			estimate = Estimates.findOne(id);
+			deal     = !estimate.deal;
+			discount = (deal) ? 0.43 : 0.35;
+			return Estimates.update(id, { $set: { deal: deal, discount: discount } });
+		}
+	},
+
+	toggleCustomDiscount: function(id){
+		check(id, String);
+
+		if (Meteor.isServer){
+			var e;
+
+			e = Estimates.findOne(id, {fields: {customDiscount: 1}});
+
+			return Estimates.update(id, { $set: { customDiscount:  !e.customDiscount} });
+		}
+	},
+
+	'estimate:update:years': function(id, years){
+		check(id, String);
+
+		years = parseInt(years);
+
+		check(years, Number);
+
+		return Estimates.update(id, { $set: { years: years } });
+	}
 
 });
 

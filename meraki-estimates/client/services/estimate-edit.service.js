@@ -4,7 +4,7 @@ estimateEditService.$inject = ['$rootScope', '$meteor', '$state', '$q'];
 
 function estimateEditService($rootScope, $meteor, $state, $q){
 	
-	var service = {
+	var s = {
 		estimate: {},
 
 		selectedProducts: [],
@@ -15,11 +15,9 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 
 		getEstimate: function(id){
 			if (!angular.isUndefined(id))
-				//return service._subscribeToEstimateReactively(id);
-				//$meteor.object(Estimates, id, false).subscribe('estimate');
-				return service._callGetEstimate(id);
-			if (service.estimate)
-				return service.estimate;
+				return s._callGetEstimate(id);
+			if (s.estimate)
+				return s.estimate;
 			else
 				toastr.error('Undefined ID or not valid estimate');
 		},
@@ -27,16 +25,16 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		_subscribeToEstimate: function(id){
 			return $meteor.subscribe('estimate', id)
 				.then(sub => {
-					service.subscription = sub;
-					service.estimate     = $meteor.object(Estimates, id, false);
-					return service.estimate;
+					s.subscription = sub;
+					s.estimate     = $meteor.object(Estimates, id, false);
+					return s.estimate;
 				});
 		},
 
 		_callGetEstimate: function(id){
 			return $meteor.call('getEstimate', id)
 				.then(function(estimate){
-					angular.copy(estimate, service.estimate);
+					angular.copy(estimate, s.estimate);
 					return;
 				})
 				.catch(function(err){
@@ -49,7 +47,16 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		_reset: function(){
-			service._callGetEstimate(service.estimate._id);
+			s._callGetEstimate(s.estimate._id);
+		},
+
+		_resetAttrs: function(){
+			$meteor.call('getEstimateAttrs', s.estimate._id)
+				.then(function(attrs){
+					console.log(attrs);
+					_.extend(s.estimate, attrs);
+				})
+				.catch(throwError)
 		},
 
 		saveEstimateProducts: function(estimateId, products){
@@ -67,17 +74,17 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 			var p = angular.copy(product);
 			p.quantity = quantity;
 
-			service.selectedProducts.push(p);
+			s.selectedProducts.push(p);
 
 			$rootScope.$emit('selectedProducts:updated');
 		},
 
 		getSelectedProducts: function(){
-			return service.selectedProducts;
+			return s.selectedProducts;
 		},
 
 		selectedProductsLength: function(){
-			return service.selectedProducts.length;
+			return s.selectedProducts.length;
 		},
 
 		addProductsToEstimate: function(){
@@ -90,7 +97,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 			promise = $meteor.call('addProductsToEstimate', this.estimate._id, pIDsQty)
 				.then(function(result){
 					toastr.success('Productos agregados.', 'Estimate ' + this.estimate._id);
-					service._reset();
+					s._reset();
 					return result;
 				}.bind(this))
 				.catch(this.handleError);
@@ -106,62 +113,51 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		cleanSelected: function(){
-			angular.copy([], service.selectedProducts);
+			angular.copy([], s.selectedProducts);
 			$rootScope.$emit('selectedProducts:updated');
 		},
 
+		toggleDeal: function(){
+			$meteor.call('toggleDeal', s.estimate._id)
+				.then(function(deal){
+					console.log(deal);
+					var status = (!s.estimate.deal) ? 'ON' : 'OFF';
+					toastr.success('Deal ' + status);
+					s._resetAttrs();
+				})
+				.catch(throwError)
+		},
+
+		toggleCustomDiscount: function(){
+			$meteor.call('toggleCustomDiscount', s.estimate._id)
+				.then(function(){
+					toastr.success('Actualizado');
+					if (s.estimate.customDiscount === false)
+						s.estimate.discount = (s.estimate.deal) ? 0.43 : 0.35;
+				})
+				.catch(function(err){
+					throwError(err);
+					s.estimate.discount = (s.estimate.deal) ? 0.43 : 0.35;
+				});
+		},
+
+		updateYears: function(){
+			$meteor.call('estimate:update:years', s.estimate._id, s.estimate.years)
+				.then(function(){
+					toastr.success('Actualizado');
+				})
+				.catch(throwError);
+		}
+
 	};
 
-	return Object.create(service);
+	return Object.create(s);
 	
 	//////////////
 
-	function throwError(){
+	function throwError(err){
 		throw new Meteor.Error(err);
 		toastr.error(err, 'Error');
 	}
 
 }
-
-/*
-
-	function addProduct(){
-		if (productNotExists(vm.product))
-			modProdQty();
-		else
-			pushProduct();
-	}
-
-	// Object    -> true  -> false
-	// Undefined -> false -> true
-	function productNotExists(product){
-		return !!findProduct(product._id);
-	}
-
-	function findProduct(_id){
-		return _.find(vm.products, function(p){ return p._id === _id });	
-	}
-
-	function modProdQty(){
-		var product = findProduct(vm.product._id); 
-		product.quantity += parseInt(vm.quantity);
-	}
-
-	function pushProduct(){
-		angular.isArray(vm.products) || (vm.products = []);
-		product = angular.copy(vm.product);
-		product.quantity = parseInt(vm.quantity);
-		vm.products.push(product);
-	}
-
-	function removeProduct(){
-		bs.confirmProductRemove()
-			.then(function(){
-				filterProduct(vm.product._id);
-			});
-	}
-
-	function filterProduct(_id){
-		vm.products = _.filter(vm.products, function(p){ p._id !== _id });
-	}
- */

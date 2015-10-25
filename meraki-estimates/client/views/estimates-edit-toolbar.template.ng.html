@@ -6,14 +6,60 @@
 				Agregar Productos
 			</button>
 		</div>
-		<!-- 
-		<div class="col-sm-9">
-			<input
-				type="text"
-				class="form-control"
-				placeholder="Busqueda Rápida"
-				ng-model="vm.rapidSearch">
+		<div class="col-sm-2">
+			<h4 
+				class="pointer text-center"
+				style="line-height: 25px"
+				ng-class="{'text-muted': !vm.estimate.deal, 'text-success': !!vm.estimate.deal}"
+				ng-click="vm.toggleDeal()">
+				<i
+					class="fa"
+					ng-class="{'fa-toggle-off': !vm.estimate.deal, 'fa-toggle-on': !!vm.estimate.deal}">
+				</i>
+				Deal
+			</h4>
 		</div>
-		-->
+		<div class="col-sm-2">
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.estimate.discount"
+					max="100"
+					min="0"
+					step="1"
+					gux-percentage-input
+					ng-disabled="!vm.estimate.customDiscount">
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="checkbox">
+				<label>
+					<input 
+						ng-model="vm.estimate.customDiscount"
+						ng-change="vm.toggleCustomDiscount()"
+						type="checkbox">
+						% Pers.
+				</label>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="col-xs-6" style="padding-right: 0">
+				<select
+					ng-model="vm.estimate.years"
+					class="form-control"
+					ng-change="vm.updateYears()"
+					ng-options="value for value in [1, 3, 5, 7, 10]">
+				</select>
+			</div>
+			<div class="col-xs-6">
+				<h4 style="line-height: 25px">
+					Años
+				</h4>
+			</div>
+		</div>
 	</div>
 </div>

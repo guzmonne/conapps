@@ -14,14 +14,20 @@ function estimatesEditToolbar(){
 	}
 }
 
-controller.$inject = ['showModal'];
+controller.$inject = ['showModal', 'estimateEditService'];
 
-function controller(showModalService){
-	this.showModal = showModal;
+function controller(sm, es){
+	var vm = this;
+
+	vm.showModal = showModal;
+	vm.estimate = es.estimate;
+	vm.toggleDeal = es.toggleDeal;
+	vm.toggleCustomDiscount = es.toggleCustomDiscount;
+	vm.updateYears = es.updateYears;
 
 	///////////
 	
 	function showModal(){
-		showModalService('#estimatesAddProductsModal');
+		sm('#estimatesAddProductsModal');
 	}
 }
