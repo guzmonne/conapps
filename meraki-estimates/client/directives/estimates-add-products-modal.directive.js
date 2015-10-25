@@ -20,18 +20,18 @@ controller.$inject = ['$scope', 'estimateEditService'];
 function controller($scope, es){
 	var vm = this;
 
-	vm.line                  = '';
-	vm.showSelected          = false;
-	vm.products              = [];
 	vm.selectedProducts      = es.selectedProducts;
 	vm.addProduct            = es.addProduct;
 	vm.addProductsToEstimate = addProductsToEstimate;
+	vm.cleanModal            = cleanModal;
 
 	activate();
 
 	//////////
 	
 	function activate(){
+		vm.cleanModal();
+
 		$scope.$meteorSubscribe('merakiProducts', getTerms())
 			.then(handleSuccess)
 			.catch(handleError);
@@ -65,12 +65,17 @@ function controller($scope, es){
 		return MerakiProducts.find(parameters.filters, parameters.options);
 	}
 
-	
 	function addProductsToEstimate(){
 		es.addProductsToEstimate()
 			.then(function(result){
 				vm.closeModal();
 			})
+	}
+
+	function cleanModal(){
+		vm.line         = '';
+		vm.showSelected = false;
+		es.cleanSelected();
 	}
 
 }
@@ -79,4 +84,8 @@ function link (scope, element){
 	scope.vm.closeModal = function(){
 		element.modal('toggle');
 	}
+
+	element.on('show.bs.modal', () => scope.vm.cleanModal());
+
+	scope.$on('$destroy', () => element.off('show.bs.modal'));
 }

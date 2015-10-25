@@ -22,6 +22,7 @@ function controller($stateParams, estimateModifiers, es){
 	
 	vm.estimate   = null;
 	vm.estimateId = $stateParams.id;
+	vm.onReady    = true;
 
 	activate();
 
@@ -32,9 +33,9 @@ function controller($stateParams, estimateModifiers, es){
 	}
 	
 	function getEstimate(){
-		es.getEstimate(vm.estimateId)
-			.then(function(estimate){
-				vm.estimate  = estimate;
+		vm.estimate = es.getEstimate(vm.estimateId)
+			.then(function(){
+				vm.estimate  = es.estimate;
 				vm.modifiers = vm.estimate.modifiers || estimateModifiers.defaults();
 			});
 	}	
@@ -42,4 +43,6 @@ function controller($stateParams, estimateModifiers, es){
 
 function link(scope, element){
 	element.find('#spinner').append(App.spinner.el);
+
+	scope.$watch('vm.onReady', n => console.log(n), true);
 }

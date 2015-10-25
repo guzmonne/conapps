@@ -16,16 +16,17 @@ controller.$inject = ['estimateEditService'];
 function controller(es){
 	var vm = this;
 
-	vm.updated = es.updated;
+	vm.selectedProductsObs    = es.selectedProductsObs;
 	vm.selectedProductsLength = es.selectedProductsLength;
 }
 
 function link (scope, element){
 	var vm = scope.vm;
+	var obs; 
 
 	element.addClass('badge');
 
-	vm.updated.subscribe(function(){
+	obs = vm.selectedProductsObs.subscribe(function(){
 		var len = vm.selectedProductsLength();
 
 		element.removeClass();
@@ -39,4 +40,6 @@ function link (scope, element){
 			element.removeClass('animated tada');
 		}, 600);
 	});
+
+	scope.$on('$destroy', () => obs.dispose());
 }

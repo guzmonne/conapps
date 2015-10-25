@@ -8,3 +8,13 @@ Meteor.publish('estimates', function(terms){
 	else
 		throw new Meteor.Error('wrong-parameters');
 });
+
+Meteor.publish('estimate', function(id){
+	check(id, String);
+
+	var estimate = Estimates.findOne(id);
+	if (estimate.createdById !== this.userId )
+		throw new Meteor.Error('El usuario no es dueño de este estimate', '¡No Autorizado!');
+
+	return Estimates.find({_id: id});
+});

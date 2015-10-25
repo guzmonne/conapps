@@ -5,16 +5,18 @@ estimateEditService.$inject = ['$rootScope', '$meteor', '$state', '$q'];
 function estimateEditService($rootScope, $meteor, $state, $q){
 	
 	var service = {
-		timestamp: null,
-
 		estimate: {},
 
 		selectedProducts: [],
+
+		subscription: null,
 		
-		updated: $rootScope.$eventToObservable('updated'),
+		selectedProductsObs: $rootScope.$eventToObservable('selectedProducts:updated'),
 
 		getEstimate: function(id){
 			if (!angular.isUndefined(id))
+				//return service._subscribeToEstimateReactively(id);
+				//$meteor.object(Estimates, id, false).subscribe('estimate');
 				return service._callGetEstimate(id);
 			if (service.estimate)
 				return service.estimate;
@@ -22,19 +24,32 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 				toastr.error('Undefined ID or not valid estimate');
 		},
 
+		_subscribeToEstimate: function(id){
+			return $meteor.subscribe('estimate', id)
+				.then(sub => {
+					service.subscription = sub;
+					service.estimate     = $meteor.object(Estimates, id, false);
+					return service.estimate;
+				});
+		},
+
 		_callGetEstimate: function(id){
-		return $meteor.call('getEstimate', id)
-			.then(function(estimate){
-				angular.copy(estimate, service.estimate);
-				return estimate;
-			})
-			.catch(function(err){
-				var deferred = $q.defer();
-				toastr.error(err.reason);
-				$state.go('meraki_estimates.index');
-				console.log(err);
-				return $q.reject();
-			});
+			return $meteor.call('getEstimate', id)
+				.then(function(estimate){
+					angular.copy(estimate, service.estimate);
+					return;
+				})
+				.catch(function(err){
+					var deferred = $q.defer();
+					toastr.error(err.reason);
+					$state.go('meraki_estimates.index');
+					console.log(err);
+					return $q.reject();
+				});
+		},
+
+		_reset: function(){
+			service._callGetEstimate(service.estimate._id);
 		},
 
 		saveEstimateProducts: function(estimateId, products){
@@ -54,7 +69,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 
 			service.selectedProducts.push(p);
 
-			$rootScope.$emit('updated');
+			$rootScope.$emit('selectedProducts:updated');
 		},
 
 		getSelectedProducts: function(){
@@ -75,6 +90,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 			promise = $meteor.call('addProductsToEstimate', this.estimate._id, pIDsQty)
 				.then(function(result){
 					toastr.success('Productos agregados.', 'Estimate ' + this.estimate._id);
+					service._reset();
 					return result;
 				}.bind(this))
 				.catch(this.handleError);
@@ -87,6 +103,11 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 			toastr.error(err.reason, err.error);
 			console.log(err);
 			return $q.reject();
+		},
+
+		cleanSelected: function(){
+			service.selectedProducts = [];
+			$rootScope.$emit('selectedProducts:updated');
 		},
 
 	};

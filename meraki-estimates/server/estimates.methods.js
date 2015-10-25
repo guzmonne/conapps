@@ -43,7 +43,6 @@ Meteor.methods({
 
 			var products = [];
 
-
 			_.each(pIDsQty, function(p, i){
 				var qty = pIDsQty[i].quantity;
 
@@ -59,7 +58,6 @@ Meteor.methods({
 						"datasheet"   : 1,
 					}
 				});
-				console.log(estimateId, pIDsQty, qty, product);
 
 				product.quantity = qty;
 
