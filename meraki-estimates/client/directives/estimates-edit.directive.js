@@ -15,9 +15,9 @@ function estimatesEditDirective(){
 	};
 }
 
-controller.$inject = ['$stateParams', 'estimateModifiers', 'estimateEditService'];
+controller.$inject = ['$stateParams', 'estimateEditService'];
 
-function controller($stateParams, estimateModifiers, es){
+function controller($stateParams, es){
 	var vm        = this;
 	
 	vm.estimate   = null;
@@ -35,7 +35,6 @@ function controller($stateParams, estimateModifiers, es){
 		vm.estimate = es.getEstimate(vm.estimateId)
 			.then(function(){
 				vm.estimate  = es.estimate;
-				vm.modifiers = vm.estimate.modifiers || estimateModifiers.defaults();
 			});
 	}	
 }

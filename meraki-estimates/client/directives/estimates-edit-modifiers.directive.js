@@ -9,16 +9,16 @@ function estimatesEditModifiers(){
 		controllerAs     : 'vm',
 		bindToController : true,
 		link             : link,
-		scope            : {
-			modifiers: '='
-		},
+		scope            : {},
 	}
 }
 
-controller.$inject = [];
+controller.$inject = ['estimateEditService'];
 
-function controller(){
+function controller(es){
 	var vm = this;
+
+	vm.estimate = es.estimate;
 }
 
 function link (scope, element, attr){}

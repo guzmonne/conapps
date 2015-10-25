@@ -5,8 +5,12 @@ Meteor.methods({
 		App.helpers.filterUnacceptedKeys(doc, acceptedKeys);
 		App.helpers.stringSearch(doc, indexedFields);
 		if (Meteor.isServer) {
-			doc.discount = 0.35;
-			doc.years    = 3;
+			doc.discount  = 0.35;
+			doc.years     = 3;
+			doc.hwMargin  = 0.25;
+			doc.swMargin  = 0.25;
+			doc.intCost   = 0.25;
+			doc.supMargin = 0.25;
 			App.helpers.addCreatedValues(doc);
 			return Estimates.insert(doc);
 		}
@@ -82,7 +86,7 @@ Meteor.methods({
 				products.push(product);
 			});
 
-			license = getLicensesForProducts(products, years);
+			licenses = getLicensesForProducts(products, years);
 
 			result.push( Estimates.update(estimateId, { $addToSet: { products: { $each: products } } }) );
 			result.push( Estimates.update(estimateId, { $addToSet: { licenses: { $each: licenses } } }) );
@@ -137,9 +141,19 @@ function getLicensesForProducts(products, years){
 	check(products, Array);
 
 	_.each(products, p => {
-		var licenseFor = (p.family === 'MR') ? 'MR' : p.model.replace('-HW', '');
-		var l = MerakiProducts.findOne({licenseFor: licenseFor, years: years});
+		var l, licenseFor = (p.family === 'MR') ? 'MR' : p.model.replace('-HW', '');
+			
+		if (p.family === 'MR')
+			licenseFor = 'MR'
+		else if (p.family === 'Z1')
+			licenseFor = 'Z1-ENT'
+		else
+			licenseFor = p.model.replace('-HW', '')
+
+		l = MerakiProducts.findOne({licenseFor: licenseFor, years: years});
+		
 		console.log(l);
+
 		if (l)
 			licenses.push(l);
 	});

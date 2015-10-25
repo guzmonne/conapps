@@ -119,7 +119,6 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		toggleDeal: function(){
 			$meteor.call('toggleDeal', s.estimate._id)
 				.then(function(deal){
-					console.log(deal);
 					var status = (!s.estimate.deal) ? 'ON' : 'OFF';
 					toastr.success('Deal ' + status);
 					s._resetAttrs();
