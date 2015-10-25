@@ -9,13 +9,18 @@ function estimatesEditProducts(){
 		controllerAs     : 'vm',
 		bindToController : true,
 		scope            : {
-			products: '='
+			products: '=',
+			licenses: '=',
 		},
 	}
 }
 
-controller.$inject = [];
+controller.$inject = ['estimateEditService'];
 
-function controller(){
+function controller(es){
 	var vm = this;
+
+	vm.estimate = es.estimate;
+	vm.displayView = 'list';
+	vm.display = 'products';
 }

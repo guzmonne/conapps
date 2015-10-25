@@ -22,7 +22,6 @@ function controller($stateParams, estimateModifiers, es){
 	
 	vm.estimate   = null;
 	vm.estimateId = $stateParams.id;
-	vm.onReady    = true;
 
 	activate();
 
@@ -43,6 +42,4 @@ function controller($stateParams, estimateModifiers, es){
 
 function link(scope, element){
 	element.find('#spinner').append(App.spinner.el);
-
-	scope.$watch('vm.onReady', n => console.log(n), true);
 }

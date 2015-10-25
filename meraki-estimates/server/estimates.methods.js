@@ -23,7 +23,7 @@ Meteor.methods({
 		}
 	},
 
-	getEstimate: function(estimateId){
+	'estimate:get': function(estimateId){
 		if (Meteor.isServer){
 			check(estimateId, String);
 			if (!Meteor.user())
@@ -37,7 +37,7 @@ Meteor.methods({
 		}
 	},
 
-	getEstimateAttrs: function(estimateId){
+	'estimate:get:attrs': function(estimateId){
 		if (Meteor.isServer){
 			check(estimateId, String);
 
@@ -52,16 +52,16 @@ Meteor.methods({
 		}
 	},
 
-	addProductsToEstimate: function(estimateId, pIDsQty){
+	'estimate:add:products': function(estimateId, attrs, years){
 		if (Meteor.isServer){
 			
 			check(estimateId, String);
-			check(pIDsQty, Array);
+			check(attrs, Array);
 
-			var products = [];
+			var result = [], licenses = [], products = [];
 
-			_.each(pIDsQty, function(p, i){
-				var qty = pIDsQty[i].quantity;
+			_.each(attrs, function(p, i){
+				var qty = attrs[i].quantity;
 
 				product = MerakiProducts.findOne(p._id, {fields:
 					{
@@ -77,12 +77,17 @@ Meteor.methods({
 				});
 
 				product.quantity = qty;
+				product.id = new Mongo.ObjectID()._str;
 
 				products.push(product);
 			});
 
-			return Estimates.update(estimateId, { $addToSet: { products: { $each: products } } });
+			license = getLicensesForProducts(products, years);
+
+			result.push( Estimates.update(estimateId, { $addToSet: { products: { $each: products } } }) );
+			result.push( Estimates.update(estimateId, { $addToSet: { licenses: { $each: licenses } } }) );
 		
+			return result;
 		}
 	},
 
@@ -125,3 +130,19 @@ Meteor.methods({
 var requiredKeys  = ['name'];
 var indexedFields = ['name', 'description'];
 var acceptedKeys  = ['name', 'description', 'products'];
+
+function getLicensesForProducts(products, years){
+	var licenses = [];
+
+	check(products, Array);
+
+	_.each(products, p => {
+		var licenseFor = (p.family === 'MR') ? 'MR' : p.model.replace('-HW', '');
+		var l = MerakiProducts.findOne({licenseFor: licenseFor, years: years});
+		console.log(l);
+		if (l)
+			licenses.push(l);
+	});
+
+	return licenses;
+}

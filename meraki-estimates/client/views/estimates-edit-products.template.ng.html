@@ -1,4 +1,4 @@
-<div class="container padding">
+<div class="container">
 	<div class="row" ng-show="!vm.products">
 		<div class="col-sm-12 text-center">
 			<span class="notification notification-orange">
@@ -7,11 +7,35 @@
 			</span>
 		</div>
 	</div>
-	<meraki-product-panel
-		ng-repeat="product in vm.products"
-		product="product"
-		selectable="true"
-		products="vm.products"
-		ng-cloak>
-	</meraki-product-panel>
+	<div class="row" style="margin-top: 5px; margin-bottom: 5px">
+		<div class="col-sm-12">
+			<div class="btn-group pull-right">
+				<button 
+					class="btn btn-xs active" 
+					ng-class="{'btn-primary active': vm.displayView === 'list', 'btn-default': vm.displayView !== 'list'}" 
+					ng-click="vm.displayView = 'list'">
+					<i class="fa fa-list"></i>
+				</button>
+				<button 
+					class="btn btn-xs" 
+					ng-class="{'btn-primary active': vm.displayView === 'table', 'btn-default': vm.displayView !== 'table'}" 
+					ng-click="vm.displayView = 'table'">
+					<i class="fa fa-table"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div ng-show="vm.displayView === 'list'">
+		<meraki-product-panel
+			ng-repeat="product in vm.products track by product.id"
+			product="product"
+			selectable="true"
+			discount="vm.estimate.discount"
+			on-qty-mod="vm.updateProductQty(attrs)"
+			ng-cloak>
+		</meraki-product-panel>
+	</div>
+	<div ng-show="vm.displayView === 'table'">
+		<h1>This is the table view</h1>
+	</div>
 </div>

@@ -1,6 +1,6 @@
 <div class="row spinner-container">
-	<div ng-hide="vm.onReady === true" id="spinner"></div>
-	<div ng-show="vm.onReady === true">
+	<div ng-hide="vm.estimate && vm.estimate._id" id="spinner"></div>
+	<div ng-show="vm.estimate && vm.estimate._id">
 		<div class="col-lg-12">
 			<h3>
 				<span class="text-primary">{{::vm.estimate.name}}</span>
@@ -10,12 +10,13 @@
 					{{::vm.estimate.description}}
 				</small>
 			</h3>
-			<hr style="margin-top: 15px; margin-bottom: 15px;">
+			<hr style="margin-top: 5px; margin-bottom: 15px;">
 		</div>
 		<estimates-edit-toolbar
-			products="vm.estimate.products">
+			products="vm.estimate.products"
+			licenses="vm.estimate.licenses">
 		</estimates-edit-toolbar>
-		<hr style="margin: 15px">
+		<hr style="margin: 5px 15px 0px 15px">
 		<estimates-edit-products
 			products="vm.estimate.products">
 		</estimates-edit-products>

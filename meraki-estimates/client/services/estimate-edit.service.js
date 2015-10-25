@@ -32,7 +32,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		_callGetEstimate: function(id){
-			return $meteor.call('getEstimate', id)
+			return $meteor.call('estimate:get', id)
 				.then(function(estimate){
 					angular.copy(estimate, s.estimate);
 					return;
@@ -51,9 +51,8 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		_resetAttrs: function(){
-			$meteor.call('getEstimateAttrs', s.estimate._id)
+			$meteor.call('estimate:get:attrs', s.estimate._id)
 				.then(function(attrs){
-					console.log(attrs);
 					_.extend(s.estimate, attrs);
 				})
 				.catch(throwError)
@@ -88,19 +87,19 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		addProductsToEstimate: function(){
-			var promise, pIDsQty;
+			var promise, attrs;
 
-			pIDsQty = this.selectedProducts.map(function(p){
-				return { _id: p._id, quantity: p.quantity };
+			attrs = s.selectedProducts.map(function(p){
+				return { _id: p._id, quantity: p.quantity};
 			});
 
-			promise = $meteor.call('addProductsToEstimate', this.estimate._id, pIDsQty)
+			promise = $meteor.call('estimate:add:products', s.estimate._id, attrs, s.estimate.years)
 				.then(function(result){
-					toastr.success('Productos agregados.', 'Estimate ' + this.estimate._id);
+					toastr.success('Productos agregados.', 'Estimate ' + s.estimate._id);
 					s._reset();
 					return result;
-				}.bind(this))
-				.catch(this.handleError);
+				})
+				.catch(s.handleError);
 
 			return promise;
 		},

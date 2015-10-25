@@ -79,7 +79,9 @@
 				<div class="col-sm-3">
 					<span class="span-well span-well-default no-margin-top">
 						<h5 class="span-well-heading text-center">
-							<strong>$ {{::vm.product.price | setDecimal}}</strong>
+							<strong>
+								$ {{vm.product.price * (1 - vm.discount) | setDecimal}}
+							</strong>
 						</h5>
 					</span>
 				</div>

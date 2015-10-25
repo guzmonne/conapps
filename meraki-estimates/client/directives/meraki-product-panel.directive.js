@@ -14,6 +14,8 @@ function merakiProductPanel(){
 			editable   : '@',
 			selectable : '@',
 			onSelect   : '&',
+			onQtyMod   : '&',
+			discount   : '=',
 		},
 	}
 }
@@ -30,6 +32,7 @@ function controller($scope, bs, merakiProduct, showModal){
 	vm.modQty        = modQty;
 
 	vm.quantity || (vm.quantity = 1);
+	vm.discount || (vm.discount = 0);
 
 	///////////
 
@@ -63,8 +66,11 @@ function controller($scope, bs, merakiProduct, showModal){
 	function modQty(ammount){
 		ammount = parseInt(ammount);
 		if (!angular.isNumber(ammount)) return;
-		if (vm.product.quantity)
+		if (vm.product.quantity) {
 			modifyProductQuantity(ammount);
+			if (angular.isFunction(vm.onQtyMod))
+				vm.onQtyMod({attrs: {id: vm.product.id, qty: vm.product.quantity}});
+		}
 		else
 			modifyQuantity(ammount);
 	}

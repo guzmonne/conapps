@@ -52,7 +52,7 @@ function controller($scope){
 	function getMerakiProducts(){
 		var parameters = MerakiProducts.constructQuery(getTerms());
 		parameters.filters.line = {$not: 'License'};
-		parameters.options.sort = {line: 1};
+		parameters.options.sort = {line: -1};
 		return MerakiProducts.find(parameters.filters, parameters.options);
 	}
 }
