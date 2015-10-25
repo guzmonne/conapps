@@ -7,8 +7,8 @@ Meteor.methods({
 function createMerakiProduct (doc){
 	if (!doc) throw new Meteor.Error('missing-doc');
 	doc = _.compactObject(doc);
-	App.helpers.verifyDoc(doc, requiredKeys);
-	App.helpers.stringSearch(doc, indexedFields);
+	App.helpers.verifyDoc(doc, MerakiProducts.requiredKeys);
+	App.helpers.stringSearch(doc, MerakiProducts.indexedFields);
 	parseDocValues(doc);
 	if (Meteor.isServer){
 		App.helpers.addCreatedValues(doc);
@@ -18,8 +18,8 @@ function createMerakiProduct (doc){
 
 function updateMerakiProduct (doc){
 	if (!doc) throw new Meteor.Error('missing-doc');
-	App.helpers.verifyDoc(doc, requiredKeys);
-	App.helpers.stringSearch(doc, indexedFields);
+	App.helpers.verifyDoc(doc, MerakiProducts.requiredKeys);
+	App.helpers.stringSearch(doc, MerakiProducts.indexedFields);
 	parseDocValues(doc);
 	if (Meteor.isServer){
 		var id = doc._id;
@@ -41,14 +41,3 @@ function deleteMerakiProduct (productId){
 function parseDocValues(doc){
 	doc.model = doc.model.toUpperCase();
 }
-
-var requiredKeys = [
-	'line',
-	'family',
-	'model',
-	'description',
-	'price',
-];
-
-var indexedFields = requiredKeys;
-

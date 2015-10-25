@@ -8,6 +8,7 @@ function estimatesAddProductsModal(){
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,
+		link             : link,
 		scope            : {
 
 		},
@@ -19,12 +20,12 @@ controller.$inject = ['$scope', 'estimateEditService'];
 function controller($scope, es){
 	var vm = this;
 
-	vm.line             = '';
-	vm.showSelected     = false;
-	vm.updateEstimate   = updateEstimate;
-	vm.products         = [];
-	vm.selectedProducts = es.getSelectedProducts();
-	vm.addProduct       = es.addProduct;
+	vm.line                  = '';
+	vm.showSelected          = false;
+	vm.products              = [];
+	vm.selectedProducts      = es.selectedProducts;
+	vm.addProduct            = es.addProduct;
+	vm.addProductsToEstimate = addProductsToEstimate;
 
 	activate();
 
@@ -60,19 +61,22 @@ function controller($scope, es){
 	function getMerakiProducts(){
 		var parameters = MerakiProducts.constructQuery(getTerms());
 		parameters.filters.line || (parameters.filters.line = {$not: 'License'});
-		parameters.options.sort = {line: 1};
+		parameters.options.sort = {line: -1};
 		return MerakiProducts.find(parameters.filters, parameters.options);
 	}
 
-	function updateEstimate(){
-		vm.estimate.products || (vm.estimate.products = []);
-		_.each(vm.products, function(p){
-			vm.estimate.products.push(p);
-		});
-		closeModal();
+	
+	function addProductsToEstimate(){
+		es.addProductsToEstimate()
+			.then(function(result){
+				vm.closeModal();
+			})
 	}
 
-	function closeModal(){
-		$('#estimatesAddProductsModal').modal('toggle');
+}
+
+function link (scope, element){
+	scope.vm.closeModal = function(){
+		element.modal('toggle');
 	}
 }

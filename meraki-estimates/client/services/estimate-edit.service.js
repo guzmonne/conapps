@@ -7,18 +7,17 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 	var service = {
 		timestamp: null,
 
-		_cached: {
-			estimate: null,
-			selectedProducts: [],
-		},
+		estimate: {},
+
+		selectedProducts: [],
 		
 		updated: $rootScope.$eventToObservable('updated'),
 
 		getEstimate: function(id){
 			if (!angular.isUndefined(id))
 				return service._callGetEstimate(id);
-			if (service._cached.estimate)
-				return service._cached.estimate;
+			if (service.estimate)
+				return service.estimate;
 			else
 				toastr.error('Undefined ID or not valid estimate');
 		},
@@ -26,7 +25,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		_callGetEstimate: function(id){
 		return $meteor.call('getEstimate', id)
 			.then(function(estimate){
-				angular.copy(estimate, service._cached.estimate);
+				angular.copy(estimate, service.estimate);
 				return estimate;
 			})
 			.catch(function(err){
@@ -40,12 +39,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 
 		saveEstimateProducts: function(estimateId, products){
 			return $meteor.call('saveEstimateProducts', products)
-				.catch(function(err){
-					var deferred = $q.defer();
-					toastr.error(err.reason, err.error);
-					console.log(err);
-					return $q.reject();
-				});
+				.catch(handleError);
 		},
 
 		addProduct: function(product, quantity){
@@ -58,18 +52,42 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 			var p = angular.copy(product);
 			p.quantity = quantity;
 
-			service._cached.selectedProducts.push(p);
+			service.selectedProducts.push(p);
 
 			$rootScope.$emit('updated');
 		},
 
 		getSelectedProducts: function(){
-			return service._cached.selectedProducts;
+			return service.selectedProducts;
 		},
 
 		selectedProductsLength: function(){
-			return service._cached.selectedProducts.length;
-		}
+			return service.selectedProducts.length;
+		},
+
+		addProductsToEstimate: function(){
+			var promise, pIDsQty;
+
+			pIDsQty = this.selectedProducts.map(function(p){
+				return { _id: p._id, quantity: p.quantity };
+			});
+
+			promise = $meteor.call('addProductsToEstimate', this.estimate._id, pIDsQty)
+				.then(function(result){
+					toastr.success('Productos agregados.', 'Estimate ' + this.estimate._id);
+					return result;
+				}.bind(this))
+				.catch(this.handleError);
+
+			return promise;
+		},
+
+		handleError: function(err){
+			var deferred = $q.defer();
+			toastr.error(err.reason, err.error);
+			console.log(err);
+			return $q.reject();
+		},
 
 	};
 

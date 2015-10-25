@@ -1,13 +1,55 @@
-<div class="panel panel-default animated fadeIn panel-hover">
+<div class="panel panel-default animated fadeIn panel-hover meraki-product-panel">
 	
 	<!-- Panel Heading Starts -->
-	<div class="panel-heading" style="height: 30px">
-		<h4 class="pull-left minus-margin-top">
-			<strong class="pull-left">{{::vm.product.model}}</strong>
-		</h4>
-		<h4 class="pull-right minus-margin-top" label-by-line="{{::vm.product.line}}">
-			{{::vm.product.line}}
-		</h4>
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-sm-4">
+				<h4 class="pull-left minus-margin-top">
+					<strong class="pull-left">{{::vm.product.model}}</strong>
+				</h4>
+			</div>
+			<div class="col-sm-6">
+				<h4>
+					<small class="pull-right minus-margin-top"> 
+						<!-- Show only if datasheet is present -->
+						<a 
+							ng-href="{{::vm.product.datasheet || '#'}}"
+							target="_blank"
+							class="text-primary"
+							ng-if="vm.product.datasheet">
+							<i>datasheet</i>
+							<i class="fa fa-file-pdf-o"></i>
+						</a>
+
+						<!-- Show only if user is Admin -->
+						<span ng-if="vm.isAdmin() && vm.editable === 'true'">
+							<span ng-if="vm.product.datasheet">|</span>
+							<a
+								href="javascript:void(0);"
+								class="text-orange"
+								ng-click="vm.editProduct()">
+								<i>editar</i>
+								<i class="fa fa-pencil"></i>
+							</a>
+							|
+							<a
+								href="javascript:void(0);"
+								class="text-danger"
+								ng-click="vm.deleteProduct()">
+								<i>eliminar</i>
+								<i class="fa fa-times"></i>
+							</a>
+						</span>
+						<!-- /Show only if user is Admin -->
+					</small>
+				</h4>
+			</div>
+			<div class="col-sm-2">
+				<h4 class="pull-right minus-margin-top" label-by-line="{{::vm.product.line}}">
+					{{::vm.product.line}}
+				</h4>
+			</div>
+		</div>
 	</div>
 	<!-- Panel Heading End -->
 
@@ -27,43 +69,9 @@
 					<h4>
 						{{::vm.product.model}}
 						<small>Familia: {{::vm.product.family}}</small>
-						<small class="pull-right">
-							
-							<!-- Show only if datasheet is present -->
-							<a 
-								ng-href="{{::vm.product.datasheet || '#'}}"
-								target="_blank"
-								class="text-primary"
-								ng-if="vm.product.datasheet">
-								<i>datasheet</i>
-								<i class="fa fa-file-pdf-o"></i>
-							</a>
-
-							<!-- Show only if user is Admin -->
-							<span ng-if="vm.isAdmin() && vm.editable === 'true'">
-								<span ng-if="vm.product.datasheet">|</span>
-								<a
-									href="javascript:void(0);"
-									class="text-orange"
-									ng-click="vm.editProduct()">
-									<i>editar</i>
-									<i class="fa fa-pencil"></i>
-								</a>
-								|
-								<a
-									href="javascript:void(0);"
-									class="text-danger"
-									ng-click="vm.deleteProduct()">
-									<i>eliminar</i>
-									<i class="fa fa-times"></i>
-								</a>
-							</span>
-							<!-- /Show only if user is Admin -->
-						
-						</small>
 					</h4>
 					<h6 class="padding text-muted">
-						{{::vm.product.description || 'Sin Descripción...'}}
+						{{vm.product.description || 'Sin Descripción...'}}
 					</h6>	
 				</div>
 
@@ -91,7 +99,7 @@
 				<div class="col-sm-4 col-sm-offset-4">
 					<div class="input-group">
 	          <span class="input-group-btn">
-              <button class="btn btn-default btn-number btn-sm" ng-click="vm.modQty(-1)">
+              <button class="btn btn-default btn-number btn-xs" ng-click="vm.modQty(-1)">
                 <span class="glyphicon glyphicon-minus"></span>
               </button>
 	          </span>
@@ -109,7 +117,7 @@
 	          	class="form-control input-number text-center input-sm"
 	          	min="1">
 	          <span class="input-group-btn">
-              <button class="btn btn-default btn-number btn-sm" ng-click="vm.modQty(1)">
+              <button class="btn btn-default btn-number btn-xs" ng-click="vm.modQty(1)">
                 <span class="glyphicon glyphicon-plus"></span>
               </button>
 	          </span>
@@ -119,15 +127,13 @@
 				<!-- Buttons -->
 				<div class="col-sm-2 col-sm-offset-2" style="padding-right: 0px">
 					<button
-						class="btn btn-success pull-right btn-sm"
+						class="btn btn-success pull-right btn-xs"
 						ng-if="!vm.prodHasQty()"
 						ng-click="vm.onSelect({product: vm.product, quantity: vm.quantity})">
 						<i class="fa fa-plus"></i>
-						Agregar
 					</button>
-					<button class="btn btn-danger pull-right btn-sm" ng-if="vm.prodHasQty()" ng-click="vm.removeProduct()">
+					<button class="btn btn-danger pull-right btn-xs" ng-if="vm.prodHasQty()" ng-click="vm.removeProduct()">
 						<i class="fa fa-trash"></i>
-						Eliminar
 					</button>
 				</div>
 				<!-- /Buttons -->

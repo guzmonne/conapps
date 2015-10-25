@@ -54,7 +54,6 @@ function controller(es){
 
 	function toggleShowSelected(){
 		vm.showSelected = (vm.currentLine === 'Selected');
-		console.log(vm.showSelected);
 	}
 }
 

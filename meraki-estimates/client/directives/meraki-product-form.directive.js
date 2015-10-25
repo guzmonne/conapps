@@ -22,7 +22,7 @@ function controller(){
 	vm.lines = [
 		'Wireless',
 		'Switches',
-		'Security Appliance',
+		'Security Appliances',
 		'Antennas',
 		'Accesory'
 	];

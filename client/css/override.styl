@@ -296,7 +296,6 @@ div#qrcode > img
 // -------------
 
 .panel-hover
-  cursor: pointer
   opacity: 0.8 !important
   
 .panel-hover
@@ -305,9 +304,6 @@ div#qrcode > img
 .panel-hover:hover > .panel-heading
 .panel-hover:hover > .panel-footer
   background-color: #F1F1F1
-  
-.panel-hover:hover > .panel-body
-  background-color: #FBFBFB
 
 // -------------
 // span wells
@@ -393,11 +389,10 @@ $success = $olive
   min-height: 300px
   
 .modal-content.modal-min-650
-  height: 720px
-  
-.modal-content.modal-min-650 > .modal-body
-  height: 600px
-  overflow: auto
+  height: 690px
+  .modal-body
+    height: 570px
+    
 // -------------------
 // More Info
 // -------------------
@@ -462,3 +457,23 @@ $success = $olive
 .notification-orange
   background-color: $orange
   color: white
+  
+/////////////////////////
+// Meraki Product Panel
+/////////////////////////
+
+.meraki-product-panel-container
+  height: 500px
+  overflow: auto
+
+.meraki-product-panel
+  .panel-heading
+  .panel-footer
+    height: 30px
+  .btn-xs
+  .input-group
+    margin-top: -5px
+  .input-group > input
+    margin-top: 0
+    height: 20px
+

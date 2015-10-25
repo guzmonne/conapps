@@ -13,8 +13,6 @@ function _AppHelpers(){}
  * @return {Void}              
  */
 _AppHelpers.prototype.verifyDoc = function(doc, requiredKeys) {
-	console.log(doc);
-	console.log(requiredKeys)
 	this.userIsLoggedIn();
 	this.docHasRequiredKeys(doc, requiredKeys);
 };
@@ -124,5 +122,17 @@ _AppHelpers.prototype.stringSearch = function(doc, indexedFields) {
 	}
 	doc.stringSearch = JSON.stringify(indexedDoc).toLowerCase();
 };
+
+_AppHelpers.prototype.verifyProducts = function(products){
+	if (_.isArray(products))
+		_.each(products, function(product){
+			this.verifyDoc(product, MerakiProducts.requiredKeys);
+			this.filterUnacceptedKeys(product, MerakiProducts.acceptedKeys);
+		});
+	if (_.isObject(products)){
+		this.filterUnacceptedKeys(products, MerakiProducts.acceptedKeys);
+		this.verifyDoc(products, MerakiProducts.requiredKeys);
+	}
+}
 
 App.helpers = new _AppHelpers();

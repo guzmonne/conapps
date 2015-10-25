@@ -190,7 +190,6 @@ if (MerakiProducts.find().count() === 0){
 		if (product.line !== "License"){
 			delete product.years;
 			delete product.licenceFor;
-			product.attributes = {};
 		}
 		product.stringSearch = JSON.stringify(product).toLowerCase();
 		return product;

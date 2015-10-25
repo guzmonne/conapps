@@ -14,3 +14,30 @@ function indexByLine(collection){
 		options: parameters.options
 	};
 }
+
+MerakiProducts.requiredKeys = [
+	'line',
+	'family',
+	'model',
+	'description',
+	'price',
+];
+
+MerakiProducts.indexedFields = [
+	'line',
+	'family',
+	'model',
+	'description',
+	'price',
+];
+
+MerakiProducts.acceptedKeys = [
+  "_id",
+  "family",
+  "line",
+  "model",
+  "description",
+  "price",
+  "image",
+  "datasheet",
+];
