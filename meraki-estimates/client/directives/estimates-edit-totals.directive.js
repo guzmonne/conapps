@@ -22,7 +22,11 @@ function controller(em, es){
 	var vm = this;
 
 	vm.hwCost = em.hwCost;
-	vm.swCostPerMonth = em.swCostPerMonth;
+	vm.traditionalMonthlyPayment = em.traditionalMonthlyPayment;
+	vm.administeredMonthlyPayment = em.administeredMonthlyPayment;
+	vm.unifiedMonthlyPayment = em.unifiedMonthlyPayment;
+	vm.weights = em.weights;
+	vm.params = em.params;
 }
 
 function link (scope, element, attr){}

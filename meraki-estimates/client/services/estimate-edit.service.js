@@ -145,7 +145,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 			$meteor.call('estimate:toggle:serviceLvl', s.estimate._id)
 				.then(function(){
 					toastr.success('Actualizado');
-					s.estimate.serviceLvl = (s.estimate.serviceLvl === '8x5xNBD') ? '24x7xNBD' : '8x5xNBD';
+					s.estimate.serviceLvl = (s.estimate.serviceLvl === '8x5xNBD') ? '24x7x1x6' : '8x5xNBD';
 				})
 				.catch(throwError);
 		},
@@ -160,7 +160,18 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		updateProductQty: function(attrs){
+			if (!attrs || !attrs.id || !attrs.qty)
+				throw new Meteor.Error('invalid-arguments', 'estimateEditService:updateProductQty');
+
+			// The license quantity must be updated when a product quantity changes
+			// provided such license exists.
+			var license = _.find(s.estimate.licenses, l => l.productId === attrs.id)
+			if (license)
+				license.quantity = attrs.qty;
+
+			// Add the estimate _id to the attrs object 
 			attrs._id = s.estimate._id;
+
 			$meteor.call('estimate:modify:product:quantity', attrs)
 				.then(function(result){
 					toastr.success('Cantidad modificada', '¡OK!');

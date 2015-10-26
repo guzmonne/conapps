@@ -128,10 +128,10 @@ Meteor.methods({
 
 			estimate = Estimates.findOne(id, {serviceLvl: 1});
 
-			if (!estimate.serviceLvl || estimate.serviceLvl === '24x7xNBD')
+			if (!estimate.serviceLvl || estimate.serviceLvl === '24x7x1x6')
 				serviceLvl = '8x5xNBD';
 			else
-				serviceLvl = '24x7xNBD';
+				serviceLvl = '24x7x1x6';
 
 			return Estimates.update(id, { $set: { serviceLvl: serviceLvl } });
 		}
@@ -157,7 +157,8 @@ Meteor.methods({
 
 		var result = [];
 		
-		result.push(Estimates.update({
+		result.push(
+			Estimates.update({
 				_id: attrs._id,
 				'products.id': attrs.id
 			}, {
@@ -167,12 +168,13 @@ Meteor.methods({
 			})
 		);
 
-		result.push(Estimates.update({
+		result.push(
+			Estimates.update({
 				_id: attrs._id,
 				'licenses.productId': attrs.id
 			}, {
 				$set: {
-					'products.$.quantity': attrs.qty
+					'licenses.$.quantity': attrs.qty
 				}
 			})
 		);
