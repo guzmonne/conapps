@@ -1,6 +1,8 @@
 App.auth = {
 	hasRole: hasRole,
 	isAdmin: isAdmin,
+	isUser : isUser,
+	isOwner: isOwner,
 }
 
 function hasRole (role){
@@ -17,4 +19,12 @@ function hasRole (role){
 
 function isAdmin(){
 	return hasRole('admin');
+}
+
+function isUser(userId){
+	return userId === Meteor.userId();
+}
+
+function isOwner(userId, doc){
+	return userId === doc.createdById;
 }

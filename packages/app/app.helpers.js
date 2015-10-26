@@ -101,8 +101,10 @@ _AppHelpers.prototype.addUpdatedValues = function (doc){
 
 _AppHelpers.prototype.filterUnacceptedKeys = function(doc, keys){
 	if (!_.isArray(keys)) throw new Meteor.Error('keys-is-not-array');
-	keys.unshift(doc);
-	return _.pick.apply(this, keys);
+	// clone keys array
+	var _keys = keys.slice(0);
+	_keys.unshift(doc);
+	return _.pick.apply(this, _keys);
 }
 
 _AppHelpers.prototype.stringSearch = function(doc, indexedFields){

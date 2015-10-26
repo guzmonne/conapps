@@ -14,6 +14,7 @@ function merakiProductPanel(){
 			editable   : '@',
 			selectable : '@',
 			onSelect   : '&',
+			onRemove   : '&',
 			onQtyMod   : '&',
 			discount   : '=',
 		},

@@ -6,9 +6,9 @@
 					<strong>Solución Tradicional</strong>
 				</h4>
 				<dt>Precio de Venta</dt>
-				<dd class="span-highlight">USD 2500.00</dd>
+				<dd class="span-highlight">USD {{vm.hwCost() | setDecimal}}</dd>
 				<dt>Couta Mensual</dt>
-				<dd class="span-highlight">USD 115.00</dd>
+				<dd class="span-highlight">USD {{vm.swCostPerMonth() | setDecimal}}</dd>
 			</span>
 		</div>
 		<div class="col-sm-4">

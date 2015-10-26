@@ -21,8 +21,6 @@ function controller(sm, es){
 
 	vm.showModal = showModal;
 	vm.estimate = es.estimate;
-	vm.toggleDeal = es.toggleDeal;
-	vm.toggleCustomDiscount = es.toggleCustomDiscount;
 	vm.updateYears = es.updateYears;
 
 	///////////

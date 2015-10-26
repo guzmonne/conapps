@@ -11,6 +11,7 @@ Meteor.methods({
 			doc.swMargin  = 0.25;
 			doc.intCost   = 0.25;
 			doc.supMargin = 0.25;
+			doc.serviceLvl = '8x5xNBD';
 			App.helpers.addCreatedValues(doc);
 			return Estimates.insert(doc);
 		}
@@ -95,7 +96,7 @@ Meteor.methods({
 		}
 	},
 
-	toggleDeal: function(id){
+	'estimate:toggle:deal': function(id){
 		check(id, String);
 
 		if (Meteor.isServer){
@@ -107,7 +108,7 @@ Meteor.methods({
 		}
 	},
 
-	toggleCustomDiscount: function(id){
+	'estimate:toggle:customDiscount': function(id){
 		check(id, String);
 
 		if (Meteor.isServer){
@@ -116,6 +117,23 @@ Meteor.methods({
 			e = Estimates.findOne(id, {fields: {customDiscount: 1}});
 
 			return Estimates.update(id, { $set: { customDiscount:  !e.customDiscount} });
+		}
+	},
+
+	'estimate:toggle:serviceLvl': function(id){
+		check(id, String);
+
+		if (Meteor.isServer){
+			var estimate, serviceLvl; 
+
+			estimate = Estimates.findOne(id, {serviceLvl: 1});
+
+			if (!estimate.serviceLvl || estimate.serviceLvl === '24x7xNBD')
+				serviceLvl = '8x5xNBD';
+			else
+				serviceLvl = '24x7xNBD';
+
+			return Estimates.update(id, { $set: { serviceLvl: serviceLvl } });
 		}
 	},
 
@@ -160,6 +178,37 @@ Meteor.methods({
 		);
 
 		return result;
+	},
+
+	'estimate:remove:product': function(estimateId, product){
+		var estimate, products, licenses;
+
+		check(estimateId, String);
+		check(product.id, String);
+
+		estimate = Estimates.findOne(estimateId);
+
+		if (Meteor.userId() !== estimate.createdById)
+			throw new Meteor.Error('Not Estimate owner', 'not-authorized');
+
+		products = _.filter(estimate.products, p => p.id !== product.id)
+
+		licenses = getLicensesForProducts(products, estimate.years);
+
+		return Estimates.update(estimateId, { $set: { products: products, licenses: licenses } });
+	},
+
+	'estimate:update:modifiers': function(estimateId, attrs){
+		var modifiers;
+
+		modifiers = ['hwMargin', 'swMargin', 'intCost', 'supMargin'];
+
+		check(estimateId, String);
+		
+		App.helpers.filterUnacceptedKeys(attrs, modifiers);
+		App.helpers.docHasRequiredKeys(attrs, modifiers);
+
+		Estimates.update(estimateId, { $set: attrs });
 	},
 
 });

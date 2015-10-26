@@ -24,4 +24,5 @@ function controller(es){
 	vm.displayView = 'list';
 	vm.display = 'products';
 	vm.updateProductQty = _.debounce(es.updateProductQty, 500);
+	vm.removeProduct = es.removeProduct;
 }

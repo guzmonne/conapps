@@ -15,10 +15,15 @@ function estimatesEditModifiers(){
 
 controller.$inject = ['estimateEditService'];
 
-function controller(es){
+function controller(es, em){
 	var vm = this;
 
-	vm.estimate = es.estimate;
+	vm.estimate             = es.estimate;
+	vm.updateModifiers      = es.updateModifiers;
+	vm.estimate             = es.estimate;
+	vm.toggleDeal           = es.toggleDeal;
+	vm.toggleCustomDiscount = es.toggleCustomDiscount;
+	vm.toggleServiceLvl     = es.toggleServiceLvl;
 }
 
 function link (scope, element, attr){}

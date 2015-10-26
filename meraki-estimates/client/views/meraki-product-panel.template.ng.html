@@ -117,6 +117,7 @@
 	          	ng-if="vm.product.quantity"
 	          	class="form-control input-number text-center input-sm"
 	          	min="1"
+	          	style="background-color: white"
 	          	readonly>
 	          <span class="input-group-btn">
               <button class="btn btn-default btn-number btn-xs" ng-click="vm.modQty(1)">
@@ -134,7 +135,10 @@
 						ng-click="vm.onSelect({product: vm.product, quantity: vm.quantity})">
 						<i class="fa fa-plus"></i>
 					</button>
-					<button class="btn btn-danger pull-right btn-xs" ng-if="vm.prodHasQty()" ng-click="vm.removeProduct()">
+					<button
+						class="btn btn-danger pull-right btn-xs"
+						ng-if="vm.prodHasQty()"
+						ng-click="vm.onRemove({product: vm.product})">
 						<i class="fa fa-trash"></i>
 					</button>
 				</div>

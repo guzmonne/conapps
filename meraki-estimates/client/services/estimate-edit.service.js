@@ -117,7 +117,7 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		toggleDeal: function(){
-			$meteor.call('toggleDeal', s.estimate._id)
+			$meteor.call('estimate:toggle:deal', s.estimate._id)
 				.then(function(deal){
 					var status = (!s.estimate.deal) ? 'ON' : 'OFF';
 					toastr.success('Deal ' + status);
@@ -127,16 +127,27 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 		},
 
 		toggleCustomDiscount: function(){
-			$meteor.call('toggleCustomDiscount', s.estimate._id)
+			$meteor.call('estimate:toggle:customDiscount', s.estimate._id)
 				.then(function(){
-					toastr.success('Actualizado');
+					var status = (!s.estimate.deal) ? 'ON' : 'OFF';
+					toastr.success('% Manual ' + status);
 					if (s.estimate.customDiscount === false)
 						s.estimate.discount = (s.estimate.deal) ? 0.43 : 0.35;
+					s._resetAttrs();
 				})
 				.catch(function(err){
 					throwError(err);
 					s.estimate.discount = (s.estimate.deal) ? 0.43 : 0.35;
 				});
+		},
+
+		toggleServiceLvl: function(){
+			$meteor.call('estimate:toggle:serviceLvl', s.estimate._id)
+				.then(function(){
+					toastr.success('Actualizado');
+					s.estimate.serviceLvl = (s.estimate.serviceLvl === '8x5xNBD') ? '24x7xNBD' : '8x5xNBD';
+				})
+				.catch(throwError);
 		},
 
 		updateYears: function(){
@@ -155,6 +166,25 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 					toastr.success('Cantidad modificada', '¡OK!');
 				})
 				.catch(throwError);
+		},
+
+		removeProduct: function(product){
+			$meteor.call('estimate:remove:product', s.estimate._id, product)
+				.then(function(){
+					toastr.success('Producto Eliminado');
+					s._reset();
+				})
+				.catch(throwError)
+		},
+
+		updateModifiers: function(){
+			var attrs = _.pick(s.estimate, 'swMargin', 'hwMargin', 'intCost', 'supMargin');
+
+			$meteor.call('estimate:update:modifiers', s.estimate._id, attrs)
+				.then(function(){
+					toastr.success('Actualizado')
+				})
+				.catch(throwError);
 		}
 
 	};
@@ -164,8 +194,8 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 	//////////////
 
 	function throwError(err){
-		throw new Meteor.Error(err);
 		toastr.error(err, 'Error');
+		throw new Meteor.Error(err);
 	}
 
 }

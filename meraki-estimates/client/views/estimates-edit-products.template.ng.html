@@ -27,11 +27,12 @@
 	</div>
 	<div ng-show="vm.displayView === 'list'">
 		<meraki-product-panel
-			ng-repeat="product in vm.products track by product.id"
+			ng-repeat="product in vm.products"
 			product="product"
 			selectable="true"
 			discount="vm.estimate.discount"
 			on-qty-mod="vm.updateProductQty(attrs)"
+			on-remove="vm.removeProduct(product)"
 			ng-cloak>
 		</meraki-product-panel>
 	</div>

@@ -16,10 +16,13 @@ function estimatesEditTotals(){
 	}
 }
 
-controller.$inject = [];
+controller.$inject = ['estimateModifiers'];
 
-function controller(){
-	
+function controller(em, es){
+	var vm = this;
+
+	vm.hwCost = em.hwCost;
+	vm.swCostPerMonth = em.swCostPerMonth;
 }
 
 function link (scope, element, attr){}
