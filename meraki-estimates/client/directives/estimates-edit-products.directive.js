@@ -23,4 +23,5 @@ function controller(es){
 	vm.estimate = es.estimate;
 	vm.displayView = 'list';
 	vm.display = 'products';
+	vm.updateProductQty = _.debounce(es.updateProductQty, 500);
 }

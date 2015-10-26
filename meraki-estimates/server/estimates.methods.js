@@ -120,14 +120,47 @@ Meteor.methods({
 	},
 
 	'estimate:update:years': function(id, years){
-		check(id, String);
-
 		years = parseInt(years);
-
+		
+		check(id, String);
 		check(years, Number);
 
-		return Estimates.update(id, { $set: { years: years } });
-	}
+		var licenses, estimate = Estimates.findOne(id);
+
+		if (!estimate) throw new Meteor.Error('undefined estimate');
+
+		licenses = getLicensesForProducts(estimate.products, years);
+
+		return Estimates.update(id, { $set: { years: years, licenses: licenses } });
+	},
+
+	'estimate:modify:product:quantity': function(attrs){
+		App.helpers.docHasRequiredKeys(attrs, ['_id', 'id', 'qty']);
+
+		var result = [];
+		
+		result.push(Estimates.update({
+				_id: attrs._id,
+				'products.id': attrs.id
+			}, {
+				$set: {
+					'products.$.quantity': attrs.qty
+				}
+			})
+		);
+
+		result.push(Estimates.update({
+				_id: attrs._id,
+				'licenses.productId': attrs.id
+			}, {
+				$set: {
+					'products.$.quantity': attrs.qty
+				}
+			})
+		);
+
+		return result;
+	},
 
 });
 
@@ -152,10 +185,11 @@ function getLicensesForProducts(products, years){
 
 		l = MerakiProducts.findOne({licenseFor: licenseFor, years: years});
 		
-		console.log(l);
-
-		if (l)
+		if (l){
+			l.productId = p.id;
+			l.quantity  = p.quantity;
 			licenses.push(l);
+		}
 	});
 
 	return licenses;

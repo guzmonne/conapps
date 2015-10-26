@@ -143,6 +143,16 @@ function estimateEditService($rootScope, $meteor, $state, $q){
 			$meteor.call('estimate:update:years', s.estimate._id, s.estimate.years)
 				.then(function(){
 					toastr.success('Actualizado');
+					s._reset();
+				})
+				.catch(throwError);
+		},
+
+		updateProductQty: function(attrs){
+			attrs._id = s.estimate._id;
+			$meteor.call('estimate:modify:product:quantity', attrs)
+				.then(function(result){
+					toastr.success('Cantidad modificada', '¡OK!');
 				})
 				.catch(throwError);
 		}
