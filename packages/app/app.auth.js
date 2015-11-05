@@ -6,14 +6,24 @@ App.auth = {
 }
 
 function hasRole (role){
-	check(role, String);
 	var user, roles;
+	
+	check(role, String);
+	
 	user = Meteor.user();
-	if (!user || !user.profile)
-		throw new Meteor.Error('user-not-logged-in');
+	
+	if (!user || !user.profile) {
+		if (Meteor.isServer){
+			throw new Meteor.Error('user-not-logged-in');
+		}
+		return;
+	}
+	
 	roles = user.profile.roles;
+	
 	if (!roles || !_.isArray(roles))
 		throw new Meteor.Error('roles-undefined-or-not-an-array');
+	
 	return roles.indexOf(role) > -1
 }
 
