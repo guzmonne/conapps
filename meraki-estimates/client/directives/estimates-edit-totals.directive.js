@@ -8,7 +8,6 @@ function estimatesEditTotals(){
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,
-		link             : link,
 		scope            : {
 			modifiers: '=',
 			products : '='
@@ -18,7 +17,7 @@ function estimatesEditTotals(){
 
 controller.$inject = ['estimateModifiers'];
 
-function controller(em, es){
+function controller(em){
 	var vm = this;
 
 	vm.hwCost = em.hwCost;
@@ -28,5 +27,3 @@ function controller(em, es){
 	vm.weights = em.weights;
 	vm.params = em.params;
 }
-
-function link (scope, element, attr){}

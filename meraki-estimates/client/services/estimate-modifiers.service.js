@@ -9,9 +9,15 @@ function estimateModifiers(es){
 			'8x5xNBD': 1.03,
 			'24x7x1x6': 2.21,
 		},
+		/*
 		administration: {
 			'8x5xNBD': 4.72,
 			'24x7x1x6': 7.07,
+		}
+		*/
+		administration: {
+			a: 3,
+			b: 0.85
 		}
 	};
 
@@ -21,7 +27,10 @@ function estimateModifiers(es){
 	};
 
 	function weightByQty(qty){
-		return params.a * Math.pow(params.b, qty);
+		var a = weights.administration.a;
+		var b = weights.administration.b;
+
+		return a * Math.pow(b, qty);
 	}
 
 	function calculateCost(_item, options){
@@ -68,10 +77,20 @@ function estimateModifiers(es){
 
 	function total(collection){
 		var result = _.reduce(collection, function(accumulated, model){
-				if (!angular.isNumber(model.price) || !angular.isNumber(model.quantity))
+				var price, quantity;
+			
+				if (!model || !model.price || !model.quantity)
 					return 0;
-				return parseFloat(model.quantity) * parseFloat(model.price) + parseFloat(accumulated);
+
+				price    = parseFloat(model.price);
+				quantity = parseFloat(model.quantity);
+
+				if (!angular.isNumber(price) || !angular.isNumber(quantity))
+					return 0;
+				else
+					return model.quantity * model.price + accumulated;
 			}, 0);
+		
 		return result;
 	}
 
@@ -109,7 +128,11 @@ function estimateModifiers(es){
 	function admCostPerMonth(){
 		var licensesWeightedCost, discount, months, supMargin;
 
-		if (!es.estimate || angular.isArray(!es.estimate.licenses))
+		if (   angular.isUndefined(es.estimate) 
+				|| !angular.isArray(es.estimate.licenses)
+				|| angular.isUndefined(es.estimate.discount)
+				|| angular.isUndefined(es.estimate.supMargin)
+			)
 			return 0;
 
 		discount  = parseFloat(es.estimate.discount);
@@ -117,28 +140,15 @@ function estimateModifiers(es){
 		months    = parseFloat(estimateYearsInMonths());
 
 		licensesWeightedCost = _.reduce(es.estimate.licenses, function(total, license){
+		
 			var quantity = parseFloat(license.quantity);
 			var price    = parseFloat(license.price);
 
 			return price * weightByQty(quantity) + total;
+		
 		}, 0);
 
 		return licensesWeightedCost * (1 - discount) / ( 1 - supMargin) / months;
-
-		/*
-		var licensesCost, adminCost, months, adminWeight, supMargin;
-		
-		if (!es.estimate || !es.estimate.serviceLvl || !es.estimate.discount)
-			return 0;
-		
-		licensesCost = parseFloat( swTotal() * (1 - es.estimate.discount) );
-		adminWeight  = weights.administration[es.estimate.serviceLvl];
-		supMargin    = parseFloat(es.estimate.supMargin);
-		adminCost    = ( licensesCost * adminWeight ) / (1 - supMargin);
-		months       = parseFloat(estimateYearsInMonths());
-
-		return  adminCost / months;
-		*/
 	}
 
 	function traditionalMonthlyPayment(){
@@ -158,6 +168,8 @@ function estimateModifiers(es){
 	var s = {
 		calculateCost              : calculateCost,
 		hwCost                     : hwCost,
+		hwTotal                    : hwTotal,
+		swTotal                    : swTotal,
 		swCost                     : swCost,
 		swCostPerMonth             : swCostPerMonth,
 		weights                    : weights,

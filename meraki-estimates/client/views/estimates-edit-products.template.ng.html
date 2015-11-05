@@ -63,7 +63,7 @@
 						</tr>
 
 						<tr
-						ng-repeat="product in vm.products track by product.id">
+							ng-repeat="product in vm.products track by product.id">
 							
 							<td>
 								{{ product.model}}
@@ -84,6 +84,20 @@
 								{{ vm.calculateCost(product.quantity * product.price) | setDecimal}}
 							</td>
 
+						</tr>
+
+						<tr>
+							<td colspan="4" style="text-align: right; padding-right: 20px">
+								<strong>
+									TOTAL [HW]
+								</strong>
+							</td>
+							<td>
+								{{vm.hwTotal() * (1 - vm.estimate.discount) | setDecimal}}
+							</td>
+							<td>
+								{{vm.hwCost() | setDecimal}}
+							</td>
 						</tr>
 
 						<tr class="text-center">
@@ -117,6 +131,20 @@
 
 						</tr>
 
+						<tr>
+							<td colspan="4" style="text-align: right; padding-right: 20px">
+								<strong>
+									TOTAL [SW]
+								</strong>
+							</td>
+							<td>
+								{{vm.swTotal() * (1 - vm.estimate.discount) | setDecimal}}
+							</td>
+							<td>
+								{{vm.swCost() | setDecimal}}
+							</td>
+						</tr>
+
 						<tr class="text-center">
 							<td colspan="6" style="background-color: #A2A2A2; line-height:4px; color:white; font-size: 9px">
 								<strong>Soporte y Administración</strong>
@@ -137,7 +165,7 @@
 								-
 							</td>
 							<td class="text-center">
-								-
+								{{ vm.swCostPerMonth() * (1 - vm.estimate.swMargin) | setDecimal }}
 							</td>
 							<td class="text-center">
 								{{ vm.swCostPerMonth() | setDecimal }}
@@ -158,7 +186,7 @@
 								-
 							</td>
 							<td class="text-center">
-								-
+								{{ vm.supCostPerMonth() * (1 - vm.estimate.supMargin) | setDecimal }}
 							</td>
 							<td class="text-center">
 								{{ vm.supCostPerMonth() | setDecimal }}
@@ -179,7 +207,7 @@
 								-
 							</td>
 							<td class="text-center">
-								-
+								{{ vm.admCostPerMonth() * (1 - vm.estimate.supMargin) | setDecimal }}
 							</td>
 							<td class="text-center">
 								{{ vm.admCostPerMonth() | setDecimal }}

@@ -5,12 +5,12 @@ Meteor.methods({
 		App.helpers.filterUnacceptedKeys(doc, acceptedKeys);
 		App.helpers.stringSearch(doc, indexedFields);
 		if (Meteor.isServer) {
-			doc.discount  = 0.35;
-			doc.years     = 3;
-			doc.hwMargin  = 0.25;
-			doc.swMargin  = 0.25;
-			doc.intCost   = 0.25;
-			doc.supMargin = 0.25;
+			doc.discount   = 0.35;
+			doc.years      = 3;
+			doc.hwMargin   = 0.25;
+			doc.swMargin   = 0.25;
+			doc.intCost    = 0.25;
+			doc.supMargin  = 0.25;
 			doc.serviceLvl = '8x5xNBD';
 			App.helpers.addCreatedValues(doc);
 			return Estimates.insert(doc);
