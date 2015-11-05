@@ -21,7 +21,7 @@ angular.module('angular-gux').directive('guxRadioOption', function() {
       scope.option.group = group;
 
       scope.$watch('option.group.ngModel', function(newValue) {
-        scope.option.selected = (scope.option.value === newValue);
+        scope.option.selected = (scope.option.value == newValue);
       }, true);
     }
   }

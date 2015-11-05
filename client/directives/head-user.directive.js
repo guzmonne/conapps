@@ -1,15 +1,27 @@
-angular.module('conapps').directive('headUser', function(){
-	return {
-		restrict: 'E',
-		replace: true,
-		templateUrl: 'client/views/head-user.template.ng.html',
-		controller: ['$meteor', function($meteor){
-			var self = this;
+angular.module('conapps').directive('headUser', headUser);
 
-			self.logout = function(){
-				$meteor.logout();
-			}
-		}],
-		controllerAs: 'head',
-	};
-});
+function headUser(){
+	return {
+		restrict         : 'E',
+		replace          : true,
+		templateUrl      : 'client/views/head-user.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
+		bindToController : true,
+		scope            : {},
+	}
+}
+
+controller.$inject = ['$meteor', '$rootScope'];
+
+function controller($meteor, $rootScope){
+	var vm = this;
+
+	vm.logout = logout;
+
+	////////////
+
+	function logout(){
+		$meteor.logout();
+	}
+}

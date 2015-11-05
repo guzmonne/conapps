@@ -1,13 +1,13 @@
 <div class="head-user pull-right dropdown" >
 	<a href="#" id="profile" data-toggle="dropdown" ng-if="$root.currentUser">
 		<img src="http://placehold.it/50x50" alt="" class="img-responsive img-circle">
-		gmonne
+		{{$root.currentUser.profile.name}}
 		<i class="fa fa-caret-down" ng-if="$root.currentUser"></i>
 	</a>
 	<a ui-sref="login" ng-if="!$root.currentUser">
 		<span ng-if="!$root.currentUser">Iniciar Sesión</span>
 	</a>
 	<ul ng-if="$root.currentUser" class="dropdown-menu" aria-labelledby="profile">
-		<li><a href="/login" ng-click="head.logout()">Cerrar Sesión</a></li>
+		<li><a href="/login" ng-click="vm.logout()">Cerrar Sesión</a></li>
 	</ul>
 </div>
