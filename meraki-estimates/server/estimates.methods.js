@@ -11,6 +11,7 @@ Meteor.methods({
 			doc.swMargin   = 0.25;
 			doc.intCost    = 0.25;
 			doc.supMargin  = 0.25;
+			doc.deal       = true;
 			doc.serviceLvl = '8x5xNBD';
 			App.helpers.addCreatedValues(doc);
 			return Estimates.insert(doc);
