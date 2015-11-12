@@ -10,7 +10,6 @@ angular.module('angular-gux').directive('guxRadioGroup', function(){
 		controller: function(){
 			this.setValue = function(value){
 				this.ngModel = value;
-				console.log(value);
 			}
 		},
 		controllerAs: 'group',

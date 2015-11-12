@@ -34,8 +34,9 @@ _AppHelpers.prototype.userIsLoggedIn = function() {
  */
 _AppHelpers.prototype.docHasRequiredKeys = function(doc, requiredKeys) {
   _.forEach(requiredKeys, function(key){
-  	if (!_.has(doc, key))
+  	if (!_.has(doc, key)){
   		throw new Meteor.Error('missing-arguments['+key+']', 'Faltan argumentos.');
+  	}
   }.bind(this));
 };
 /**
@@ -98,6 +99,14 @@ _AppHelpers.prototype.addUpdatedValues = function (doc){
 	doc.updatedByUsername = Meteor.user().username;
 }
 
+_AppHelpers.prototype.filterUnacceptedKeys = function(doc, keys){
+	if (!_.isArray(keys)) throw new Meteor.Error('keys-is-not-array');
+	// clone keys array
+	var _keys = keys.slice(0);
+	_keys.unshift(doc);
+	return _.pick.apply(this, _keys);
+}
+
 _AppHelpers.prototype.stringSearch = function(doc, indexedFields){
 	var indexedDoc = _.clone(doc);
 	if (_.isArray(indexedFields)){
@@ -115,5 +124,17 @@ _AppHelpers.prototype.stringSearch = function(doc, indexedFields) {
 	}
 	doc.stringSearch = JSON.stringify(indexedDoc).toLowerCase();
 };
+
+_AppHelpers.prototype.verifyProducts = function(products){
+	if (_.isArray(products))
+		_.each(products, function(product){
+			this.verifyDoc(product, MerakiProducts.requiredKeys);
+			this.filterUnacceptedKeys(product, MerakiProducts.acceptedKeys);
+		});
+	if (_.isObject(products)){
+		this.filterUnacceptedKeys(products, MerakiProducts.acceptedKeys);
+		this.verifyDoc(products, MerakiProducts.requiredKeys);
+	}
+}
 
 App.helpers = new _AppHelpers();

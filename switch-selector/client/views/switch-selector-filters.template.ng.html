@@ -3,32 +3,32 @@
 	<gux-accordion>
 		<!-- Port Density -->
 		<gux-accordion-item accordion-item-label="Cantidad de Puertos">
-			<gux-radio-group ng-model="index.filters.ports">
+			<gux-radio-group ng-model="vm.filters.ports">
 			<!-- 8 Puertos -->
-				<gux-radio-option radio-value="8">
+				<gux-radio-option radio-value=8>
 					8 Puertos
 				</gux-radio-option>
 			<!-- 12 Puertos -->
-				<gux-radio-option radio-value="12">
+				<gux-radio-option radio-value=12>
 					12 Puertos
 				</gux-radio-option>
 			<!-- 16 Puertos -->
-				<gux-radio-option radio-value="16">
+				<gux-radio-option radio-value=16>
 					16 Puertos
 				</gux-radio-option>
 			<!-- 24 Puertos -->
-				<gux-radio-option radio-value="24">
+				<gux-radio-option radio-value=24>
 					24 Puertos
 				</gux-radio-option>
 			<!-- 48 Puertos -->
-				<gux-radio-option radio-value="48">
+				<gux-radio-option radio-value=48>
 					48 Puertos
 				</gux-radio-option>
 			</gux-radio-group>
 			<p class="text-center">
 				<a 	href="javascript:void(0);"
-						ng-show="index.filters.ports"
-						ng-click="index.deleteFilter('ports')"
+						ng-show="vm.filters.ports"
+						ng-click="vm.deleteFilter('ports')"
 						class="text-danger">
 					<i>Eliminar filtro</i>
 				</a>
@@ -38,7 +38,7 @@
 
 		<!-- Ports -->
 		<gux-accordion-item accordion-item-label="Velocidad de Puertos">
-			<gux-radio-group ng-model="index.filters.portSpeed">
+			<gux-radio-group ng-model="vm.filters.portSpeed">
 				<!-- 100 Mbps -->
 				<gux-radio-option radio-value="100 Mbps">
 					100 Mbps
@@ -54,8 +54,8 @@
 			</gux-radio-group>
 			<p class="text-center">
 				<a 	href="javascript:void(0);"
-						ng-show="index.filters.portSpeed"
-						ng-click="index.deleteFilter('portSpeed')"
+						ng-show="vm.filters.portSpeed"
+						ng-click="vm.deleteFilter('portSpeed')"
 						class="text-danger">
 					<i>Eliminar filtro</i>
 				</a>
@@ -66,7 +66,7 @@
 		<!-- Uplink Ports -->
 		<gux-accordion-item accordion-item-label="Uplinks">
 			
-			<gux-radio-group ng-model="index.filters.uplink">
+			<gux-radio-group ng-model="vm.filters.uplink">
 				
 				<!-- SFP -->
 				<gux-radio-option radio-value="SFP">
@@ -86,8 +86,8 @@
 			<p class="text-center">
 				
 				<a 	href="javascript:void(0);"
-						ng-show="index.filters.uplink"
-						ng-click="index.deleteFilter('uplink')"
+						ng-show="vm.filters.uplink"
+						ng-click="vm.deleteFilter('uplink')"
 						class="text-danger">
 					<i>Eliminar filtro</i>
 				</a>
@@ -99,7 +99,7 @@
 		<!-- Brand -->
 		<gux-accordion-item accordion-item-label="Marca">
 			
-			<gux-radio-group ng-model="index.filters.brand">
+			<gux-radio-group ng-model="vm.filters.brand">
 				
 				<!-- CISCO -->
 				<gux-radio-option radio-value="CISCO">
@@ -119,8 +119,8 @@
 			<p class="text-center">
 				
 				<a 	href="javascript:void(0);"
-						ng-show="index.filters.brand"
-						ng-click="index.deleteFilter('brand')"
+						ng-show="vm.filters.brand"
+						ng-click="vm.deleteFilter('brand')"
 						class="text-danger">
 					<i>Eliminar filtro</i>
 				</a>
@@ -132,19 +132,19 @@
 		<!-- Caracteristicas Adicionales -->
 		<gux-accordion-item accordion-item-label="Caracteristicas Adicionales">
 			<!-- Fuentes Redundantes -->
-			<gux-selectable-item ng-model="index.filters.secondaryPowerSupply">
+			<gux-selectable-item ng-model="vm.filters.secondaryPowerSupply">
 				<strong>Fuentes Redundantes</strong>
 			</gux-selectable-item>
 			<!-- PoE -->
-			<gux-selectable-item ng-model="index.filters.poe">
+			<gux-selectable-item ng-model="vm.filters.poe">
 				<strong>PoE</strong>
 			</gux-selectable-item>
 			<!-- PoE+ -->
-			<gux-selectable-item ng-model="index.filters.poePlus">
+			<gux-selectable-item ng-model="vm.filters.poePlus">
 				<strong>PoE+</strong>
 			</gux-selectable-item>
 			<!-- Puertos Duales -->
-			<gux-selectable-item ng-model="index.filters.dualPorts">
+			<gux-selectable-item ng-model="vm.filters.dualPorts">
 				<strong>Puertos Duales</strong>
 			</gux-selectable-item>
 		</gux-accordion-item>	

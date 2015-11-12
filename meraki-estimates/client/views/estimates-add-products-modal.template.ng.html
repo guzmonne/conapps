@@ -1,0 +1,68 @@
+<div id="estimatesAddProductsModal" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content modal-min-650">
+    	<!-- Modal Header -->	
+			<div class="modal-header text-primary">
+				<close-modal-button></close-modal-button>
+				<h4>Agregar Productos</h4>
+			</div>
+    	<!--  -->
+
+    	<!-- Modal Body -->
+			<div class="modal-body">
+				<div class="container">
+					
+					<!-- Products Filters -->
+					<div class="row">
+						<div class="col-sm-12">
+							<estimates-add-products-filters
+								line="vm.line"
+								show-selected="vm.showSelected">
+							</estimates-add-products-filters>
+						</div>
+					</div>
+					<!--  -->
+					
+					<!-- Selected Products -->
+					<div class="row padding meraki-product-panel-container" ng-show="vm.showSelected === true">
+						<div class="col-sm-12" style="min-height: 800px">
+							<meraki-product-panel
+								ng-repeat="product in vm.selectedProducts track by $index"
+								product="product"
+								selectable="true"
+								ng-cloak>
+							</meraki-product-panel>
+						</div>
+					</div>
+					<!--  -->
+
+					<!-- Product List -->
+					<div class="row padding meraki-product-panel-container" ng-show="vm.showSelected === false">
+						<div class="col-sm-12" style="min-height: 800px">
+							<meraki-product-panel
+								ng-repeat="product in vm.products track by product._id"
+								product="product"
+								products="vm.products"
+								selectable="true"
+								on-select="vm.addProduct(product, quantity)"
+								ng-cloak>
+							</meraki-product-panel>
+						</div>
+					</div>
+					<!--  -->
+				
+				</div>
+			</div>
+    	<!-- -->
+
+    	<!-- Modal Footer Starts-->
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="vm.addProductsToEstimate()">
+					Aceptar
+				</button>
+			</div>
+    	<!-- -->
+
+		</div>
+  </div>
+</div>

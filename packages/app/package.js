@@ -8,6 +8,7 @@ Package.onUse(function(api) {
     'app.js',
     'app.auth.js',
     'app.query-constructor.js',
+    'app.spin-options.js',
     'app.helpers.js',
   ];
 

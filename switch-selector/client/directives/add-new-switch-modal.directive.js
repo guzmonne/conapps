@@ -1,3 +1,30 @@
+angular.module('conapps').directive('addNewSwitchModal', addNewSwitchModal);
+
+function addNewSwitchModal(){
+	return {
+		restrict         : 'E',
+		replace          : true,
+		templateUrl      : 'switch-selector/client/views/add-new-switch-modal-template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
+		bindToController : true,
+		scope            : {},
+	}
+}
+
+controller.$inject = ['switchSelectorService'];
+
+function controller(sss){
+	var vm = this;
+
+	vm.switch           = sss.activeSwitch;
+	vm.brandOptions     = sss.brandOptions;
+	vm.portOptions      = sss.portOptions;
+	vm.portSpeedOptions = sss.portSpeedOptions;
+	vm.save             = sss.saveActiveSwitch;
+}
+
+/*
 angular.module('conapps').directive('addNewSwitchModal', function(){
 	return {
 		restrict    : 'E',
@@ -9,9 +36,7 @@ angular.module('conapps').directive('addNewSwitchModal', function(){
 		controller  : ['$meteor', function($meteor){
 			var self = this;
 
-			self.brandOptions     = ['CISCO', 'HP', 'JUNIPER'];
-			self.portOptions      = [8, 12, 16, 24, 48];
-			self.portSpeedOptions = ['100 Mbps', '1 Gbps', '10 Gbps'];
+
 
 			self.save = function(e){
 				e.preventDefault();
@@ -23,19 +48,21 @@ angular.module('conapps').directive('addNewSwitchModal', function(){
 					method = 'addSwitch';
 					msg    = 'Switch Creado';
 				}
-				$meteor.call(method, self.switch)
-				.then(function(result){
-					toastr.success(msg, 'Exito!');
-					if (self.switch._id) return;
-					self.switch = {};
-				})
-				.catch(function(err){
-					toastr.error('Se ha producido un error inesperado', 'Error!');
-					console.log(err);
-				});
+				$meteor.
+					call(method, self.switch).
+					then(function(result){
+						toastr.success(msg, 'Exito!');
+						if (self.switch._id) return;
+						self.switch = {};
+					}).
+					catch(function(err){
+						toastr.error('Se ha producido un error inesperado', 'Error!');
+						console.log(err);
+					});
 			}
 		}],
 		controllerAs: 'addSwitchCtrl',
 		bindToController: true,
 	}
 });
+*/

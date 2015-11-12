@@ -1,20 +1,35 @@
-angular.module('conapps').directive('estimatesProductListToolbar', function(){
+angular.module('conapps').directive('estimatesProductListToolbar', estimatesProductListToolbar);
+
+function estimatesProductListToolbar(){
 	return {
-		restirct    : 'E',
-		replace     : true,
-		templateUrl : 'meraki-estimates/client/views/estimates-product-list-toolbar.template.ng.html',
-		scope       : {
-			options: '='
-		},
-		controller: ['updateFiltersService', 'showModal', 'merakiProductService', function(updateFiltersService, showModal, merakiProductService){
-			this.stringSearch = '',
-			this.updateFilters = updateFiltersService.bind(this);
-			this.openModal = function(){
-				merakiProductService.setDefault();
-				showModal('#productListModalForm');
-			};
-		}],
-		controllerAs     : 'productListToolbar',
+		restrict         : 'E',
+		replace          : true,
+		templateUrl      : 'meraki-estimates/client/views/estimates-product-list-toolbar.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
 		bindToController : true,
-	};
-});
+		scope            : {
+			stringSearch: '=',
+		},
+	}
+}
+
+controller.$inject = ['showModal', 'merakiProductService'];
+
+function controller(showModalService, merakiProduct){
+	var vm = this;
+
+	vm.updateFilters = updateFilters;
+	vm.showModal     = showModal;
+
+	////////////
+	
+	function showModal(){
+		merakiProduct.setDefault();
+		showModalService('#productListModalForm');
+	}
+
+	function updateFilters(){
+		vm.stringSearch = vm._stringSearch;
+	}
+}

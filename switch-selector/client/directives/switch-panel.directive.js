@@ -10,6 +10,7 @@ angular.module('conapps').directive('switchPanel', function(){
 		require: 'ngModel',
 		bindToController: true,
 		controller: ['$window', function($window){
+			this.isAdmin = App.auth.isAdmin;
 			this.switch = this.ngModel;
 			this.switchCopperPorts = function(){
 				var portSpeed = '10/100';

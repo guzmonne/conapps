@@ -14,11 +14,11 @@ angular.module('conapps').service('merakiProductService', [
 		};
 
 		MerakiProductService.prototype.setDefault = function setDefault(){
-			this.setProduct({ attributes: {} });
+			this.setProduct({});
 		}
 
 		MerakiProductService.prototype.defaultProduct = function() {
-			return { attributes: {} };
+			return {};
 		};
 
 		MerakiProductService.prototype.deleteProduct = function(product) {

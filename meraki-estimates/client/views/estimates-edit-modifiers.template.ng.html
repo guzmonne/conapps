@@ -1,0 +1,142 @@
+<div class="container padding">
+	<div class="row" style="margin-bottom: 15px">
+		
+		<div class="col-sm-8">
+			<h4 
+				class="pointer col-xs-4"
+				style="line-height: 25px"
+				ng-class="{'text-muted': !vm.estimate.deal, 'text-success': !!vm.estimate.deal}"
+				ng-click="vm.toggleDeal()">
+				<i
+					class="fa"
+					ng-class="{'fa-toggle-off': !vm.estimate.deal, 'fa-toggle-on': !!vm.estimate.deal}">
+				</i>
+				Deal
+			</h4>
+
+			<h4 
+				class="pointer col-xs-4"
+				style="line-height: 25px"
+				ng-class="{'text-muted': !vm.estimate.customDiscount, 'text-primary': !!vm.estimate.customDiscount}"
+				ng-click="vm.toggleCustomDiscount()">
+				<i
+					class="fa"
+					ng-class="{'fa-toggle-off': !vm.estimate.customDiscount, 'fa-toggle-on': !!vm.estimate.customDiscount}">
+				</i>
+				% Manual
+			</h4>
+			
+			<div class="col-xs-4">
+				<div class="input-group">
+					<div class="input-group-addon input-sm">
+						%
+					</div>
+					<input 
+						type="number"
+						class="form-control text-center col-xs-6 input-sm"
+						ng-model="vm.estimate.discount"
+						max="100"
+						min="0"
+						step="1"
+						gux-percentage-input
+						ng-disabled="!vm.estimate.customDiscount">
+				</div>
+			</div>
+			
+		</div>	
+
+		<div class="col-sm-4">
+			<div class="btn-group btn-block btn-block-2">
+				<button
+					class="btn btn-sm"
+					ng-class="{true: 'btn-primary active', false: 'btn-default'}[vm.estimate.serviceLvl === '8x5xNBD']"
+					ng-readonly="vm.estimate.serviceLvl === '8x5xNBD'"
+					ng-click="vm.toggleServiceLvl()">
+					8x5xNBD
+				</button>
+				<button
+					class="btn btn-sm"
+					ng-class="{true: 'btn-primary active', false: 'btn-default'}[vm.estimate.serviceLvl === '24x7x1x6']"
+					ng-readonly="vm.estimate.serviceLvl === '24x7x1x6'"
+					ng-click="vm.toggleServiceLvl()">
+					24x7x1x6
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-3">
+			<h5 class="text-center" style="margin-bottom: 5px">Costo de Introducción</h5>
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.estimate.intCost"
+					max="100"
+					min="0"
+					step="1"
+					ng-model-options="{debounce: 500}"
+					ng-change="vm.updateModifiers()"
+					gux-percentage-input>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<h5 class="text-center" style="margin-bottom: 5px">Margen de Hardware</h5>
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.estimate.hwMargin"
+					max="100"
+					min="0"
+					step="1"
+					ng-model-options="{debounce: 500}"
+					ng-change="vm.updateModifiers()"
+					gux-percentage-input>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<h5 class="text-center" style="margin-bottom: 5px">Margen de Software</h5>
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.estimate.swMargin"
+					max="100"
+					min="0"
+					step="1"
+					ng-model-options="{debounce: 500}"
+					ng-change="vm.updateModifiers()"
+					gux-percentage-input>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<h5 class="text-center" style="margin-bottom: 5px">Margen de Sop. y Adm.</h5>
+			<div class="input-group">
+				<div class="input-group-addon">
+					%
+				</div>
+				<input 
+					type="number"
+					class="form-control text-center"
+					ng-model="vm.estimate.supMargin"
+					max="100"
+					min="0"
+					step="1"
+					ng-model-options="{debounce: 500}"
+					ng-change="vm.updateModifiers()"
+					gux-percentage-input>
+			</div>
+		</div>
+	</div>
+</div>

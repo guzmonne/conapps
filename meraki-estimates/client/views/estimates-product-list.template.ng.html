@@ -1,11 +1,18 @@
-<div class="row">
+<div class="row spinner-container">
+	<div ng-if="vm.products && vm.products.length > 0" id="spinner"></div>
 	<estimates-product-list-toolbar
-		options="productList.options"
-	></estimates-product-list-toolbar>
+		string-search="vm.stringSearch"
+		something="vm.something">
+	</estimates-product-list-toolbar>
 	<div class="clearfix padding"></div>
-	<estimates-product-list-cards-view
-		options="productList.options"
-		collection="productList.collection"
-	></estimates-product-list-cards-view>
-	<estimates-product-list-modal-form></estimates-product-list-modal-form>
+	<div class="col-sm-12">
+		<meraki-product-panel
+			ng-repeat="product in vm.products track by product._id"
+			editable="true"
+			product="product"
+			ng-cloak>
+		</meraki-product-panel>
+	</div>
+	<estimates-product-list-modal-form>
+	</estimates-product-list-modal-form>
 </div>
