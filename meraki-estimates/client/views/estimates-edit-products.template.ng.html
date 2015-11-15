@@ -1,0 +1,247 @@
+<div class="container">
+	<div class="row" ng-show="!vm.products">
+		<div class="col-sm-12 text-center">
+			<span class="notification notification-orange">
+				<i class="fa fa-warning"></i>
+				Agregue productos al estimate para continuar.
+			</span>
+		</div>
+	</div>
+	<div class="row" style="margin-top: 5px; margin-bottom: 5px" ng-show="vm.products">
+		<div class="col-sm-12">
+			<div class="btn-group pull-right">
+				<button 
+					class="btn btn-xs" 
+					ng-class="{'btn-primary active': vm.displayView === 'list', 'btn-default': vm.displayView !== 'list'}" 
+					ng-click="vm.displayView = 'list'">
+					<i class="fa fa-list"></i>
+				</button>
+				<button 
+					class="btn btn-xs" 
+					ng-class="{'btn-primary active': vm.displayView === 'table', 'btn-default': vm.displayView !== 'table'}" 
+					ng-click="vm.displayView = 'table'">
+					<i class="fa fa-table"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	<div ng-show="vm.displayView === 'list'">
+		<meraki-product-panel
+			ng-repeat="product in vm.products"
+			product="product"
+			selectable="true"
+			discount="vm.estimate.discount"
+			on-qty-mod="vm.updateProductQty(attrs)"
+			on-remove="vm.removeProduct(product)"
+			ng-cloak>
+		</meraki-product-panel>
+	</div>
+	
+	<div ng-show="vm.displayView === 'table' && vm.products">
+
+		<div class="table-responsive">
+			
+			<table class="table table-striped table-hover table-condensed">
+				
+				<thead>
+						
+						<th>Modelo</th>
+						<th>Descripción</th>
+						<th class="text-center">Precio</th>
+						<th class="text-center">Cantidad</th>
+						<th class="text-center">FOB</th>
+						<th class="text-center">Sub-Total</th>
+
+				</thead>
+
+				<tbody>
+
+						<tr class="text-center">
+							<td colspan="6" style="background-color: #A2A2A2; line-height:4px; color:white; font-size: 9px">
+								<strong>Hardware</strong>
+							</td>
+						</tr>
+
+						<tr
+							ng-repeat="product in vm.products track by product.id">
+							
+							<td>
+								{{ product.model}}
+							</td>
+							<td>
+								{{ product.description}}
+							</td>
+							<td class="text-center">
+								{{ product.price * (1 - vm.estimate.discount) | setDecimal}}
+							</td>
+							<td class="text-center">
+								{{ product.quantity}}
+							</td>
+							<td class="text-center">
+								{{ product.quantity * product.price * (1 - vm.estimate.discount) | setDecimal}}
+							</td>
+							<td class="text-center">
+								{{ vm.calculateCost(product.quantity * product.price) | setDecimal}}
+							</td>
+
+						</tr>
+
+						<tr>
+							<td colspan="4" style="text-align: right; padding-right: 20px">
+								<strong>
+									TOTAL [HW]
+								</strong>
+							</td>
+							<td>
+								{{vm.hwTotal() * (1 - vm.estimate.discount) | setDecimal}}
+							</td>
+							<td>
+								{{vm.hwCost() | setDecimal}}
+							</td>
+						</tr>
+
+						<tr class="text-center">
+							<td colspan="6" style="background-color: #A2A2A2; line-height:4px; color:white; font-size: 9px">
+								<strong>Software</strong>
+							</td>
+						</tr>
+
+						<tr
+							ng-repeat="license in vm.licenses track by license.productId"
+							ng-if="vm.licenses && vm.licenses.length > 0">
+							
+							<td>
+								{{ license.model}}
+							</td>
+							<td>
+								{{ license.description}}
+							</td>
+							<td class="text-center">
+								{{ license.price * (1 - vm.estimate.discount) | setDecimal}}
+							</td>
+							<td class="text-center">
+								{{ license.quantity}}
+							</td>
+							<td class="text-center">
+								{{ license.quantity * license.price * (1 - vm.estimate.discount) | setDecimal}}
+							</td>
+							<td class="text-center">
+								{{ vm.calculateCost(license.quantity * license.price, {isSoftware:true}) | setDecimal}}
+							</td>
+
+						</tr>
+
+						<tr>
+							<td colspan="4" style="text-align: right; padding-right: 20px">
+								<strong>
+									TOTAL [SW]
+								</strong>
+							</td>
+							<td>
+								{{vm.swTotal() * (1 - vm.estimate.discount) | setDecimal}}
+							</td>
+							<td>
+								{{vm.swCost() | setDecimal}}
+							</td>
+						</tr>
+
+						<tr class="text-center">
+							<td colspan="6" style="background-color: #A2A2A2; line-height:4px; color:white; font-size: 9px">
+								<strong>Soporte y Administración</strong>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<!-- Vacio -->
+							</td>
+							<td>
+								Cuota Mensual por Licenciamiento
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								{{ vm.swCostPerMonth() * (1 - vm.estimate.swMargin) | setDecimal }}
+							</td>
+							<td class="text-center">
+								{{ vm.swCostPerMonth() | setDecimal }}
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<!-- Vacio -->
+							</td>
+							<td>
+								Cuota Mensual de Soporte
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								{{ vm.supCostPerMonth() * (1 - vm.estimate.supMargin) | setDecimal }}
+							</td>
+							<td class="text-center">
+								{{ vm.supCostPerMonth() | setDecimal }}
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<!-- Vacio -->
+							</td>
+							<td>
+								Cuota Mensual de Administración
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								{{ vm.admCostPerMonth() * (1 - vm.estimate.supMargin) | setDecimal }}
+							</td>
+							<td class="text-center">
+								{{ vm.admCostPerMonth() | setDecimal }}
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<!-- Vacio -->
+							</td>
+							<td>
+								Cuota Mensual de Equipamiento
+								<strong>(Solo válida para Solución Unificada)</strong>
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								-
+							</td>
+							<td class="text-center">
+								{{ vm.hwCost() * 0.04 | setDecimal }}
+							</td>
+						</tr>
+
+				</tbody>
+
+			</table>
+
+		</div>
+		
+	</div>
+
+</div>

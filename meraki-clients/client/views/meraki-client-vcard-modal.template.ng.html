@@ -1,0 +1,97 @@
+<div id="vCardClientModal" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>
+          vCard
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="table-responsive">
+                <table class="table table-first-border-top-none">
+                  <tr>
+                    <td><strong>Nombre</strong></td>
+                    <td>{{vCardModal.client.name}} {{vCardModal.client.lastName}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Empresa</strong></td>
+                    <td>{{vCardModal.client.company}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cargo</strong></td>
+                    <td>{{vCardModal.client.position}}</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Telefonos</strong></td>
+                    <td class="padding-0">
+                      <table class="table table-first-border-top-none table-margin-bottom-0">
+                        <tr ng-repeat="phone in vCardModal.client.phones track by $index">
+                          <td>{{phone}}</td>
+                          <td>
+                            <a class="pull-right" href="javascript:void(0)" ng-click="vCardModal.toggleValue('phones', $index)">
+                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vCardModal.isUndefined('phones', $index)]"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Emails</strong></td>
+                    <td class="padding-right-0">
+                      <table class="table table-first-border-top-none table-margin-bottom-0 table-padding-left-0">
+                        <tr ng-repeat="email in vCardModal.client.emails track by $index">
+                          <td>{{email}}</td>
+                          <td>
+                            <a class="pull-right" href="javascript:void(0)" ng-click="vCardModal.toggleValue('emails', $index)">
+                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vCardModal.isUndefined('emails', $index)]"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Direcciones</strong></td>
+                    <td class="padding-right-0">
+                      <table class="table table-first-border-top-none table-margin-bottom-0 table-padding-left-0">
+                        <tr ng-repeat="address in vCardModal.client.addresses track by $index">
+                          <td>
+                            <gux-address address="address"></gux-address>
+                          </td>
+                          <td>
+                            <a class="pull-right" href="javascript:void(0)" ng-click="vCardModal.toggleValue('addresses', $index)">
+                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vCardModal.isUndefined('addresses', $index)]"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-info btn-block" ng-click="vCardModal.downloadVCard()">
+                <i class="fa fa-download"></i>
+                Descargar vCard
+              </button>
+              <br>
+              <button class="btn btn-info btn-primary btn-block" ng-click="vCardModal.makeCode()">
+                <i class="fa fa-qrcode"></i>
+                Codigo QR
+              </button>
+              <div id="qrcode"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Aceptar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,59 @@
+<div class="row">
+	<form>
+		<div class="col-sm-6">
+			<!-- Line -->
+			<gux-form-select 
+				ng-model="vm.product.line"
+				select-name="line"
+				select-options="vm.lines"
+			>
+				Linea
+			</gux-form-select>
+			<gux-form-input
+				ng-model="vm.product.family"
+				input-placeholder="Ej.: MR"
+				input-name="family"
+			>
+				Familia
+			</gux-form-input>
+			<gux-form-input
+				ng-model="vm.product.model"
+				input-placeholder="Ej.: MR32"
+				input-name="model"
+			>
+				Modelo
+			</gux-form-input>
+			<gux-form-input
+				ng-model="vm.product.description"
+				input-placeholder="Ej.: Meraki MR32 Cloud Managed AP"
+				input-name="descripción"
+			>
+				Descripcion
+			</gux-form-input>
+		</div>
+		<div class="col-sm-6">
+			<gux-form-input
+				ng-model="vm.product.price"
+				input-placeholder="0.00"
+				input-name="listPrice"
+				input-type="number"
+			>
+				Precio de Lista
+			</gux-form-input>
+			<gux-form-input
+				ng-model="vm.product.image"
+				input-placeholder="Ej.: https://meraki.cisco.com/img/mx64w.jpg"
+				input-name="image"
+			>
+				Imagen
+			</gux-form-input>
+			<gux-form-input
+				ng-model="vm.product.datasheet"
+				input-placeholder="Ej.: https://meraki.cisco.com/lib/pdf/meraki_datasheet_mx.pdf"
+				input-name="datasheet"
+			>
+				Hoja de Datos
+			</gux-form-input>
+		</div>
+	</form>
+</div>

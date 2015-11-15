@@ -1,0 +1,23 @@
+<div>
+	<div class="panel-heading" id="{{accordionItem.id}}">
+		<h4 class="panel-title">
+			<a	href="#{{accordionItem.collapseId}}"
+					aria-expanded="false"
+					aria-controls="collapsePorts"
+					role="button"
+					data-toggle="collapse"
+					data-parent="#accordion"
+					class="collapsed">
+				{{accordionItem.label}}
+			</a>
+		</h4>
+	</div>
+	<div
+		id="{{accordionItem.collapseId}}"
+		class="panel-collapse collapse"
+		aria-labelledby="{{accordionItem.id}}">
+		<div class="panel-body" ng-transclude>
+
+		</div>
+	</div>
+</div>

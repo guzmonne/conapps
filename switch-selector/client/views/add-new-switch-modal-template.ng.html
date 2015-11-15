@@ -1,0 +1,116 @@
+<div id="addNewSwitchModal" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 ng-if="!vm.switch._id" class="modal-title">Agregar Nuevo Switch</h4>
+        <h4 ng-if="vm.switch._id" class="modal-title">
+          Modificar Switch 
+          <small class="text-muted">{{vm.switch._id}}</small>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            
+            <form name="newSwitchForm" gux-form>
+              <div class="col-sm-6">
+                <!-- Familia -->
+                <gux-form-input ng-model="vm.switch.family" input-placeholder="Ej: Catalyst 2960-X" input-type="text" input-name="family">
+                  Familia
+                </gux-form-input>
+                <!-- Modelo -->
+                <gux-form-input ng-model="vm.switch.model" input-placeholder="Ej: WS-C2960X-24T-L" input-type="text" input-name="model">
+                  Número de Parte
+                </gux-form-input>
+                <!-- Marca -->
+                <gux-form-select ng-model="vm.switch.brand" select-name="brand" select-options="vm.brandOptions">
+                  Marca
+                </gux-form-select>
+                <!-- Imagen -->
+                <gux-form-input ng-model="vm.switch.imageUrl" input-placeholder="Ej: http://placehold.it/180x120" input-type="url" input-name="imageUrl">
+                  Imagen
+                </gux-form-input>
+
+                <!-- DataSheet -->
+                <gux-form-input ng-model="vm.switch.datasheetUrl" input-placeholder="Ej: http://www.cisco.com/datasheet.pdf" input-type="url" input-name="datasheetUrl">
+                  Hoja de Datos
+                </gux-form-input>
+
+              </div>
+
+              <div class="col-sm-6">
+                <!-- Cantidad de Puertos -->  
+                <gux-form-select ng-model="vm.switch.ports" select-name="ports" select-options="vm.portOptions">
+                  Cantidad de Puertos
+                </gux-form-select>
+                <!-- Velocidad de Puertos -->
+                <gux-form-select ng-model="vm.switch.portSpeed" select-name="portSpeed" select-options="vm.portSpeedOptions">
+                  Velocidad de Puertos
+                </gux-form-select>
+                <!-- Uplinks -->
+                <div class="form-group">
+                  <label>Uplinks</label>
+                  <div class="row">
+                    <div class="col-sm-9">
+                      <select ng-model="vm.switch.uplink" name="uplink" class="form-control">
+                        <option value="">---</option>
+                        <option value="SFP">SFP</option>
+                        <option value="SFP+">SFP+</option>
+                        <option value="QSFP+">QSFP+</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <select ng-model="vm.switch.uplinkPorts" name="uplinkPorts" class="form-control">
+                        <option value="">---</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="8">8</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="vm.switch.secondaryPowerSupply" name="secondaryPowerSupply"> Fuente Redundante
+                  </label>
+                </div>
+
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="vm.switch.dualPorts" name="dualPorts"> Puertos Duales
+                  </label>
+                </div>
+
+                <div class="checkbox">
+                  <label>
+                    <input ng-model="vm.switch.poe" type="checkbox" name="poe"> PoE
+                  </label>
+                </div>
+
+                <div class="checkbox">
+                  <label>
+                    <input ng-model="vm.switch.poePlus" type="checkbox" name="poePlus"> PoE+
+                  </label>
+                </div>
+
+                <div class="checkbox">
+                  <label>
+                    <input ng-model="vm.switch.uPoePlus" type="checkbox" name="uPoePlus"> UPoE+
+                  </label>
+                </div>
+              
+              </div>
+
+            </form>
+            
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="vm.save($event)">Aceptar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

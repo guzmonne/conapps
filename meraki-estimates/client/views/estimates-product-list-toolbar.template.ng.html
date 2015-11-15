@@ -1,0 +1,24 @@
+<div class="col-sm-12">
+	<div class="row">
+		<div class="col-sm-4">
+			<button class="btn btn-success"
+				ng-click="vm.showModal()">
+				<i class="fa fa-plus"></i>
+				Nuevo Producto
+			</button>
+		</div>
+		<div class="col-sm-offset-4 col-sm-4">
+			<form name="searchForm">
+				<div class="form-group has-feedback">
+					<input 	
+						type="text"
+						ng-model="vm.stringSearch"
+						ng-model-options="{debounce: 800}"
+						placeholder="Filtro"
+						class="form-control">	
+						<span class="glyphicon glyphicon-repeat form-control-feedback fa-spin"></span>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,73 @@
+@import 'nib'
+
+$purple = #CB79E6
+
+.gux-icon-meraki-logo
+	background-image:url('icons/icons.png')
+	background-position:0 0
+	background-repeat:no-repeat
+
+.gux-icon-meraki-logo-dims
+	width:300px
+	height:300px
+	
+.gux-icon-meraki-logo 
+	background-image: url('svg/icons.svg')
+	background-position:0 0
+	background-repeat:no-repeat
+
+.gux-icon-meraki-logo-dims
+	width:300px
+	height:300px
+
+a.gux-icon-inside {
+	vertical-align: top
+}
+
+.gux-icon {
+	width: 16px
+	height: 16px
+}
+	
+span.gux-icon {
+	position: relative
+}
+	
+span.gux-icon > svg.gux-icon {
+	position: absolute
+	top: -1px
+}
+
+.gux-icon-sidebar {
+	background: #aaa
+	-webkit-mask: url('svg/icons.svg') center / contain no-repeat
+}
+	
+a:hover .gux-icon-sidebar {
+	background: #fff
+	-webkit-mask: url('svg/icons.svg') center / contain no-repeat
+}
+
+.gux-icon-right-text {
+	margin-left: 22px
+}
+
+i.gux-icon
+	display: inline-block
+	background-size: 16px 16px
+	
+i.gux-icon.gux-icon-purple
+	background: $purple
+	-webkit-mask: url('svg/icons.svg') center / contain no-repeat
+	
+i.gux-icon.gux-icon-white
+	background: #fff
+	-webkit-mask: url('svg/icons.svg') center / contain no-repeat
+	
+a:hover i.gux-icon.gux-icon-hover-white
+	background: #fff
+	-webkit-mask: url('svg/icons.svg') center / contain no-repeat
+	
+a.active i.gux-icon-on-active-white
+	background: #fff
+	-webkit-mask: url('svg/icons.svg') center / contain no-repeat

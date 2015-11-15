@@ -1,0 +1,47 @@
+<div class="form-group">
+	<label ng-transclude></label>
+	<div class="row row-padding-bottom">
+		<div class="col-xs-12">
+			<button class="btn btn-success btn-block" ng-click="vm.addInterface()">
+				<i class="fa fa-plus"></i>
+				Agregar Interface
+			</button>
+		</div>
+	</div>
+	<div class="row row-padding-bottom" ng-repeat="interface in vm.interfaces track by $index">
+		<div class="col-xs-7">
+			<select 
+				ng-model="interface.type"
+				name="interfaces"
+				class="form-control"
+				id="interface{{$index}}"
+			>
+				<option 
+					ng-repeat="option in vm.options track by $index"
+					value="{{option}}"
+				>
+					{{option}}
+				</option>
+			</select>
+		</div>
+		<div class="col-xs-3">
+			<input 
+				type="number"
+				ng-model="interface.ammount"
+				class="form-control"
+				step="1"
+				min="1"
+				placeholder="1"
+			>
+		</div>
+		<div class="col-xs-2">
+			<button
+				class="btn btn-danger btn-block"
+				ng-click="vm.removeInterface($index)"
+				tabindex="-1"
+			>
+				<i class="fa fa-minus"></i>
+			</button>
+		</div>
+	</div>
+</div>

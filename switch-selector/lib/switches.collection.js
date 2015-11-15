@@ -1,0 +1,1 @@
+Switches = new Mongo.Collection('switches');

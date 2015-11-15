@@ -1,0 +1,85 @@
+<div class="container padding">
+	<div class="row">
+
+		<div class="col-sm-4">
+			<span class="span-well span-well-primary text-center">
+				<h4 class="span-well-heading">
+					<strong>Solución Tradicional</strong>
+				</h4>
+				<dt>Precio de Venta</dt>
+				<dd class="span-highlight">USD {{vm.hwCost() | setDecimal}}</dd>
+				<dt>Couta Mensual</dt>
+				<dd class="span-highlight">USD {{vm.traditionalMonthlyPayment() | setDecimal}}</dd>
+			</span>
+		</div>
+
+		<div class="col-sm-4">
+			<span class="span-well span-well-danger text-center">
+				<h4 class="span-well-heading">
+					<strong>Solución Administrada</strong>
+				</h4>
+				<dt>Precio de Venta</dt>
+				<dd class="span-highlight">USD {{vm.hwCost() | setDecimal}}</dd>
+				<dt>Couta Mensual</dt>
+				<dd class="span-highlight">USD {{vm.administeredMonthlyPayment() | setDecimal}}</dd>
+			</span>
+		</div>
+
+		<div class="col-sm-4">
+			<span class="span-well span-well-success text-center">
+				<h4 class="span-well-heading">
+					<strong>Solución Unificada</strong>
+				</h4>
+				<dt>Couta Mensual</dt>
+				<dd class="span-highlight">USD {{vm.unifiedMonthlyPayment() | setDecimal}}</dd>
+				<p class="span-well-observation">
+					<strong>OBS:</strong>
+					Contrato a 36 meses, luego del cual los equipos son del cliente. Incluye los equipos, el servicio y la administración de la solución.
+				</p>
+			</span>
+		</div>
+
+	</div>
+	
+
+		DEBUG WEIGHTS 
+	<div class="row">
+		<div class="col-sm-3">
+			<input type="number" class="form-control" step="0.01" 
+				ng-model="vm.weights.support['8x5xNBD']"
+			>
+		</div>
+		<div class="col-sm-3">
+			<input type="number" class="form-control" step="0.01" 
+				ng-model="vm.weights.support['24x7x1x6']"
+			>
+		</div>
+		<div class="col-sm-3">
+			<input type="number" class="form-control" step="0.01" 
+				ng-model="vm.weights.administration.a"
+			>
+		</div>
+		<div class="col-sm-3">
+			<input type="number" class="form-control" step="0.01" 
+				ng-model="vm.weights.administration.b"
+			>
+		</div>
+	</div>
+
+	<!-- 
+	DEBUG PARAMS 
+	<div class="row">
+		<div class="col-sm-6">
+			<input type="number" class="form-control" step="0.01" 
+				ng-model="vm.params.a"
+			>
+		</div>
+		<div class="col-sm-6">
+			<input type="number" class="form-control" step="0.01" 
+				ng-model="vm.params.b"
+			>
+		</div>
+	</div>
+	 -->
+
+</div>

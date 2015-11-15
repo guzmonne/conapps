@@ -1,0 +1,41 @@
+<div class="col-sm-12">
+	<div class="table-responsive">
+		<table class="table table-hover table-striped">
+			<thead>
+				<tr>
+					<th><i class="fa fa-square-o"></i></th>
+					<th class="pointer unselectable" ng-click="indexTable.sortBy('_id')">
+						ID
+						<span class="pull-right" ng-class="indexTable.chevronIfSorting('_id')"></span>
+					</th>
+					<th class="pointer unselectable" ng-click="indexTable.sortBy('name')">
+						Nombre
+						<span class="pull-right"  ng-class="indexTable.chevronIfSorting('name')"></span>
+					</th>
+					<th class="pointer unselectable" ng-click="indexTable.sortBy('description')">
+						Descripción
+						<span class="pull-right" ng-class="indexTable.chevronIfSorting('description')"></span>
+					</th>
+				</tr>
+			</thead>
+			<thead>
+				<tr ng-repeat="estimate in indexTable.collection track by estimate._id">
+					<td><i class="fa fa-square-o"></i></td>
+					<td>
+						<a class="text-primary" ui-sref="meraki_estimates.edit({id: estimate._id})">
+							{{estimate._id.toUpperCase()}}
+						</a>
+					</td>
+					<td>
+						<a class="text-primary" ui-sref="meraki_estimates.edit({id: estimate._id})">
+							{{estimate.name}}
+						</a>
+					</td>
+					<td>
+						{{estimate.description}}
+					</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>

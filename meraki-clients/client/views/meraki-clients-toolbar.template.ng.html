@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="col-sm-8">
+		<button class="btn btn-success" ng-click="index.showModal()">
+			<i class="fa fa-plus"></i>
+			Nuevo Cliente
+		</button>
+	</div>
+	<div class="col-sm-4">
+		<input 	type="text"
+						ng-model="index.filterString"
+						ng-model-options="{debounce: 200}"
+						ng-change="index.updateFilters()"
+						placeholder="Filtro"
+						class="form-control">	
+	</div>
+</div>

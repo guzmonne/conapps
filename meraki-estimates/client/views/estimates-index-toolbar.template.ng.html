@@ -1,0 +1,19 @@
+<div class="col-sm-12">
+	<div class="row">
+		<div class="col-sm-4">
+			<button class="button btn btn-success" ng-click="vm.newEstimate()">
+				<i class="fa fa-plus"></i>
+				Nuevo Estimate
+			</button>
+		</div>
+		<div class="col-sm-offset-4 col-sm-4">
+			<input 	type="text"
+							ng-model="vm.stringSearch"
+							ng-model-options="{debounce: 200}"
+							ng-change="vm.updateFilters()"
+							placeholder="Filtro"
+							class="form-control">	
+		</div>
+	</div>
+	<new-estimate-modal estimate="vm.estimate"></new-estimate-modal>
+</div>
