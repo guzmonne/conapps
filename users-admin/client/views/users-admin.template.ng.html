@@ -1,11 +1,23 @@
-<div>
+<section rel="user-admin">
     <mainbar-content-panel
-            heading="Users"
-            links="vm.links"
-            icon="fa fa-user"
+      heading="Users"
+      links="vm.links"
+      icon="fa fa-user"
     >
         <div class="container-fluid">
-            <h1>Users Admin</h1>
+            
+            <div class="row">
+            	<div class="col-lg-12">
+            		<users-admin-toolbar></users-admin-toolbar>
+            	</div>
+            </div>
+
+						<div class="row">
+							<div class="col-lg-12">
+								<users-admin-table></users-admin-table>
+							</div>
+						</div>
+
         </div>
     </mainbar-content-panel>
-</div>
+</section>

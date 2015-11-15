@@ -1,4 +1,4 @@
-angular.module('conapps').directive('estimatesToolbar', function($location){
+angular.module('conapps').directive('estimatesToolbar', ['$location', function($location){
 	return {
 		restrict: 'E',
 		replace: true,
@@ -14,4 +14,4 @@ angular.module('conapps').directive('estimatesToolbar', function($location){
 			});
 		}
 	};
-});
+}]);
