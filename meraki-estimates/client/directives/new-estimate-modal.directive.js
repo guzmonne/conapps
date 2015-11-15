@@ -23,7 +23,7 @@ function controller($meteor, $state, closeModal){
 	///////////
 	
 	function createEstimate(){
-		$meteor.call('createEstimate', this.estimate)
+		$meteor.call('estimate:create', this.estimate)
 			.then(function(estimateId){
 				toastr.success('Estimate creado.', 'Ok!')
 				closeModal('#newEstimateModal')

@@ -49,7 +49,8 @@ Package.onUse(function(api) {
 
   // Filters
   api.addFiles([
-    'filters/gux-percentage.filter.js'
+    'filters/gux-percentage.filter.js',
+    'filters/gux-calendar.filter.js'
   ], ['client']);
 
   // Services

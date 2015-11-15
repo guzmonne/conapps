@@ -18,7 +18,7 @@ function controller($scope, showModalService){
 	var vm = this;
 
 	vm.estimates = [];
-	vm.options   = { sort: '_id' };
+	vm.options   = { sort: 'createdAt', reverse: true };
 
 	activate();
 

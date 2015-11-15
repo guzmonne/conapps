@@ -21,8 +21,8 @@ angular.module('conapps').controller('MerakiClientsIndexCtrl', [
 				.subscribe('clients', $scope.getReactively('index.filter'))
 				.then(function(){
 					self.clients = $meteor.collection(function(){
-						var filter  = collapse($scope.getReactively('index.filter'));
-						var options = collapse($scope.getReactively('index.options'));
+						var filter  = $scope.getReactively('index.filter', true);
+						var options = $scope.getReactively('index.options', true);
 						return Clients.find(filter, options);
 					});
 				});
@@ -35,15 +35,12 @@ angular.module('conapps').controller('MerakiClientsIndexCtrl', [
 				});
 		}, true);	
 
-		self.updateFilters =  function(){
-			if (!angular.isString(self.filterString)) return;
-			if (self.filterString === '') {
-				self.filter = {};
-				return;
-			}
-			self.filter = { stringSearch: { $regex: self.filterString.toLowerCase() } };
-		};
-		
+		$scope.$watch('index.filterString', function(){
+			self.filter = (self.filterString === '') ?
+				{} :
+				{ stringSearch: { $regex: self.filterString.toLowerCase() } };
+		}, true);
+
 		self.showModal = showModal;
 	}
 ]);

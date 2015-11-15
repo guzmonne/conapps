@@ -12,13 +12,12 @@ angular.module('conapps').directive('estimatesIndexToolbar', function(){
 	};
 });
 
-controller.$inject = ['updateFiltersService', 'showModal'];
+controller.$inject = ['showModal'];
 
-function controller(updateFiltersService, showModal){
+function controller(showModal){
 	var vm = this;
 
 	this.stringSearch  = '';
-	this.updateFilters = updateFiltersService.bind(this);
 	this.newEstimate   = newEstimate;
 	
 	function newEstimate(){

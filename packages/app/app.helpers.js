@@ -94,9 +94,11 @@ _AppHelpers.prototype.addCreatedValues = function (doc){
 }
 
 _AppHelpers.prototype.addUpdatedValues = function (doc){
+	doc || (doc = {});
 	doc.updatedAt         = moment().utc().format();
 	doc.updatedById       = Meteor.userId();
 	doc.updatedByUsername = Meteor.user().username;
+	return doc;
 }
 
 _AppHelpers.prototype.filterUnacceptedKeys = function(doc, keys){
@@ -135,6 +137,17 @@ _AppHelpers.prototype.verifyProducts = function(products){
 		this.filterUnacceptedKeys(products, MerakiProducts.acceptedKeys);
 		this.verifyDoc(products, MerakiProducts.requiredKeys);
 	}
+}
+
+_AppHelpers.prototype.saveUpdatedData = function(collection, modelId){
+	console.log()
+	check(collection, Mongo.Collection);
+	check(modelId, String);
+
+	if (!collection.update)
+		return;
+
+	collection.update(modelId, {$set: this.addUpdatedValues()});
 }
 
 App.helpers = new _AppHelpers();

@@ -7,12 +7,7 @@
 			</button>
 		</div>
 		<div class="col-sm-offset-4 col-sm-4">
-			<input 	type="text"
-							ng-model="vm.stringSearch"
-							ng-model-options="{debounce: 200}"
-							ng-change="vm.updateFilters()"
-							placeholder="Filtro"
-							class="form-control">	
+			<search-input ng-model="vm.options.stringSearch"></search-input>
 		</div>
 	</div>
 	<new-estimate-modal estimate="vm.estimate"></new-estimate-modal>

@@ -28,7 +28,6 @@ function controller($timeout){
 	function toggleBlockWithDelay(){
 		$timeout(function(){
 			vm.style.display = (vm.style.display === 'none') ? 'block' : 'none';
-			console.log('I am delayed');
 		}, 200);
 	}
 }
@@ -60,14 +59,12 @@ function link (scope, element, attr){
 				start();
 
 		animate();
-		//scope.vm.class = (isVisible === true) ? 'animated slideInLeft' : 'animated slideOutLeft';
 	});
 
 	////
 	
 	function updatestyle(){
 		element.css('margin-left', style['margin-left'] + 'px');
-		console.log(style['margin-left']);
 	}
 
 	function animate(){
