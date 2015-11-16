@@ -13,10 +13,22 @@ function usersAdminToolbar(){
 	}
 }
 
-controller.$inject = [];
+controller.$inject = ['usersAdminService', 'showModal'];
 
-function controller(){
+function controller(ua, showModal){
+	var vm = this;
+
+	vm.showModal = _showModal;
+
+	///////
 	
+	function _showModal(){
+		showModal('#newUserModal', setDefaultUserBeforeModal);
+	}
+
+	function setDefaultUserBeforeModal(){
+		ua.setDefault();
+	}
 }
 
 function link (scope, element, attr){}

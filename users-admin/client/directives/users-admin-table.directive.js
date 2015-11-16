@@ -20,7 +20,7 @@ function controller(ua){
 
 	vm.unsubscribe = ua.unsubscribe;
 	vm.users = ua.users;
-	vm.cursor = ua.usersCursor;
+	vm.delete = deleteUser;
 
 	activate();
 
@@ -29,12 +29,27 @@ function controller(ua){
 	function activate(){
 		ua.getUsers();
 	}
+
+	function deleteUser(id){
+		ua.delete(id).
+			then(handleDeleteSuccess).
+			catch(handleDeleteError)
+	}
+
+	function handleDeleteSuccess(){
+		toastr.success('Usuario eliminado.', 'Atención');
+	}
+
+	function handleDeleteError(err){
+		console.error(err);
+		toastr.error(err.reason, err.error);
+	}
 }
 
 function link (scope, element, attr){
 
 	scope.$on('$destroy', function(){
-		vm.unsubscribe();
+		scope.vm.unsubscribe();
 	})
 
 }

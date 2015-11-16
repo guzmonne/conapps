@@ -1,17 +1,35 @@
-angular.module('angular-gux').directive('guxFormInput', function(){
+angular.module('angular-gux').directive('guxFormInput', guxFormInput);
+
+function guxFormInput(){
 	return {
-		restrict: 'E',
-		transclude: true,
-		require: 'ngModel',
-		scope: {
+		restrict         : 'E',
+		transclude       : true,
+		replace          : true,
+		templateUrl      : 'guzmonne_angular-gux_templates/gux-form-input.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
+		bindToController : true,
+		scope            : {
 			ngModel     : '=',
+			onChange    : '&',
 			type        : '@inputType',
 			name        : '@inputName',
 			placeholder : '@inputPlaceholder',
 		},
-		templateUrl: 'guzmonne_angular-gux_templates/gux-form-input.template.ng.html',
-		controller: [function(){}],
-		controllerAs: 'guxFormInput',
-		bindToController: true,
-	};
-});
+	}
+}
+
+controller.$inject = [];
+
+function controller(){
+	var vm = this;
+
+	vm._onChange = _onChange;
+
+	/////////
+	
+	function _onChange(){
+		if (vm.onChange)
+			vm.onChange({model: vm.ngModel})
+	}
+}

@@ -1,4 +1,11 @@
 <div class="form-group">
   <label ng-transclude></label>
-  <input type="{{guxFormInput.type}}" name="{{guxFormInput.name}}" class="form-control" ng-model="guxFormInput.ngModel" placeholder="{{guxFormInput.placeholder}}">
+  <input
+  	type="{{vm.type}}"
+  	name="{{vm.name}}"
+  	class="form-control"
+  	ng-model="vm.ngModel"
+  	ng-change="vm._onChange()"
+  	placeholder="{{vm.placeholder}}"
+	>
 </div>

@@ -4,20 +4,23 @@
       links="vm.links"
       icon="fa fa-user"
     >
-        <div class="container-fluid">
+        <div class="container-fluid" rel="users-admin-main-content">
             
-            <div class="row">
+            <div class="row" rel="users-admin-toolbar">
             	<div class="col-lg-12">
             		<users-admin-toolbar></users-admin-toolbar>
             	</div>
             </div>
 
-						<div class="row">
+						<div class="row" rel="users-admin-table">
 							<div class="col-lg-12">
 								<users-admin-table></users-admin-table>
 							</div>
 						</div>
 
         </div>
+
+        <users-admin-new-user-modal></users-admin-new-user-modal>
+
     </mainbar-content-panel>
 </section>

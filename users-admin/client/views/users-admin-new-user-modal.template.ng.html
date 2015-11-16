@@ -1,0 +1,51 @@
+<section id="newUserModal" class="modal fade" rel="users-admin-new-user-modal">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			
+			<div class="modal-header">
+				
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+				<h4
+					ng-if="!vm.user._id"
+					class="modal-title"
+				>
+					<i class="fa fa-plus"></i>
+					Nuevo Usuario					
+				</h4>
+
+				<h4
+					ng-if="vm.user._id"
+					class="modal-title"
+				>
+					<i class="fa fa-pencil"></i>
+					Editar Usuario
+				</h4>
+
+			</div>
+
+			<div class="modal-body">
+				
+				<div class="container-fluid">
+						
+						<div class="row">
+							
+							<users-admin-new-user-form></users-admin-new-user-form>
+
+						</div>
+
+				</div>
+
+			</div>
+
+			<div class="modal-footer">
+        
+        <button type="button" class="btn btn-primary" ng-click="vm.save()">Aceptar</button>
+      
+      </div>
+
+		</div>
+	</div>
+</section>

@@ -1,0 +1,81 @@
+<form name="newUserForm" rel="users-admin-new-user-form">
+	
+	<div class="container-fluid">
+			
+		<div class="row">
+
+			<div class="col-lg-6">
+				
+				<gux-form-input
+					ng-model="vm.user.profile.name"
+					input-name="name"
+					input-type="text"
+					input-placeholder="Nombre"
+				>
+					Nombre
+				</gux-form-input>			
+
+				<gux-form-input
+					ng-model="vm.user.username"
+					input-name="username"
+					input-type="text"
+					input-placeholder="Usuario"
+				>
+					Usuario
+				</gux-form-input>
+
+				<gux-form-input
+					ng-model="vm.user.email"
+					input-name="email"
+					input-type="text"
+					input-placeholder="Email"
+				>
+					Email
+				</gux-form-input>
+
+				<gux-form-input
+					ng-model="vm.user.password"
+					input-name="email"
+					input-type="text"
+					input-placeholder="Password"
+				>
+					Password
+				</gux-form-input>
+				
+			</div>
+
+			<div class="col-lg-6">
+				
+				<label for="roles">Roles</label>
+
+	      <div class="checkbox">
+	        <label>
+	          <input
+	          	type="checkbox"
+	          	ng-click="vm.toggleRole('admin')"
+	          	ng-checked="vm.hasRole('admin')"
+	          	name="admin"
+	        	> 
+	        	Admin
+	        </label>
+	      </div>
+
+	      <div class="checkbox">
+	        <label>
+	          <input
+	          	type="checkbox"
+	          	ng-click="vm.toggleRole('user')"
+	          	ng-checked="vm.hasRole('user')"
+	          	name="user"
+	        	> 
+	        	User
+	        </label>
+	      </div>
+				
+			</div>
+			
+		</div>
+
+	</div>
+
+</form>

@@ -6,10 +6,6 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 	
 	var service = {
 
-		users: [],
-
-		usersCursor: {},
-
 		subscribe(){
 			return $meteor.subscribe('users').
 				then(service.handleSubscribeSuccess).
@@ -50,17 +46,68 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 				service.computation.stop();
 			service.subscription = null;
 			console.log('Unsubscribe from "Users".');
-		}
+		},
+
+		setDefault(){
+			angular.copy(defaultUser(), service.activeUser);
+		},
+
+		save(){
+			if (service.activeUser._id)
+				return saveUser('users-admin:update');
+			else
+				return saveUser('users-admin:create').
+					then(res => { 
+						service.setDefault(); return res; 
+					});
+		},
+
+		delete(id){
+			check(id, String);
+
+			var deferred = $q.defer();
+
+			Meteor.call('users-admin:delete', id, (err, res) => {
+				if (err) return deferred.reject(err);
+				deferred.resolve(res);
+			});
+
+			return deferred.promise;
+		},
+
+		//////
+		
+		users: [],
+
+		usersCursor: {},
+
+		activeUser: defaultUser()
 
 	};
+
+	function saveUser(method){
+		var deferred = $q.defer();
+
+		Meteor.call(method, service.activeUser, (err, result) => {
+			if (err) return deferred.reject(err);
+			deferred.resolve(result);
+		});
+
+		return deferred.promise;
+	}
+
+	function defaultUser() {
+		return {
+			profile: { roles: [] }
+		};
+	}
 
 	function _updateUsers(){
 		Tracker.autorun((computation) => {
 			service.computation = computation;
-			angular.copy(Meteor.users.find({}).fetch(), service.users);
-			//service.users = Meteor.users.find({}).fetch();
+			service.cursor = Meteor.users.find({}); 
+			angular.copy(Meteor.users.find({}).fetch(), service.users);;
 			$timeout(() => $rootScope.$apply());
-			console.log('Reruned computation');
 		});
 	}
 
