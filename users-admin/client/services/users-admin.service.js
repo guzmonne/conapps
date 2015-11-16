@@ -54,7 +54,7 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 
 		save(){
 			if (service.activeUser._id)
-				return saveUser('users-admin:update');
+				return updateRoles();
 			else
 				return saveUser('users-admin:create').
 					then(res => {
@@ -130,6 +130,14 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 			angular.copy(Meteor.users.find({}).fetch(), service.users);;
 			$timeout(() => $rootScope.$apply());
 		});
+	}
+
+	function updateRoles(){
+		return $meteor.call('users-admin:update-roles'
+			, service.activeUser._id
+			, service.activeUser.profile.roles
+		).
+		catch(service.handleError);
 	}
 
 	//////////

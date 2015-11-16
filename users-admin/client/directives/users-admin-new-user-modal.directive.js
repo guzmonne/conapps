@@ -30,7 +30,10 @@ function controller(ua){
 	}
 
 	function handleSaveSuccess(result){
-		toastr.success('Usuario creado con exito!', 'Nuevo Usuario: ' + result);
+		if (vm.user._id)
+			toastr.success('Roles Modificados', 'Usuario: ' + vm.user._id);
+		else
+			toastr.success('Usuario creado con exito!', 'Nuevo Usuario: ' + result);
 	}
 
 	function handleSaveError(err){

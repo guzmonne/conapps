@@ -12,6 +12,8 @@ function guxFormInput(){
 		scope            : {
 			ngModel     : '=',
 			onChange    : '&',
+			readonly    : '=ngReadonly',
+			disabled    : '=ngDisabled',
 			type        : '@inputType',
 			name        : '@inputName',
 			placeholder : '@inputPlaceholder',

@@ -13,15 +13,15 @@ function usersAdminTable(){
 	}
 }
 
-controller.$inject = ['usersAdminService', 'showModal'];
+controller.$inject = ['usersAdminService', 'bootboxService', 'showModal'];
 
-function controller(ua, showModal){
+function controller(ua, bs, showModal){
 	var vm = this;
 
 	vm.unsubscribe = ua.unsubscribe;
 	vm.users = ua.users;
 	vm.delete = deleteUser;
-	vm.edit   = edit;
+	vm.edit = edit;
 
 	activate();
 
@@ -31,10 +31,20 @@ function controller(ua, showModal){
 		ua.getUsers();
 	}
 
-	function deleteUser(id){
+	function callDeleteMethod(id){
 		ua.delete(id).
 			then(handleDeleteSuccess).
+			catch(handleError)
+	}
+
+	function deleteUser(id){
+		bs.confirmUserDeletion().
+			then(() => callDeleteMethod(id)).
 			catch(handleError);
+	}
+
+	function handleDeleteSuccess(){
+		toastr.success('Usuario eliminado.', 'Atención');
 	}
 
 	function edit(id){
@@ -45,10 +55,6 @@ function controller(ua, showModal){
 
 	function handleEditSuccess(){
 		showModal('#newUserModal');
-	}
-
-	function handleDeleteSuccess(){
-		toastr.success('Usuario eliminado.', 'Atención');
 	}
 
 	function handleError(err){

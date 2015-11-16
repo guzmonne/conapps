@@ -4,14 +4,28 @@ bootboxService.$inject = ['$q'];
 
 function bootboxService($q){
 	
-	var bs = {};
+	var service = {};
 
-	bs.confirmProductDeletion = function(){
+	service.confirmProductDeletion = function(){
+		return service.confirmXDeletion('producto');
+	}
+
+	service.confirmUserDeletion = function(){
+		return service.confirmXDeletion('usuario');
+	}
+
+	service.confirmXDeletion = function(x){
+		check(x, String);
+
+		x = x.toLowerCase();
+
+		var X = x.charAt(0).toUpperCase() + x.slice(1);
+
 		var deferred = $q.defer();
 
 		var content = {
-			message: '¿Esta seguro que desea eliminar este producto?',
-			title: 'Eliminar Producto',
+			message: '¿Esta seguro que desea eliminar este ' + x + '?',
+			title: 'Eliminar ' + X,
 			buttons: {
 				confirm: {
 					label: 'Aceptar',
@@ -35,37 +49,7 @@ function bootboxService($q){
 		return deferred.promise;
 	}
 
-	bs.confirmProductRemove = function(){
-		var deferred = $q.defer();
-
-		var content = {
-			message: '¿Esta seguro que desea eliminar este producto?',
-			title: 'Eliminar Producto',
-			buttons: {
-				confirm: {
-					label: 'Aceptar',
-					className: 'btn-primary',
-					callback: function() {
-						deferred.resolve();
-					}
-				},
-				cancel: {
-					label: 'Cancelar',
-					className: 'btn-default',
-					callback: function(){
-						deferred.reject();
-					}
-				}
-			}
-		};
-
-		bootbox.dialog(content);
-
-		return deferred.promise;
-	}
-
-
 	////////////
 
-	return bs;
+	return service;
 }
