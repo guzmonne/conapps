@@ -96,13 +96,26 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 			$timeout(() => $rootScope.$apply());
 		},
 
+		orderBy(field){
+			var sort = service.sort.get();
+			var value = (!!sort[field]) ? sort[field] * -1 : 1;
+
+			sort = {};
+
+			sort[field] = value;
+
+			service.sort.set(sort);
+		},
+
 		//////
 
 		users: [],
 
 		usersCursor: {},
 
-		activeUser: defaultUser()
+		activeUser: defaultUser(),
+
+		sort: new ReactiveVar({}),
 
 	};
 
@@ -127,8 +140,10 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 		Tracker.autorun((computation) => {
 			service.computation = computation;
 			service.cursor = Meteor.users.find({}); 
-			angular.copy(Meteor.users.find({}).fetch(), service.users);;
-			$timeout(() => $rootScope.$apply());
+			
+			angular.copy(Meteor.users.find({}, {sort: service.sort.get()}).fetch(), service.users);
+			
+			safeApply();
 		});
 	}
 
@@ -138,6 +153,10 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 			, service.activeUser.profile.roles
 		).
 		catch(service.handleError);
+	}
+
+	function safeApply(){
+		$timeout(() => $rootScope.$apply());	
 	}
 
 	//////////
