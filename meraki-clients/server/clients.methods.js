@@ -1,4 +1,4 @@
-var requiredKeys = ['name', 'lastName', 'company'];
+var requiredKeys = ['name', 'company'];
 
 var indexedFields = [
 	'fullName',
@@ -82,5 +82,14 @@ Meteor.methods({
 			App.helpers.addUpdatedValues(doc);
 			return Clients.update(id, {$set: doc});
 		}
-	}
+	},
+
+	'meraki-clients:delete': function(clientId){
+		check(clientId, String);
+
+		if (Meteor.isServer && !App.auth.isAdmin() )
+			throw new Meteor.Error('Only administrators can delete users', 404);
+
+		return Clients.update(clientId, {$set: { deleted: true }});
+	},
 });

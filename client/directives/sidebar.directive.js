@@ -18,6 +18,7 @@ controller.$inject = ['$timeout'];
 function controller($timeout){
 	var vm = this;
 
+	vm.hasRole = App.auth.hasRole;
 	vm.style = { 'display': 'none' };
 	vm.class = "";
 

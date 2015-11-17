@@ -14,6 +14,10 @@ function bootboxService($q){
 		return service.confirmXDeletion('usuario');
 	}
 
+	service.confirmClientDeletion = function(){
+		return service.confirmXDeletion('cliente');
+	}
+
 	service.confirmXDeletion = function(x){
 		check(x, String);
 

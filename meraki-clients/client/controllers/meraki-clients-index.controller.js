@@ -1,6 +1,6 @@
 angular.module('conapps').controller('MerakiClientsIndexCtrl', [
-	'$scope', '$meteor', 'guxCollapse', 'showMerakiClientFormModal', 'BreadcrumbsService',
-	function($scope, $meteor, collapse, showModal, breadcrumbsService){
+	'$scope', '$meteor', 'guxCollapse', 'showModal', 'clientService', 'BreadcrumbsService',
+	function($scope, $meteor, collapse, showModal, cs, breadcrumbsService){
 		var self = this;
 
 		self.filterString = '';
@@ -41,6 +41,9 @@ angular.module('conapps').controller('MerakiClientsIndexCtrl', [
 				{ stringSearch: { $regex: self.filterString.toLowerCase() } };
 		}, true);
 
-		self.showModal = showModal;
+		self.showModal = function(){
+			cs.resetClient();
+			showModal('#addNewClientModal');
+		};
 	}
 ]);

@@ -1,10 +1,10 @@
 <tr>
-	<td>{{row.client.name + ' ' + row.client.lastName}}</td>
-	<td>{{row.client.company}}</td>
-	<td>{{row.client.position}}</td>
+	<td>{{vm.client.name + ' ' + vm.client.lastName}}</td>
+	<td>{{vm.client.company}}</td>
+	<td>{{vm.client.position}}</td>
 	<td>
 		<ul class="list-unstyled list-text-hover">
-			<li ng-repeat="phone in row.client.phones track by $index">
+			<li ng-repeat="phone in vm.client.phones track by $index">
 				<i class="fa fa-phone"></i>
 				{{phone}}
 			</li>
@@ -12,7 +12,7 @@
 	</td>
 	<td>
 		<ul class="list-unstyled list-text-hover">
-			<li ng-repeat="email in row.client.emails track by $index">
+			<li ng-repeat="email in vm.client.emails track by $index">
 				<i class="fa fa-envelope"></i>
 				{{email}}
 			</li>
@@ -20,19 +20,38 @@
 	</td>
 	<td>
 		<ul class="list-unstyled list-text-hover">
-			<li ng-repeat="address in row.client.addresses track by $index">
+			<li ng-repeat="address in vm.client.addresses track by $index">
 				<gux-address address="address"></gux-address>
 			</li>
 		</ul>
 	</td>
 	<td>
 		<div class="btn-group btn-group-xs btn-same-width-25">
-			<button class="btn btn-warning" ng-click="row.showModal(row.client)">
+			
+			<button
+				class="btn btn-warning"
+				ng-click="vm.showModal(vm.client)"
+			>
 				<i class="fa fa-pencil fa-sm"></i>
 			</button>
-			<button class="btn btn-info" ng-click="row.showVcardModal(row.client)">
+			<button
+				class="btn btn-info"
+				ng-click="vm.showVcardModal(vm.client)"
+			>
 				<i class="fa fa-eye fa-sm"></i>
 			</button>
+
+		</div>
+
+		<div class="btn-group btn-group-xs btn-same-width-25">
+			
+			<button
+				class="btn btn-danger"
+				ng-click="vm.deleteClient(vm.client._id)"
+			>
+				<i class="fa fa-times"></i>	
+			</button>
+
 		</div>
 	</td>
 </tr>

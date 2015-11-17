@@ -7,11 +7,6 @@ angular.module('conapps').directive('merakiClientForm', function(){
 			client: '=',
 		},
 		controller: [function(){}],
-		/*
-		controller: ['$scope', 'ClientService', function($scope, clientService){
-			this.client = clientService.client;
-		}],
-		*/
 		controllerAs: 'form',
 		bindToController: true,
 	}

@@ -3,7 +3,7 @@ angular.module('conapps').directive('merakiClientVcardModal', function(){
 		restrict: 'E',
 		replace: true,
 		templateUrl: 'meraki-clients/client/views/meraki-client-vcard-modal.template.ng.html',
-		controller: ['ClientService', function(clientService){
+		controller: ['clientService', function(clientService){
 			this.client = clientService.client;
 			this.store  = {};
 

@@ -1,49 +1,82 @@
-angular.module('conapps').service('ClientService', [
-	'$meteor',
-	function($meteor){
-		var ClientService = function(client){
-			this.client = (client) ? client : this.defaultClient();
-		}
+angular.module('conapps').service('clientService', clientService);
 
-		ClientService.prototype.defaultClient = function() {
-			return {
-				phones: [],
-				emails: [],
-				addresses: []
-			};
-		};
+clientService.$inject = ['$meteor', '$q'];
 
-		ClientService.prototype.resetClient = function() {
-			this.setClient(this.defaultClient());
-		};
+function clientService($meteor, $q){
+	var service = {
 
-		ClientService.prototype.setClient = function(client) {
-			if (!angular.isObject(client)) return;
-			if (!angular.isArray(client.phones)) return;
-			if (!angular.isArray(client.emails)) return;
-			if (!angular.isArray(client.addresses)) return;
-			angular.copy(client, this.client);
-		};
+		resetClient(){
+			service.setClient(defaultClient());
+		},
 
-		ClientService.prototype.isNew = function() {
-			if (!this.client) return;
-			return !this.client._id;
-		};
+		setClient(client){
+			check(client, Object);
 
-		ClientService.prototype.save = function(callback) {
-			var method = (this.client._id) ? 'updateClient' : 'addClient';
-			return $meteor.call(method, this.client)
-			.then(function(result){
-				if (method === 'updateClient')
-					toastr.success('Cliente actualizado.', 'Exito!');
-				if (method === 'addClient')
-					toastr.success('Cliente creado.', 'Exito');
-				return result;
-			}, function(err){
-				toastr.error(err.reason, 'Error!');
-			});
-		};
+			client = _.extend(defaultClient(), client);
+
+			angular.copy(client, service.client);
+		},
+
+		isNew(){
+			return !(service.client && service.client._id);
+		},
+
+		save(callback){
+			var method = service.isNew() ? 'addClient' : 'updateClient';
+
+			return $meteor.call(method, service.client)
+				.then(result => {
+					if (method === 'updateClient')
+						toastr.success('Cliente actualizado.', '¡Ok!');
+
+					if (method === 'addClient')
+						toastr.success('Cliente creado', '¡Ok!');
+
+					return result;
+				})
+				.catch(err => {
+					var deferred = $q.defer().reject(err);
+
+					toastr.error(err.reason, err.error);
+
+					return deferred.promise;
+				});
+		},
+
+		deleteClient(clientId){
+			check(clientId, String);
+
+			return $meteor.call('meraki-clients:delete', clientId)
+				.then(result => {
+					toastr.success('Cliente eliminado.', '¡Ok!');
+					return result;
+				})
+				.catch(err => {
+					var rejected = $q.defer().reject(err);
+					
+					toastr.error(err.reason, err.error);
+
+					return rejected;
+				});
+		},
+
+		////////////
 		
-		return new ClientService();	
+		client: defaultClient(),
+
+	};
+
+	/////////
+	
+	function defaultClient(){
+		return {
+			phones: [],
+			emails: [],
+			addresses: [] 
+		};
 	}
-]);
+
+	/////////
+
+	return service
+}
