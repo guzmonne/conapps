@@ -1,8 +1,8 @@
 angular.module('conapps').service('usersAdminService', usersAdminService);
 
-usersAdminService.$inject = ['$meteor', '$q', '$rootScope', 'safeApplyAutorun'];
+usersAdminService.$inject = ['$meteor', '$q', 'safeApply'];
 
-function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
+function usersAdminService($meteor, $q, safeApply){
 
 	var service = {
 
@@ -14,16 +14,7 @@ function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 
 		handleSubscribeSuccess(subscription) {
 			service.subscription = subscription;
-			console.log('Subscription to "users" ready.');
-		},
-
-		handleError(err){
-			var rejected = $q.defer().reject();
-
-			console.error(err);
-			toastr.error(err.reason, err.error);
-
-			return rejected;
+			console.log('Subscribed to "users".');
 		},
 
 		getUsers(){
@@ -46,7 +37,7 @@ function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 				service.computation.stop();
 			service.subscription = null;
       service.computation  = null;
-			console.log('Unsubscribe from "Users".');
+			console.log('Unsubscribed from "users".');
 		},
 
 		setDefault(){
@@ -59,7 +50,8 @@ function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 			else
 				return saveUser('users-admin:create').
 					then(res => {
-						service.setDefault(); return res;
+						service.setDefault(); 
+						return res;
 					});
 		},
 
@@ -93,7 +85,7 @@ function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 		},
 
 		setUser(user){
-      $rootScope.safeApply(() => angular.copy(user, service.activeUser));
+			safeApply.onAngular(() => angular.copy(user, service.activeUser));
 		},
 
 		orderBy(field){
@@ -117,17 +109,13 @@ function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 
 		sort: new ReactiveVar({}),
 
+		handleError: handleError
+
 	};
 
 	function saveUser(method){
-		var deferred = $q.defer();
-
-		Meteor.call(method, service.activeUser, (err, result) => {
-			if (err) return deferred.reject(err);
-			deferred.resolve(result);
-		});
-
-		return deferred.promise;
+		return $meteor.call(method, service.activeUser).
+			catch(handleError)
 	}
 
 	function defaultUser() {
@@ -137,11 +125,18 @@ function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 	}
 
 	function _updateUsers(){
-		service.computation = safeApplyAutorun(updateUsers);
+		service.computation = safeApply.onAutorun(updateUsers);
 	}
 
   function updateUsers(){
-    angular.copy(Meteor.users.find({}, {sort: service.sort.get()}).fetch(), service.users);
+  	var options = {
+  		sort: service.sort.get()
+  	};
+
+    angular.copy(
+    	Meteor.users.find({}, options).fetch(),
+  	  service.users
+  	);
   }
 
 	function updateRoles(){
@@ -151,6 +146,15 @@ function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 			, service.activeUser.profile.roles
 		).
 		catch(service.handleError);
+	}
+
+	function handleError(err){
+		var rejected = $q.defer().reject();
+
+		console.error(err);
+		toastr.error(err.reason, err.error);
+
+		return rejected;
 	}
 
 	//////////
