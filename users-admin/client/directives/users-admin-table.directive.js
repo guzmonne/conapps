@@ -20,7 +20,7 @@ controller.$inject = ['usersAdminService', 'bootboxService', 'showModal'];
 function controller(ua, bs, showModal){
 	var vm = this;
 
-	vm.users = ua.users;
+	vm.users = ua.collection;
 	
 	vm.delete = deleteUser;
 	vm.edit = edit;
@@ -30,7 +30,7 @@ function controller(ua, bs, showModal){
 	////////
 	
 	function activate(){
-		ua.getUsers();
+		ua.getCollection();
 	}
 
 	function callDeleteMethod(id){

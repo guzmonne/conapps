@@ -14,12 +14,20 @@ function tableHelpers(){
 
 			let field = header.data('sortBy');
 
-			factory.sortBy(field, sort);
+			factory._sortBy(field, sort);
 
-			factory.applyChevrons(header, field, sort);
+			factory._applyChevrons(header, field, sort);
 		},
 
-		sortBy(field /* String */, sort /* ReactiveVar */){
+		removeChevrons(thead /* Angular Element */){
+			check(thead, angular.element);
+
+			thead.find('[data-sort-by] > i').remove();
+		},
+
+		////////////
+
+		_sortBy(field /* String */, sort /* ReactiveVar */){
 			check(field, String);
 			check(sort, ReactiveVar);
 
@@ -35,13 +43,7 @@ function tableHelpers(){
 			sort.set(_sort);
 		},
 
-		removeChevrons(thead /* Angular Element */){
-			check(thead, angular.element);
-
-			thead.find('[data-sort-by] > i').remove();
-		},
-
-		applyChevrons(header /* Angular Element */, field /* String */, sort /* ReactiveVar */){
+		_applyChevrons(header /* Angular Element */, field /* String */, sort /* ReactiveVar */){
 			var _sort;
 
 			check(header, angular.element);

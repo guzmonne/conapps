@@ -20,13 +20,13 @@ controller.$inject = ['estimatesIndexService'];
 function controller(ei){
 	var vm = this;
 
-	vm.collection = ei.estimates;
+	vm.collection = ei.collection;
 
   activate();
 
 	//////////
 
   function activate(){
-    ei.getEstimates();
+    ei.getCollection();
   }
 }
