@@ -13,13 +13,15 @@ function collectionManagerGenerator($meteor, $q, safeApply){
 			, mongoCollection
 			, saveMethod
 			,	updateMethod
-			,	deleteMethod} = options;
+			,	deleteMethod
+			, defaults} = options;
 
 		if (sort) check(sort, Object);
 		if (stringSearch) check(stringSearch, Boolean);
 		if (saveMethod) check(saveMethod, String);
 		if (deleteMethod) check(deleteMethod, String);
 		if (updateMethod) check(updateMethod, String);
+		if (defaults) check(defaults, Function);
 
 		check(publication, String);
 		check(mongoCollection, Mongo.Collection);
@@ -39,8 +41,13 @@ function collectionManagerGenerator($meteor, $q, safeApply){
 		if (updateMethod)
 			this.updateMethod = updateMethod;
 
+		if (defaults)
+			this.defaults = defaults;
+
 		this._publication = publication;
 		this._mongoCollection = mongoCollection;
+
+		this.model = this.defaults();
 	};
 
 	angular.extend(generator.prototype, {
@@ -88,9 +95,9 @@ function collectionManagerGenerator($meteor, $q, safeApply){
 			model || (model = self.model);
 
 			if (model._id)
-				return _save(model, this.updateMethod);
+				return this._save(model, this.updateMethod);
 			else
-				return _save(model, this.saveMethod);
+				return this._save(model, this.saveMethod);
 		},
 
 		delete(id){
@@ -117,11 +124,13 @@ function collectionManagerGenerator($meteor, $q, safeApply){
 			return deferred.promise;
 		},
 
+		setDefault(){
+			this.setModel(this.defaults());
+		},		
+
 		///////
 
-		setDefault: setDefault,		
-
-		model: setDefault(),
+		defaults: defaults,
 
 		handleError: handleError,
 
@@ -148,6 +157,7 @@ function collectionManagerGenerator($meteor, $q, safeApply){
 
 		_save(model, method){
 			check(method, String);
+
 			return $meteor.call(method, model).
 				catch(handleError);
 		}
@@ -164,7 +174,7 @@ function collectionManagerGenerator($meteor, $q, safeApply){
     return rejected;
   }
 
-  function setDefault(){
+  function defaults(){
   	return {};
   }
 

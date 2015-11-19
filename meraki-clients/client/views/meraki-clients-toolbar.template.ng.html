@@ -1,14 +1,28 @@
 <div class="row">
 	<div class="col-sm-8">
-		<button class="btn btn-success" ng-click="index.showModal()">
+		<button class="btn btn-success" ng-click="vm.showModal()">
 			<i class="fa fa-plus"></i>
 			Nuevo Cliente
 		</button>
 	</div>
 	<div class="col-sm-4">
+		<!-- 
 		<search-input
 			ng-model="index.filterString"
 		>
 		</search-input>
+		 -->
+
+		<form name="searchForm">
+			<div class="form-group has-feedback">
+				<input 	
+					type="text"
+					rel="stringSearch"
+					placeholder="Filtro"
+					class="form-control">	
+					<span class="fa-form-control-feedback fa fa-filter"></span>
+			</div>
+		</form>
+
 	</div>
 </div>

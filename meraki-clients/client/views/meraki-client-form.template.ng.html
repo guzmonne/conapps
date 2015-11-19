@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<gux-form-input
-				ng-model="form.client.name"
+				ng-model="vm.client.name"
 				input-name="name"
 				input-type="text"
 				input-placeholder="Nombre">
@@ -12,7 +12,7 @@
 		</div>
 		<div class="col-sm-6">
 			<gux-form-input
-				ng-model="form.client.lastName"
+				ng-model="vm.client.lastName"
 				input-name="lastName"
 				input-type="text"
 				input-placeholder="Apellido">
@@ -24,7 +24,7 @@
 	<div class="row">
 		<div class="col-sm-6">
 			<gux-form-input
-				ng-model="form.client.company"
+				ng-model="vm.client.company"
 				input-name="company"
 				input-type="text"
 				input-placeholder="Empresa">
@@ -34,7 +34,7 @@
 		</div>
 		<div class="col-sm-6">
 			<gux-form-input
-				ng-model="form.client.position"
+				ng-model="vm.client.position"
 				input-name="position"
 				input-type="text"
 				input-placeholder="Posición">
@@ -44,28 +44,28 @@
 		</div>
 	</div>
 	<gux-input-tags 
-		ng-model="form.client.phones"
+		ng-model="vm.client.phones"
 		max-tags="3"
 		input-placeholder="Ej: 099123456"
 		input-name="newPhone"
 		focus-after-max-tag="[name='newEmail']"
-		register-update-to="modal">
+		remote-add-tag="vm.remoteAddMethods.addPhone">
 		Telefonos <small class="text-muted">(máx 3)</small>
 	</gux-input-tags>
 	<gux-input-tags 
-		ng-model="form.client.emails"
+		ng-model="vm.client.emails"
 		max-tags="3"
 		input-name="newEmail"
 		input-placeholder="Ej: example@gotmail.com"
 		focus-after-max-tag="[name='newStreet']"
-		register-update-to="modal">
+		remote-add-tag="vm.remoteAddMethods.addEmail">
 		Emails <small class="text-muted">(máx 3)</small>
 	</gux-input-tags>
 	<gux-multiple-addresses
-		ng-model="form.client.addresses"
+		ng-model="vm.client.addresses"
 		max-addresses="3"
 		input-street-name="newStreet"
-		register-update-to="modal">
+		remote-add-address="vm.remoteAddMethods.addAddress">
 		Direcciones <small class="text-muted">(máx 3)</small>
 	</gux-multiple-addresses>
 </form>	

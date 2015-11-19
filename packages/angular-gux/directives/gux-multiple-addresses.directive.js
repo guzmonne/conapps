@@ -1,47 +1,84 @@
-angular.module('angular-gux').directive('guxMultipleAddresses', ['GuxRegisterChildrenService', function(registerChildren){
+angular.module('angular-gux').directive('guxMultipleAddresses', guxMultipleAddresses);
+
+function guxMultipleAddresses(){
 	return {
-		restrict: 'E',
-		replace: true,
-		transclude: true,
-		scope: {
+		restrict         : 'E',
+		replace          : true,
+		transclude       : true,
+		templateUrl      : 'guzmonne_angular-gux_templates/gux-multiple-addresses.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
+		bindToController : true,
+		scope            : {
 			addresses: '=ngModel',
 			inputStreetName: '@',
 			maxAddresses: '@',
-			registerUpdateTo: '@',
+			remoteAddAddress: '='
 		},
-		require: 'ngModel',
-		templateUrl: 'guzmonne_angular-gux_templates/gux-multiple-addresses.template.ng.html',
-		controller: [function(){
-			this.maxAddresses || (this.maxAddresses = 3);
-			this.inputStreetName || (this.inputStreetName = 'newStreet');
-			this.newAddress = {};
-			this.addAddress = function(){
-				if (!this.newAddress.street || this.newAddress.street === '') return;
-				this.addresses.push(this.newAddress);
-				this.newAddress = {};
-				$('[name="' + this.inputStreetName + '"]').focus();
-			}.bind(this);
-			this.canAddAddress = function(){
-				if (!angular.isArray(this.addresses)) return;
-				return this.addresses.length < parseInt(this.maxAddresses);
-			};
-			this.removeAddress = function(index){
-				if (!angular.isArray(this.addresses)) return;
-				this.addresses.splice(index, 1);
-				$('[name="' + this.inputStreetName + '"]').focus();
-			}.bind(this);
-			this.editAddress = function(address, index){
-				this.removeAddress(index);
-				this.addAddress();
-				this.newAddress = address;
-				$('[name="' + this.inputStreetName + '"]').focus();
-			}.bind(this);
-		}],
-		controllerAs: 'multiple',
-		bindToController: true,
-		link: function(scope){
-			var multiple = scope.multiple;
-			registerChildren.tryToRegisterUpdateFunctionTo(multiple.registerUpdateTo, scope, multiple.addAddress);
-		}
-	};
-}]);
+		require: 'ngModel'
+	}
+}
+
+function controller(){
+	var vm = this;
+
+	vm.newAddress = {};
+
+	vm.addAddress = addAddress;
+	vm.canAddAddress = canAddAddress;
+	vm.removeAddress = removeAddress;
+	vm.editAddress = editAddress;
+
+	activate();
+
+	/////////
+	
+	function activate(){
+		vm.maxAddresses || (vm.maxAddresses = 3);
+		vm.inputStreetName 	|| (vm.inputStreetName = 'newStreet');
+
+		if (vm.remoteAddAddress || vm.remoteAddAddress === null)
+			vm.remoteAddAddress = addAddress;
+	}
+
+	function addAddress(){
+		if (!vm.newAddress.street || !vm.newAddress.street === '') return;
+
+		vm.addresses.push(vm.newAddress);
+
+		vm.newAddress = {};
+
+		focusOnStreetInput();
+	}
+
+	function canAddAddress(){
+		var maxAddresses;
+
+		if (!angular.isArray(vm.addresses)) return false;
+
+		maxAddresses = parseInt(vm.maxAddresses);
+
+		return this.addresses.length < maxAddresses;
+	}
+
+	function removeAddress(index){
+		if (!angular.isArray(vm.addresses)) return;
+
+		vm.addresses.splice(index, 1);
+
+		focusOnStreetInput();
+	}
+
+	function editAddress(address, index){
+		vm.removeAddress(index);
+		vm.addAddress();
+		
+		vm.newAddress = address;
+		
+		focusOnStreetInput();
+	}
+
+	function focusOnStreetInput(){
+		$('[name="'+ vm.inputStreetName +'"]').focus();
+	}
+}

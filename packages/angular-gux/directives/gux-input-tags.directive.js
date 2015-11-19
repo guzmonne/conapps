@@ -1,40 +1,65 @@
-angular.module('angular-gux').directive('guxInputTags', ['GuxRegisterChildrenService', function(registerChildren){
+angular.module('angular-gux').directive('guxInputTags', guxInputTags);
+
+function guxInputTags(){
 	return {
-		restrict: 'E',
-		replace: true,
-		transclude: true,
-		templateUrl: 'guzmonne_angular-gux_templates/gux-input-tags.template.ng.html',
-		scope: {
+		restrict         : 'E',
+		replace          : true,
+		transclude       : true,
+		templateUrl      : 'guzmonne_angular-gux_templates/gux-input-tags.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
+		bindToController : true,
+		scope            : {
 			ngModel: '=',
 			maxTags: '@',
 			inputPlaceholder: '@',
 			inputName: '@',
 			focusAfterMaxTag: '@',
-			registerUpdateTo: '@'
+			remoteAddTag: '='
 		},
-		controller: [function(){
-			this.inputName || (this.inputName = 'newTag');
-			this.newTag = '';
-			this.canAddTag = function(){
-				return this.ngModel.length < parseInt(this.maxTags);
-			};
-			this.addTag = function(options){
-				var maxTags = parseInt(this.maxTags);
-				if (!angular.isArray(this.ngModel) ||
-						this.ngModel.length >= maxTags ||
-						this.newTag === '')
-					return;
-				this.ngModel.push(this.newTag);
-				this.newTag = '';
-				if (this.ngModel.length >= maxTags)
-					$('[name="' + this.focusAfterMaxTag + '"]').focus();
-			}.bind(this);
-		}],
-		controllerAs: 'tags',
-		bindToController: true,
-		link: function(scope){
-			var tags = scope.tags;
-			registerChildren.tryToRegisterUpdateFunctionTo(tags.registerUpdateTo, scope, tags.addTag);
-		},
-	};
-}]);
+	}
+}
+
+function controller(){
+	var vm = this;
+
+	vm.newTag = '';
+	vm.canAddTag = canAddTag;
+	vm.addTag = addTag;
+
+	activate();
+
+	/////////
+	
+	function activate(){
+		vm.inputName || (vm.inputName = 'newTag');
+
+		if (vm.remoteAddTag || vm.remoteAddTag === null)
+			vm.remoteAddTag = addTag;
+	}
+
+	function canAddTag(){
+		if(!angular.isArray(vm.ngModel)) return;
+
+		return vm.ngModel.length < parseInt(vm.maxTags);
+	}
+
+	function addTag(){
+		var maxTags = parseInt(vm.maxTags);
+
+		if ( !angular.isArray(vm.ngModel)
+			|| vm.ngModel.length >= maxTags
+			|| vm.newTag === ''
+		) 
+			return;
+
+		vm.ngModel.push(vm.newTag);
+		vm.newTag = '';
+
+		if ( vm.ngModel.length >= maxTags
+			&& angular.isString(vm.focusAfterMaxTag)
+		)
+			$('[name="'+ vm.focusAfterMaxTag +'"]').focus()
+	}
+	
+}
