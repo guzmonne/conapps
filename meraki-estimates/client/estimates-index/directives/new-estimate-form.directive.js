@@ -4,7 +4,7 @@ function newEstimateForm(){
 	return {
 		restrict         : 'E',
 		replace          : true,
-		templateUrl      : 'meraki-estimates/client/views/new-estimate-form.template.ng.html',
+		templateUrl      : 'meraki-estimates/client/estimates-index/views/new-estimate-form.template.ng.html',
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,

@@ -2,7 +2,7 @@ angular.module('conapps').directive('merakiProductCard', function(){
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'meraki-estimates/client/views/meraki-product-card.template.ng.html',
+		templateUrl: 'meraki-estimates/client/estimates-product-list/views/meraki-product-card.template.ng.html',
 		scope: {
 			product: '=',
 		},

@@ -4,7 +4,7 @@ function merakiProductPanel(){
 	return {
 		restrict         : 'E',
 		replace          : true,
-		templateUrl      : 'meraki-estimates/client/views/meraki-product-panel.template.ng.html',
+		templateUrl      : 'meraki-estimates/client/estimates-product-list/views/meraki-product-panel.template.ng.html',
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,

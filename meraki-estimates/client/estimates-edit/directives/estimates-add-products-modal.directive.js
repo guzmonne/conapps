@@ -4,7 +4,7 @@ function estimatesAddProductsModal(){
 	return {
 		restrict         : 'E',
 		replace          : true,
-		templateUrl      : 'meraki-estimates/client/views/estimates-add-products-modal.template.ng.html',
+		templateUrl      : 'meraki-estimates/client/estimates-edit/views/estimates-add-products-modal.template.ng.html',
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,

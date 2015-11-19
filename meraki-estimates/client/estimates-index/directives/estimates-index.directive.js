@@ -4,7 +4,7 @@ function estimatesIndex(){
 	return {
 		restrict         : 'E',
 		replace          : true,
-		templateUrl      : 'meraki-estimates/client/views/estimates-index.template.ng.html',
+		templateUrl      : 'meraki-estimates/client/estimates-index/views/estimates-index.template.ng.html',
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,

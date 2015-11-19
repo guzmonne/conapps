@@ -2,7 +2,7 @@ angular.module('conapps').directive('estimatesToolbar', ['$location', function($
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'meraki-estimates/client/views/meraki-estimates-toolbar.template.ng.html',
+		templateUrl: 'meraki-estimates/client/estimates-index/views/estimates-toolbar.template.ng.html',
 		link: function(scope, element){
 			var location = $location.$$url;
 			if (location.indexOf('/meraki_estimates/edit') > -1)

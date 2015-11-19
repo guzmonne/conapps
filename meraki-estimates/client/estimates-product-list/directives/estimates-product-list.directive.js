@@ -4,7 +4,7 @@ function estimatesProductList(){
 	return {
 		restrict         : 'E',
 		replace          : true,
-		templateUrl      : 'meraki-estimates/client/views/estimates-product-list.template.ng.html',
+		templateUrl      : 'meraki-estimates/client/estimates-product-list/views/estimates-product-list.template.ng.html',
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,

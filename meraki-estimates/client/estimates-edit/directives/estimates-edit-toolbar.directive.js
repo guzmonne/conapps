@@ -4,7 +4,7 @@ function estimatesEditToolbar(){
 	return {
 		restrict         : 'E',
 		replace          : true,
-		templateUrl      : 'meraki-estimates/client/views/estimates-edit-toolbar.template.ng.html',
+		templateUrl      : 'meraki-estimates/client/estimates-edit/views/estimates-edit-toolbar.template.ng.html',
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,

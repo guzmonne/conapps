@@ -4,7 +4,7 @@ function estimatesEditDirective(){
 	return {
 		restrict: 'E',
 		replace : true,
-		templateUrl: 'meraki-estimates/client/views/estimates-edit.template.ng.html',
+		templateUrl: 'meraki-estimates/client/estimates-edit/views/estimates-edit.template.ng.html',
 		scope: {
 
 		},

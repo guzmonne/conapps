@@ -4,7 +4,7 @@ function merakiProductForm(){
 	return {
 		restrict         : 'E',
 		replace          : true,
-		templateUrl      : 'meraki-estimates/client/views/meraki-product-form.template.ng.html',
+		templateUrl      : 'meraki-estimates/client/estimates-product-list/views/meraki-product-form.template.ng.html',
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,

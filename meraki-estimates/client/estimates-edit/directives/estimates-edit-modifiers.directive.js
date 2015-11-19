@@ -4,7 +4,7 @@ function estimatesEditModifiers(){
 	return {
 		restrict         : 'E',
 		replace          : true,
-		templateUrl      : 'meraki-estimates/client/views/estimates-edit-modifiers.template.ng.html',
+		templateUrl      : 'meraki-estimates/client/estimates-edit/views/estimates-edit-modifiers.template.ng.html',
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,

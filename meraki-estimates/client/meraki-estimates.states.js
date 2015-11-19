@@ -3,7 +3,7 @@ angular.module("conapps").config(['$stateProvider',
     $stateProvider
       .state('meraki_estimates', {
         url         : '/meraki_estimates',
-        templateUrl : 'meraki-estimates/client/views/meraki-estimates.template.ng.html',
+        templateUrl : 'meraki-estimates/client/estimates-index/views/meraki-estimates.template.ng.html',
         controller  : 'MerakiEstimatesCtrl',
         controllerAs: 'estimates',
         abstract    : true,
