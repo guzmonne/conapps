@@ -14,25 +14,25 @@
                 <table class="table table-first-border-top-none">
                   <tr>
                     <td><strong>Nombre</strong></td>
-                    <td>{{vCardModal.client.name}} {{vCardModal.client.lastName}}</td>
+                    <td>{{vm.client.name}} {{vm.client.lastName}}</td>
                   </tr>
                   <tr>
                     <td><strong>Empresa</strong></td>
-                    <td>{{vCardModal.client.company}}</td>
+                    <td>{{vm.client.company}}</td>
                   </tr>
                   <tr>
                     <td><strong>Cargo</strong></td>
-                    <td>{{vCardModal.client.position}}</td>
+                    <td>{{vm.client.position}}</td>
                   </tr>
                   <tr>
                     <td><strong>Telefonos</strong></td>
                     <td class="padding-0">
                       <table class="table table-first-border-top-none table-margin-bottom-0">
-                        <tr ng-repeat="phone in vCardModal.client.phones track by $index">
+                        <tr ng-repeat="phone in vm.client.phones track by $index">
                           <td>{{phone}}</td>
                           <td>
-                            <a class="pull-right" href="javascript:void(0)" ng-click="vCardModal.toggleValue('phones', $index)">
-                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vCardModal.isUndefined('phones', $index)]"></i>
+                            <a class="pull-right" href="javascript:void(0)" ng-click="vm.toggleValue('phones', $index)">
+                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vm.isUndefined('phones', $index)]"></i>
                             </a>
                           </td>
                         </tr>
@@ -43,11 +43,11 @@
                     <td><strong>Emails</strong></td>
                     <td class="padding-right-0">
                       <table class="table table-first-border-top-none table-margin-bottom-0 table-padding-left-0">
-                        <tr ng-repeat="email in vCardModal.client.emails track by $index">
+                        <tr ng-repeat="email in vm.client.emails track by $index">
                           <td>{{email}}</td>
                           <td>
-                            <a class="pull-right" href="javascript:void(0)" ng-click="vCardModal.toggleValue('emails', $index)">
-                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vCardModal.isUndefined('emails', $index)]"></i>
+                            <a class="pull-right" href="javascript:void(0)" ng-click="vm.toggleValue('emails', $index)">
+                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vm.isUndefined('emails', $index)]"></i>
                             </a>
                           </td>
                         </tr>
@@ -58,13 +58,13 @@
                     <td><strong>Direcciones</strong></td>
                     <td class="padding-right-0">
                       <table class="table table-first-border-top-none table-margin-bottom-0 table-padding-left-0">
-                        <tr ng-repeat="address in vCardModal.client.addresses track by $index">
+                        <tr ng-repeat="address in vm.client.addresses track by $index">
                           <td>
                             <gux-address address="address"></gux-address>
                           </td>
                           <td>
-                            <a class="pull-right" href="javascript:void(0)" ng-click="vCardModal.toggleValue('addresses', $index)">
-                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vCardModal.isUndefined('addresses', $index)]"></i>
+                            <a class="pull-right" href="javascript:void(0)" ng-click="vm.toggleValue('addresses', $index)">
+                              <i class="fa fa-eye" ng-class="{false: 'text-muted', true: 'text-primary'}[vm.isUndefined('addresses', $index)]"></i>
                             </a>
                           </td>
                         </tr>
@@ -75,12 +75,12 @@
               </div>
             </div>
             <div class="col-sm-6">
-              <button class="btn btn-info btn-block" ng-click="vCardModal.downloadVCard()">
+              <button class="btn btn-info btn-block" ng-click="vm.downloadVCard()">
                 <i class="fa fa-download"></i>
                 Descargar vCard
               </button>
               <br>
-              <button class="btn btn-info btn-primary btn-block" ng-click="vCardModal.makeCode()">
+              <button class="btn btn-info btn-primary btn-block" ng-click="vm.makeCode()">
                 <i class="fa fa-qrcode"></i>
                 Codigo QR
               </button>

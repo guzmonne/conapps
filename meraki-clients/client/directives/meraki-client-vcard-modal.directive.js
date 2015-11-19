@@ -1,55 +1,87 @@
-angular.module('conapps').directive('merakiClientVcardModal', function(){
+angular.module('conapps').directive('merakiClientVcardModal', merakiClientVcardModal);
+
+function merakiClientVcardModal(){
 	return {
-		restrict: 'E',
-		replace: true,
-		templateUrl: 'meraki-clients/client/views/meraki-client-vcard-modal.template.ng.html',
-		controller: ['clientService', function(clientService){
-			this.client = clientService.client;
-			this.store  = {};
+		restrict         : 'E',
+		replace          : true,
+		templateUrl      : 'meraki-clients/client/views/meraki-client-vcard-modal.template.ng.html',
+		controller       : controller,
+		controllerAs     : 'vm',
+		bindToController : true,
+		link             : link,
+		scope            : {},
+	}
+}
 
-			this.downloadVCard = function(){
-				var blob = new Blob([vCard(clientService.client)], { type: 'text/vcard' });
-				saveAs(blob, clientService.client.fullName + ' - Tarjeta.vcf');
-			}.bind(this);
-			
-			this.makeCode = function (){
-				if (this.qrcode)
-					this.qrcode.clear();
-				else
-					this.qrcode = new QRcode('qrcode', {width: 300, height: 300});
-				this.qrcode.makeCode(vCard(this.clientClone));
-			}.bind(this);
+controller.$inject = ['merakiClientsService'];
 
-			this.toggleValue = function(key, index){
-				if (angular.isUndefined(key) || angular.isUndefined(index)) return;
-				if (!angular.isArray(this.client[key])) return;
-				if (!angular.isArray(this.clientClone[key])) return;
-				if (this.store[key] && this.store[key][index]){
-					this.clientClone[key].splice(index, 0, this.store[key][index]);
-					delete this.store[key][index];
-					this.client
-				} else {
-					var array = Array.apply(this, this.client[key]);
-					this.store[key] || (this.store[key] = {});
-					this.store[key][index] = array.splice(index, 1)[0];
-					this.clientClone[key] = array;
-				}
-				this.makeCode();
-			};
+function controller(mc){
+	let vm = this;
 
-			this.isUndefined = function(key, index){
-				return angular.isUndefined(this.store[key]) || angular.isUndefined(this.store[key][index]);
-			}.bind(this);
-		}],
-		controllerAs: 'vCardModal',
-		bindToController: true,
-		link: function(scope, element){
-			scope.$watch('vCardModal.client', function(n){
-				if (element.find('#qrcode') && element.find('#qrcode').hasClass('in'))
-					scope.vCardModal.makeCode();
-				scope.vCardModal.clientClone = angular.copy(scope.vCardModal.client);
-				scope.vCardModal.store = {};
-			}, true);
+	vm.client = mc.model;
+	vm.store = {};
+
+	vm.downloadVCard = downloadVCard;
+	vm.makeCode = makeCode;
+	vm.toggleValue = toggleValue;
+	vm.isUndefined = isUndefined;
+
+	/////////
+	
+	function downloadVCard(){
+		let blob = new Blob(
+			[vCard(vm.client)]
+		, { type: 'text/vcard' }
+		);
+
+		saveAs(blob, vm.client.fullName + ' - Tarjeta.vcf');
+	}
+
+	function makeCode(){
+		if (vm.qrcode)
+			vm.qrcode.clear();
+		else
+			vm.qrcode = new QRcode('qrcode', { width: 300, height: 300 });
+
+		let card = vCard(vm.clientClone);
+
+		vm.qrcode.makeCode(card);
+	}
+
+	function toggleValue(key, index){
+
+		if (this.store[key] && this.store[key][index]){
+
+			vm.clientClone[key].splice(index, 0, vm.store[key][index]);
+			delete this.store[key][index];
+
+		} else {
+
+			let array = Array.apply(vm, vm.client[key]);
+
+			vm.store[key] || (vm.store[key] = {});
+			vm.store[key][index] = array.splice(index, 1)[0];
+			vm.clientClone[key] = array;
 		}
-	};
-});
+
+		vm.makeCode();
+
+	}
+
+	function isUndefined(key, index){
+		return angular.isUndefined(vm.store[key]) || angular.isUndefined(vm.store[key][index]);
+	}
+	
+}
+
+function link (scope, element){
+	scope.$watch('vm.client', function(){
+		
+		if (element.find('#qrcode') && element.find('#qrcode').hasClass('in'))
+			scope.vm.makeCode();
+		
+		scope.vm.clientClone = angular.copy(scope.vm.client);
+		scope.vm.store = {};
+	
+	}, true);
+}

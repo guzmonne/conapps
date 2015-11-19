@@ -14,9 +14,9 @@ function merakiClientRow(){
 	}
 }
 
-controller.$inject = ['clientService', 'showModal', 'bootboxService'];
+controller.$inject = ['merakiClientsService', 'showModal', 'bootboxService'];
 
-function controller(cs, showModal, bs){
+function controller(mc, showModal, bs){
 	var vm = this;
 
 	vm.showModal = showEditModal;
@@ -30,17 +30,17 @@ function controller(cs, showModal, bs){
 
 		bs.confirmClientDeletion().
 			then(() => {
-				cs.deleteClient(clientId);
+				mc.deleteClient(clientId);
 			})
 	}
 
 	function showEditModal(client){
-		cs.setClient(client);
+		mc.setModel(client);
 		showModal('#addNewClientModal');
 	}
 	
 	function showVcardModal(client){
-		cs.setClient(client);
+		mc.setModel(client);
 		showModal('#vCardClientModal');
 	}
 

@@ -6,39 +6,27 @@
 				
 				<thead>
 					
-					<th class="th-pointer" ng-click="table.orderBy('fullName')">
+					<th data-sort-by="fullName">
 						Nombre
-						<i 	class="pull-right fa"
-								ng-class="table.showChevronFor('fullName')"
-								ng-show="table.showChevronFor('fullName')">
-						</i>
 					</th>
 					
-					<th class="th-pointer" ng-click="table.orderBy('company')">
+					<th data-sort-by="company">
 						Empresa
-						<i 	class="pull-right fa"
-								ng-class="table.showChevronFor('company')"
-								ng-show="table.showChevronFor('company')">
-						</i>
 					</th>
-					
-					<th class="th-pointer" ng-click="table.orderBy('position')">
+				
+					<th data-sort-by="position">
 						Cargo
-						<i 	class="pull-right fa"
-								ng-class="table.showChevronFor('position')"
-								ng-show="table.showChevronFor('position')">
-						</i>
 					</th>
 					
-					<th>
+					<th data-sort-by="phones">
 						Telefonos
 					</th>
 					
-					<th>
+					<th data-sort-by="emails">
 						Correos
 					</th>
 					
-					<th>
+					<th data-sort-by="addresses">
 						Direcciones
 					</th>
 					
@@ -49,9 +37,11 @@
 				</thead>
 				
 				<tbody>
-					<tr meraki-client-row
-							ng-repeat="client in table.clients track by client._id"
-							client="client">
+					<tr 
+						meraki-client-row
+						ng-repeat="client in vm.clients track by client._id"
+						client="client"
+					>
 					</tr>
 				</tbody>
 			</table>
