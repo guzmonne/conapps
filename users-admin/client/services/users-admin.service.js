@@ -6,13 +6,14 @@ function usersAdminService($meteor, $q, safeApply, cmg){
 	let service = new cmg({
 		sort: {name: 1},
 		publication: 'users',
-		mongoCollection: Meteor.users
+		mongoCollection: Meteor.users,
+		deleteMethod: 'users-admin:delete'
 	});
 
 	angular.extend(service, {
 
 		setDefault(){
-			angular.copy(defaultUser(), this.activeUser);
+			angular.copy(defaultUser(), this.model);
 		},
 
 		save(){
@@ -28,45 +29,15 @@ function usersAdminService($meteor, $q, safeApply, cmg){
 					});
 		},
 
-		delete(id){
-			check(id, String);
+		///////
 
-			return $meteor.call('users-admin:delete', id);
-		},
-
-		edit(id){
-			check (id, String);
-
-			let self = this;
-
-			let deferred = $q.defer();
-			let user = Meteor.users.findOne(id);
-
-			if (!user)
-				deferred.reject(new Meteor.Error('ID de usuario invalida', 'Error'));
-			else {
-				self.setUser(user);
-				deferred.resolve();
-			}
-
-			return deferred.promise;
-		},
-
-		setUser(user){
-			let self = this;
-
-			safeApply.onAngular(() => angular.copy(user, self.activeUser));
-		},
-
-		//////////
-		
-		activeUser: defaultUser()
+		model: defaultUser()
 
 	});
 	
 
 	function saveUser(method){
-		return $meteor.call(method, service.activeUser).
+		return $meteor.call(method, service.model).
 			catch(handleError)
 	}
 
@@ -79,8 +50,8 @@ function usersAdminService($meteor, $q, safeApply, cmg){
 	function updateRoles(){
 		return $meteor.call(
 			'users-admin:update-roles'
-			, service.activeUser._id
-			, service.activeUser.profile.roles
+			, service.model._id
+			, service.model.profile.roles
 		).
 		catch(service.handleError);
 	}

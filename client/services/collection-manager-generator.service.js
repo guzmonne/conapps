@@ -4,10 +4,22 @@ collectionManagerGenerator.$inject = ['$meteor', '$q', 'safeApply'];
 
 function collectionManagerGenerator($meteor, $q, safeApply){
 	let generator = function(options){
-		let {sort, stringSearch, collection, publication, mongoCollection} = options;
+		options || (options = {});
+
+		let {sort
+			, stringSearch
+			, collection
+			, publication
+			, mongoCollection
+			, saveMethod
+			,	updateMethod
+			,	deleteMethod} = options;
 
 		if (sort) check(sort, Object);
 		if (stringSearch) check(stringSearch, Boolean);
+		if (saveMethod) check(saveMethod, String);
+		if (deleteMethod) check(deleteMethod, String);
+		if (updateMethod) check(updateMethod, String);
 
 		check(publication, String);
 		check(mongoCollection, Mongo.Collection);
@@ -17,6 +29,15 @@ function collectionManagerGenerator($meteor, $q, safeApply){
 		
 		if (stringSearch)
 			this.stringSearch = new ReactiveVar('');
+
+		if (saveMethod)
+			this.saveMethod = saveMethod;
+
+		if (deleteMethod)
+			this.deleteMethod = deleteMethod;
+
+		if (updateMethod)
+			this.updateMethod = updateMethod;
 
 		this._publication = publication;
 		this._mongoCollection = mongoCollection;
@@ -57,6 +78,51 @@ function collectionManagerGenerator($meteor, $q, safeApply){
 			console.log('Unsubscribed from ' + this._publication);
 		},
 
+		setModel(model){
+			safeApply.onAngular(() => angular.copy(model, this.model));
+		},
+
+		save(model){
+			let self = this;
+
+			model || (model = self.model);
+
+			if (model._id)
+				return _save(model, this.updateMethod);
+			else
+				return _save(model, this.saveMethod);
+		},
+
+		delete(id){
+			check(id, String);
+			check(this.deleteMethod, id);
+
+			return $meteor.call(this.deleteMethod, id);
+		},
+
+		edit(id){
+			check(id, String);
+
+			let self = this;
+			let deferred = $q.defer();
+			let model = self._mongoCollection.findOne(id);
+
+			if (!model)
+				deferred.reject(new Meteor.Error('ID invalida', 'Error'));
+			else {
+				self.setModel(model);
+				deferred.resolve();
+			}
+
+			return deferred.promise;
+		},
+
+		///////
+
+		setDefault: setDefault,		
+
+		model: setDefault(),
+
 		handleError: handleError,
 
 		///////
@@ -78,6 +144,12 @@ function collectionManagerGenerator($meteor, $q, safeApply){
 
 				angular.copy(self._mongoCollection.find(query, options).fetch(), self.collection);
 			});
+		},
+
+		_save(model, method){
+			check(method, String);
+			return $meteor.call(method, model).
+				catch(handleError);
 		}
 	});
 
@@ -90,6 +162,10 @@ function collectionManagerGenerator($meteor, $q, safeApply){
     console.log(err);
 
     return rejected;
+  }
+
+  function setDefault(){
+  	return {};
   }
 
 	///////

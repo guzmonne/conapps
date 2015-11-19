@@ -18,7 +18,7 @@ controller.$inject = ['usersAdminService'];
 function controller(ua){
 	var vm = this;
 
-	vm.user       = ua.activeUser;
+	vm.user       = ua.model;
 	vm.toggleRole = toggleRole;
 	vm.hasRole    = hasRole;
 
