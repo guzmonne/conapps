@@ -3,7 +3,7 @@ angular.module('conapps').service('usersAdminService', usersAdminService);
 usersAdminService.$inject = ['$meteor', '$q', '$rootScope', '$timeout'];
 
 function usersAdminService($meteor, $q, $rootScope, $timeout){
-	
+
 	var service = {
 
 		subscribe(){
@@ -57,8 +57,8 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 				return saveUser('users-admin:update');
 			else
 				return saveUser('users-admin:create').
-					then(res => { 
-						service.setDefault(); return res; 
+					then(res => {
+						service.setDefault(); return res;
 					});
 		},
 
@@ -75,8 +75,29 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 			return deferred.promise;
 		},
 
+		edit(id){
+			check(id, String);
+
+			var deferred = $q.defer();
+      var user     = Meteor.users.findOne(id);
+
+      if (!user)
+        deferred.reject(new Meteor.Error('ID de usuario invalida', 'Error'));
+      else {
+        service.setUser(user);
+        deferred.resolve();
+      }
+
+			return deferred.promise;
+		},
+
+		setUser(user){
+			angular.copy(user, service.activeUser);
+			$timeout(() => $rootScope.$apply());
+		},
+
 		//////
-		
+
 		users: [],
 
 		usersCursor: {},

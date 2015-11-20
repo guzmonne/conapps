@@ -1,32 +1,30 @@
 <div>
 	<mainbar-content-panel heading="Switch Selector" links="vm.links">
-		<div class="conainer-fluid">
-			<div class="row">
-				<div class="col-sm-3 col-md-3">
+		<div class="row">
+			<div class="col-sm-3 col-md-3">
 
-					<button ng-click="vm.showModal()"
-									class="btn btn-success btn-block"
-									ng-if="vm.isAdmin()">
-						<i class="fa fa-plus"></i>
-						Agregar Switch
-					</button>
-					
-					<button class="btn btn-default btn-block"
-						ng-click="vm.resetFilters()">
-						<i class="fa fa-filter"></i>
-						Eliminar Filtros
-					</button>
+				<button ng-click="vm.showModal()"
+								class="btn btn-success btn-block"
+								ng-if="vm.isAdmin()">
+					<i class="fa fa-plus"></i>
+					Agregar Switch
+				</button>
 
-					<switch-selector-filters></switch-selector-filters>
-				
-				</div>
-				<div class="col-sm-9 col-md-9">
-					<switch-panel 
+				<button class="btn btn-default btn-block"
+								ng-click="vm.resetFilters()">
+					<i class="fa fa-filter"></i>
+					Eliminar Filtros
+				</button>
+
+				<switch-selector-filters></switch-selector-filters>
+
+			</div>
+			<div class="col-sm-9 col-md-9">
+				<switch-panel
 						ng-model="switch"
 						ng-repeat="switch in vm.switches track by switch._id"
 						on-edit="vm.showModal(switch)">
-					</switch-panel>
-				</div>
+				</switch-panel>
 			</div>
 		</div>
 		<!-- Modal -->

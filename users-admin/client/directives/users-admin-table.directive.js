@@ -13,14 +13,15 @@ function usersAdminTable(){
 	}
 }
 
-controller.$inject = ['usersAdminService'];
+controller.$inject = ['usersAdminService', 'showModal'];
 
-function controller(ua){
+function controller(ua, showModal){
 	var vm = this;
 
 	vm.unsubscribe = ua.unsubscribe;
 	vm.users = ua.users;
 	vm.delete = deleteUser;
+	vm.edit   = edit;
 
 	activate();
 
@@ -33,14 +34,24 @@ function controller(ua){
 	function deleteUser(id){
 		ua.delete(id).
 			then(handleDeleteSuccess).
-			catch(handleDeleteError)
+			catch(handleError);
+	}
+
+	function edit(id){
+		ua.edit(id).
+			then(handleEditSuccess).
+			catch(handleError);
+	}
+
+	function handleEditSuccess(){
+		showModal('#newUserModal');
 	}
 
 	function handleDeleteSuccess(){
 		toastr.success('Usuario eliminado.', 'Atención');
 	}
 
-	function handleDeleteError(err){
+	function handleError(err){
 		console.error(err);
 		toastr.error(err.reason, err.error);
 	}
