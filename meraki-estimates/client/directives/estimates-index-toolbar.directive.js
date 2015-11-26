@@ -9,19 +9,27 @@ angular.module('conapps').directive('estimatesIndexToolbar', function(){
 		controller       : controller,
 		controllerAs     : 'vm',
 		bindToController : true,
+    link: link
 	};
 });
 
-controller.$inject = ['showModal'];
+controller.$inject = ['showModal', 'estimatesIndexService'];
 
-function controller(showModal){
+function controller(showModal, ei){
 	var vm = this;
 
-	this.stringSearch  = '';
-	this.newEstimate   = newEstimate;
-	
+	vm.newEstimate = newEstimate;
+  vm.stringSearch = '';
+  vm._stringSearch = ei.stringSearch;
+
+	///////
+
 	function newEstimate(){
 		vm.estimate = {};
 		showModal('#newEstimateModal');
 	}
+}
+
+function link(scope){
+  scope.$watch('vm.stringSearch', s => scope.vm._stringSearch.set(s));
 }

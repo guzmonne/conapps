@@ -5,33 +5,29 @@
 				<tr>
 					<th><i class="fa fa-square-o"></i></th>
 					<th
-						ng-cloak
+						style="min-width: 100px"
 						class="pointer unselectable"
-						ng-click="vm.sortBy('createdAt')"
-						style="min-width: 100px">
+						data-sort-by="createdAt"
+					>
 						Creado
-						<span class="pull-right" ng-class="vm.chevronIfSorting('createdAt')"></span>
 					</th>
 					<th
-						ng-cloak
+						style="min-width: 200px"
 						class="pointer unselectable"
-						ng-click="vm.sortBy('name')"
-						style="min-width: 200px">
+						data-sort-by="name"
+					>
 						Nombre
-						<span class="pull-right"  ng-class="vm.chevronIfSorting('name')"></span>
 					</th>
 					<th
-						ng-cloak
 						class="pointer unselectable"
-						ng-click="vm.sortBy('description')"
-						>
+						data-sort-by="description"
+					>
 						Descripción
-						<span class="pull-right" ng-class="vm.chevronIfSorting('description')"></span>
 					</th>
 				</tr>
 			</thead>
 			<thead>
-				<tr ng-repeat="estimate in vm.collection track by estimate._id" class="animated fadeIn" ng-cloak>
+				<tr ng-repeat="estimate in vm.collection track by estimate._id" ng-cloak>
 					<td><i class="fa fa-square-o"></i></td>
 					<td>
 						{{estimate.createdAt | guxCalendar}}

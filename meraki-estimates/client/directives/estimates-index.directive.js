@@ -12,15 +12,15 @@ function estimatesIndex(){
 	}
 }
 
-controller.$inject = ['$scope', 'showModal'];
+controller.$inject = ['$scope'];
 
-function controller($scope, showModalService){
+function controller($scope){
 	var vm = this;
 
 	vm.estimates = [];
 	vm.options   = { sort: 'createdAt', reverse: true };
 
-	activate();
+	//activate();
 
 	////////////////
 	

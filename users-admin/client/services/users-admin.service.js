@@ -45,6 +45,7 @@ function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 			if (service.computation && service.computation.stop)
 				service.computation.stop();
 			service.subscription = null;
+      service.computation  = null;
 			console.log('Unsubscribe from "Users".');
 		},
 

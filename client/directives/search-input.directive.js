@@ -22,11 +22,13 @@ controller.$inject = [];
 function controller(){
 	var vm = this;
 
-	activate()
+	vm.onChange || (vm.onChange = function(){});
 
-	/////////
-	
-	function activate(){
-		vm.onChange || (vm.onChange = function(){});
-	}
+  vm.callOnChange = callOnChange;
+
+  ///////
+
+  function callOnChange(){
+    vm.onChange({});
+  }
 }

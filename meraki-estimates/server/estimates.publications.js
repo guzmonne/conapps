@@ -20,3 +20,21 @@ Meteor.publish('estimate', function(id){
 
 	return Estimates.find({_id: id});
 });
+
+Meteor.publish('estimates:index', function(){
+	var userId = this.userId;
+
+	if (!userId) throw new Meteor.Error('user is not logged in!', '400 - Not authorized');
+
+	return Estimates.find({
+		createdById: userId
+	}, {
+		fields: {
+			_id: 1,
+			createdAt: 1,
+			name: 1,
+			description: 1,
+			stringSearch: 1
+		}
+	});
+});
