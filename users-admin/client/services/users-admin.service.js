@@ -1,8 +1,8 @@
 angular.module('conapps').service('usersAdminService', usersAdminService);
 
-usersAdminService.$inject = ['$meteor', '$q', '$rootScope', '$timeout'];
+usersAdminService.$inject = ['$meteor', '$q', '$rootScope', 'safeApplyAutorun'];
 
-function usersAdminService($meteor, $q, $rootScope, $timeout){
+function usersAdminService($meteor, $q, $rootScope, safeApplyAutorun){
 
 	var service = {
 
@@ -92,8 +92,7 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 		},
 
 		setUser(user){
-			angular.copy(user, service.activeUser);
-			$timeout(() => $rootScope.$apply());
+      $rootScope.safeApply(() => angular.copy(user, service.activeUser));
 		},
 
 		orderBy(field){
@@ -137,26 +136,20 @@ function usersAdminService($meteor, $q, $rootScope, $timeout){
 	}
 
 	function _updateUsers(){
-		Tracker.autorun((computation) => {
-			service.computation = computation;
-			service.cursor = Meteor.users.find({}); 
-			
-			angular.copy(Meteor.users.find({}, {sort: service.sort.get()}).fetch(), service.users);
-			
-			safeApply();
-		});
+		service.computation = safeApplyAutorun(updateUsers);
 	}
 
+  function updateUsers(){
+    angular.copy(Meteor.users.find({}, {sort: service.sort.get()}).fetch(), service.users);
+  }
+
 	function updateRoles(){
-		return $meteor.call('users-admin:update-roles'
+		return $meteor.call(
+			'users-admin:update-roles'
 			, service.activeUser._id
 			, service.activeUser.profile.roles
 		).
 		catch(service.handleError);
-	}
-
-	function safeApply(){
-		$timeout(() => $rootScope.$apply());	
 	}
 
 	//////////
